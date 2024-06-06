@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/watched-the-tattoo-video-yesterday-and-made-a-high-quality-v0-wgc4mumo2qb81.png" alt="" /></span><span class="title">BakedSoups</span>
+								</a>
+						</div>
+					</header>
+
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>Hello I'm Alex</h1>
+								<p>I am a Machine Learning developer and student majoring in Comupter Science. I currently love working in AI and Data, Im always open to chat you can find me in my socials below</p>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/alexander-peczon-1747a523a/" class="icon brands style2 fa-linkedin-in"><span class="label">Twitter</span></a></li>
+									<li><a href="https://github.com/BakedSoups" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li>
+										<a href="#" class="icon solid style2 fa-envelope" onclick="copyToClipboard('peczonalex@gmail.com', 'phoneTooltip')">
+											<span class="label">Phone</span>
+											<span class="tooltip" id="phoneTooltip">Copied!</span>
+										</a>
+									</li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+								</ul>
+							</section>
+							</header>
+							<header>
+								<h2>Technologys </h2>
+								<i class="fa-brands fa-python" style="color: #FFD43B;"></i>
+							</header>
+
+							<header>
+								<h2>projects</h2>
+							</header>	
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a href="https://github.com/BakedSoups/Tic-Tac-Toe">
+										<h2>TicTacToe</h2>
+										<div class="content">
+											<p>terminal based TicTacToe game featuring a unbeatable AI. uses a graph data structor to render the mini-max algorithm </p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a href="https://devpost.com/software/nutrifinder">
+										<h2>NutriFinder App </h2>
+										<div class="content">
+											<p>Flask-React Powereed website returns a list of food items and nutritional info from restaurants by requesting the user to select some preferences, find food nearby at a certain value that fits your dietary needs or cravings.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a href="https://github.com/BakedSoups/Visualize-Spirals">
+										<h2>Spiral-Visualizer</h2>
+										<div class="content">
+											<p>Visualize spirals by putting the directions up, right down, and left in a queue data structure
+											</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a href="https://itch.io/jam/uc-merced-gdc-game-jam-2023/rate/2353610">
+										<h2>Game Jam Submittion</h2>
+										<div class="content">
+											<p>mini Game submition for GDC game jam at UC Merced featuring godot.</p>
+										</div>
+									</a>
+								</article>
+							</section>
+						</div>
+					</div>
+			</div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				function copyToClipboard(text, tooltipId) {
+					navigator.clipboard.writeText(text).then(() => {
+						let tooltip = document.getElementById(tooltipId);
+						tooltip.classList.add('visible'); // Make tooltip visible and fade in
+						setTimeout(() => {
+							tooltip.classList.remove('visible'); // Fade out after 1 second
+						}, 1000);
+					}).catch(err => {
+						console.error('Failed to copy: ', err);
+					});
+				}
+
+				</script>
+
+	</body>
+</html>
