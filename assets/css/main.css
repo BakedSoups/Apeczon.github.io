@@ -2737,28 +2737,22 @@ input, select, textarea {
 					}
 
 			.tiles article.style1 > .image:before {
-				background-color: #635c5c;
+				background-color: transparent;
+				border: 2px solid white;  /* White border */
+				background-color: rgba(28, 26, 38, 0.5);  /* Semi-transparent background */
+				color: white;  /* White text color */
+				padding: 20px;  /* Padding inside the box */
+				box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);  /* Optional: Adds subtle glow */
 			}
+			
 
-			.tiles article.style2 > .image:before {
-				background-color: #7ecaf6;
-			}
-
-			.tiles article.style3 > .image:before {
-				background-color: #7bd0c1;
-			}
-
-			.tiles article.style4 > .image:before {
-				background-color: #c75b9b;
-			}
-
-			.tiles article.style5 > .image:before {
-				background-color: #ae85ca;
-			}
-
-			.tiles article.style6 > .image:before {
-				background-color: #8499e7;
-			}
+			.transparent-border-box {
+    border: 2px solid white;  /* White border */
+    background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background */
+    color: white;  /* White text color */
+    padding: 20px;  /* Padding inside the box */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);  /* Optional: Adds subtle glow */
+}
 
 			body:not(.is-touch) .tiles article:hover > .image {
 				-moz-transform: scale(1.1);
