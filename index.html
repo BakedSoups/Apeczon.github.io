@@ -160,10 +160,10 @@
       margin: 0 auto;
     }
     
-    /* Hero Section - SIGNIFICANTLY REDUCED HEIGHT */
+    /* Hero Section - With Profile Picture */
     .hero {
       height: 30vh;
-      min-height: 200px;
+      min-height: 250px; /* Slightly increased for profile picture */
       display: flex;
       align-items: center;
       position: relative;
@@ -183,8 +183,38 @@
       z-index: -1;
     }
     
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .profile-picture {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      background: 
+        linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+        linear-gradient(90deg, var(--accent), var(--highlight)) border-box;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-picture:hover {
+      transform: scale(1.05);
+    }
+    
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
     .hero-content {
-      max-width: 800px;
+      max-width: 650px;
     }
     
     .hero h1 {
@@ -631,6 +661,16 @@
     }
     
     @media (max-width: 768px) {
+      .hero-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      
+      .social-icons {
+        justify-content: center;
+      }
+      
       .nav-container {
         padding: 0.75rem;
       }
@@ -670,8 +710,13 @@
       }
       
       .social-icons a {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
+      }
+      
+      .profile-picture {
+        width: 100px;
+        height: 100px;
       }
     }
     
@@ -707,34 +752,41 @@
 
   <section class="hero">
     <div class="container">
-      <div class="hero-content">
-        <h1 class="fade-in">Hello, I'm <span>Alex</span></h1>
-        <p class="fade-in delay-1">CS student passionate about AI, Data Science, Game Dev & High Performance Backends</p>
+      <div class="hero-inner">
+        <!-- Profile Picture -->
+        <div class="profile-picture fade-in">
+          <img src="images/image0.jpg" alt="Alex Peczon" />
+        </div>
         
-        <ul class="social-icons fade-in delay-2">
-          <li>
-            <a href="https://www.linkedin.com/in/alexander-peczon-1747a523a/" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/BakedSoups" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="Email" onclick="copyToClipboard('peczonalex@gmail.com', 'emailTooltip')">
-              <i class="fas fa-envelope"></i>
-              <span class="tooltip" id="emailTooltip">Copied!</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="Discord" onclick="copyToClipboard('@alexpeczon', 'discordTooltip')">
-              <i class="fab fa-discord"></i>
-              <span class="tooltip" id="discordTooltip">Copied!</span>
-            </a>
-          </li>
-        </ul>
+        <div class="hero-content">
+          <h1 class="fade-in delay-1">Hello, I'm <span>Alex</span></h1>
+          <p class="fade-in delay-2">CS student passionate about AI, Data Science, Game Dev & High Performance Backends</p>
+          
+          <ul class="social-icons fade-in delay-3">
+            <li>
+              <a href="https://www.linkedin.com/in/alexander-peczon-1747a523a/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/BakedSoups" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="Email" onclick="copyToClipboard('peczonalex@gmail.com', 'emailTooltip')">
+                <i class="fas fa-envelope"></i>
+                <span class="tooltip" id="emailTooltip">Copied!</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="Discord" onclick="copyToClipboard('@alexpeczon', 'discordTooltip')">
+                <i class="fab fa-discord"></i>
+                <span class="tooltip" id="discordTooltip">Copied!</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
