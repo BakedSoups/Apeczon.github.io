@@ -6,6 +6,10 @@
   <title>Alex Peczon | Portfolio</title>
   <link rel="icon" href="images/watched-the-tattoo-video-yesterday-and-made-a-high-quality-v0-wgc4mumo2qb81.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
+  <!-- Added Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-primary: #121212;
@@ -18,13 +22,19 @@
       --card-hover: #2d2d2d;
       --success: #34a853;
       --highlight: #9c27b0;
+      /* Added font variables */
+      --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-weight-normal: 400;
+      --font-weight-medium: 500;
+      --font-weight-bold: 600;
+      --font-weight-extra-bold: 700;
     }
     
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--font-primary);
       scroll-behavior: smooth;
     }
     
@@ -34,6 +44,8 @@
       line-height: 1.6;
       overflow-x: hidden;
       width: 100%;
+      font-weight: var(--font-weight-normal);
+      letter-spacing: 0.01em;
     }
     
     .container {
@@ -95,7 +107,7 @@
     }
     
     .logo .title {
-      font-weight: 700;
+      font-weight: var(--font-weight-bold);
       font-size: 1.2rem;
       background: linear-gradient(90deg, var(--accent), var(--highlight));
       -webkit-background-clip: text;
@@ -125,7 +137,7 @@
       color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: var(--font-weight-medium);
       padding: 0.5rem 0.75rem;
       border-radius: 6px;
       transition: all 0.3s ease;
@@ -229,7 +241,7 @@
     
     .hero h1 {
       font-size: 1.8rem;
-      font-weight: 700;
+      font-weight: var(--font-weight-bold);
       margin-bottom: 0.5rem;
       line-height: 1.1;
     }
@@ -304,7 +316,7 @@
     
     .section-title {
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: var(--font-weight-bold);
       margin-bottom: 1.25rem;
       position: relative;
       display: inline-block;
@@ -360,6 +372,7 @@
       margin-bottom: 0.3rem;
       color: var(--accent);
       letter-spacing: 0.5px;
+      font-weight: var(--font-weight-medium);
     }
     
     .skill-tags {
@@ -402,9 +415,10 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
       position: relative;
       width: 100%;
+      z-index: 1;
     }
     
     .project-card:hover {
@@ -446,9 +460,10 @@
       padding: 0.25rem 0.5rem;
       border-radius: 20px;
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: var(--font-weight-medium);
       background-color: var(--success);
       color: white;
+      z-index: 2;
     }
     
     .project-content {
@@ -464,7 +479,7 @@
     
     .project-title h3 {
       font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: var(--font-weight-bold);
       color: var(--text-primary);
     }
     
@@ -553,7 +568,7 @@
     
     .experience-title-container h3 {
       font-size: 1.2rem;
-      font-weight: 700;
+      font-weight: var(--font-weight-bold);
       color: var(--text-primary);
       margin-bottom: 0.25rem;
       word-break: break-word;
@@ -563,6 +578,7 @@
       font-size: 1rem;
       color: var(--accent);
       margin-bottom: 0.5rem;
+      font-weight: var(--font-weight-medium);
     }
     
     .experience-duration {
@@ -657,7 +673,7 @@
     
     .language-name {
       font-size: 1.1rem;
-      font-weight: 600;
+      font-weight: var(--font-weight-bold);
       color: var(--text-primary);
     }
     
@@ -951,6 +967,7 @@
             <div class="skill-tag">CUDA</div>
             <div class="skill-tag">SQLite3</div>
             <div class="skill-tag">ChromaDB</div>
+            <div class="skill-tag">Godot</div>
           </div>
         </div>
         
@@ -976,177 +993,225 @@
 
   <!-- Tab Content Container -->
   <div class="container">
-    <div id="projects-tab" class="tab-content active">
-      <h2 class="section-title">Projects</h2>
-      <p>Select projects showcasing my skills and interests. Click any project to learn more!</p>
-      
-      <div class="projects-grid">
-        <div class="project-card fade-in">
-          <div class="project-image">
-            <img src="images/maldemic_final.gif" alt="Maldemic Project">
-            <div class="project-badge">Recent</div>
-          </div>
-          <div class="project-content">
-            <div class="project-title">
-              <h3>Maldemic Simulator</h3>
-              <img src="images/godot.png" alt="Godot">
-              <img src="images/pylogo.png" alt="Python" style="height: 18px; margin-left: 5px;">
-             
-              <img src="images/file-type-numpy-icon-1901x2048-oulkqypt.png" alt="Python" style="height: 18px; margin-left: 5px;">
-
-            </div>
-            <p class="project-description">
-              We built a stochastic Markov-based SIRD simulator using NumPy/SciPy with a Godot 3D globe visualization. It models virus spread using Markov chains and city coordinates. Create a virus and watch it spread in real time!</p>
-            <div class="project-tools">
-              <span class="tool-tag">Godot</span>
-              <span class="tool-tag">GDScript</span>
-              <span class="tool-tag">Markov Models</span>
-              <span class="tool-tag">Numpy</span>
-              <span class="tool-tag">SciPy</span>
-
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/BakedSoups/Pandemic" class="project-link" target="_blank">
-                <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
-              </a>
-              <a href="https://drive.google.com/file/d/1tqMzypnbvTkRvCp1lzxrTIlANEhi2Kfb/view?usp=sharing" class="project-link" target="_blank">
-                <i class="fas fa-file-alt"></i> Our Research Paper <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+    <!-- Projects Tab -->
+    <div id="projects" class="tab-content active">
+      <section class="section">
+        <h2 class="section-title">Projects</h2>
+        <p>Select projects showcasing my skills and interests. Click any project to learn more!</p>
         
-        <div class="project-card fade-in delay-1">
-          <div class="project-image">
-            <img src="images/usfimage.png" alt ="USF Crawler Project">
-            <div class="project-badge">Recent</div>
-          </div>
-          <div class="project-content">
-            <div class="project-title">
-              <h3>USF Search Engine Crawler</h3>
-              <img src="images/Go_gopher_favicon.svg.png" alt="Go">
+        <div class="projects-grid">
+          <!-- Dreamville Project Card -->
+          <div class="project-card fade-in">
+            <div class="project-image">
+              <img src= "/images/dreamville-preview.gif" alt="Dreamville Project" />
+              <div class="project-badge">In progress</div>
             </div>
-            <p class="project-description">Built a Concurrent Go web crawler with SQLite, leveraging worker pools, batch processing, and optimized database transactions for efficient large-scale indexing. Supports thousands of goroutines with robust search functionality.</p>
-            <div class="project-tools">
-              <span class="tool-tag">Go</span>
-              <span class="tool-tag">SQLite</span>
-              <span class="tool-tag">Concurrency</span>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Dreamville</h3>
+              </div>
+              <p class="project-description">
+                Gamified assignment tracker  Canvas LMS. removes self-accountability by only allowing you to check off assignments you've actually completed. Build your own virtual city with coins earned from completing tasks, Features a linear regression algorithm to measure assignment urgency based on completion patterns and difficulty.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag">Godot</span>
+                <span class="tool-tag">Go</span>
+                <span class="tool-tag">GOGO Stack</span>
+                <span class="tool-tag">Canvas API</span>
+                <span class="tool-tag">Linear Regression</span>
+                <span class="tool-tag">Game Dev</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">
+                  <i class="fas fa-code-branch"></i> Repository
+                </a>
+                <a href="#" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
             </div>
-            <div class="project-links">
-            <a href="https://github.com/BakedSoups/USF-Search-Engine" class="project-link" target="_blank">
-              <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing" class="project-link" target="_blank">
-              <i class="fas fa-file-alt"></i> Documentation<i class="fas fa-arrow-right"></i>
-            </a>
           </div>
+          
+          <!-- Maldemic Simulator -->
+          <div class="project-card fade-in">
+            <div class="project-image">
+              <img src="images/maldemic_final.gif" alt="Maldemic Project">
+              <div class="project-badge">Recent</div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Maldemic Simulator</h3>
+                <img src="images/godot.png" alt="Godot">
+                <img src="images/pylogo.png" alt="Python" style="height: 18px; margin-left: 5px;">
+                <img src="images/file-type-numpy-icon-1901x2048-oulkqypt.png" alt="Python" style="height: 18px; margin-left: 5px;">
+              </div>
+              <p class="project-description">
+                Stochastic Markov-based SIRD simulator using NumPy/SciPy with a Godot 3D globe visualization. It models virus spread using Markov chains and city coordinates. Create a virus and watch it spread in real time! Recieved a grant to incoproprate Nueral Networks.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag">Godot</span>
+                <span class="tool-tag">GDScript</span>
+                <span class="tool-tag">Markov Models</span>
+                <span class="tool-tag">Numpy</span>
+                <span class="tool-tag">SciPy</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/BakedSoups/Pandemic" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://drive.google.com/file/d/1tqMzypnbvTkRvCp1lzxrTIlANEhi2Kfb/view?usp=sharing" class="project-link" target="_blank">
+                  <i class="fas fa-file-alt"></i> Our Research Paper <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- USF Search Engine Crawler -->
+          <div class="project-card fade-in delay-1">
+            <div class="project-image">
+              <img src="images/usfimage.png" alt="USF Crawler Project">
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>USF Search Engine Crawler</h3>
+                <img src="images/Go_gopher_favicon.svg.png" alt="Go">
+              </div>
+              <p class="project-description">
+                Concurrent Go web crawler with SQLite, leveraging worker pools, batch processing, and optimized database transactions for efficient large-scale indexing. Supports thousands of goroutines with robust search functionality.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag">Go</span>
+                <span class="tool-tag">SQLite</span>
+                <span class="tool-tag">Concurrency</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/BakedSoups/USF-Search-Engine" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing" class="project-link" target="_blank">
+                  <i class="fas fa-file-alt"></i> Documentation<i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Hyper Rosen -->
+          <div class="project-card fade-in delay-2">
+            <div class="project-image">
+              <img src="images/pic02.jpg" alt="Hyper Rosen">
+              <img class="gif-bg" src="gifs/hyper-rosen-demo.gif" alt="Hyper Rosen Demo">
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Hyper Rosen</h3>
+                <img src="images/godot.png" alt="Godot">
+              </div>
+              <p class="project-description">
+                3D Godot game simulating galaxy formations with Perlin noise and vector field enemies.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag">Godot</span>
+                <span class="tool-tag">3D</span>
+                <span class="tool-tag">Perlin Noise</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/BakedSoups/HyperRosen" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- NutriFinder App -->
+          <div class="project-card fade-in delay-3">
+            <div class="project-image">
+              <img src="images/nutrifinder.png" alt="NutriFinder App">
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>NutriFinder App</h3>
+                <img src="images/react.png" alt="React">
+                <img src="images/image.png" alt="Flask" style="height: 18px; margin-left: 5px;">
+              </div>
+              <p class="project-description">
+                Flask-React Powered website returns a list of food items and nutritional info from restaurants that fits your dietary needs.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag">React</span>
+                <span class="tool-tag">Flask</span>
+                <span class="tool-tag">Python</span>
+              </div>
+              <div class="project-links">
+                <a href="https://devpost.com/software/nutrifinder" class="project-link" target="_blank">
+                  <i class="fas fa-globe"></i> View Project <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Old Man Climbs -->
+          <div class="project-card fade-in delay-4">
+            <div class="project-image">
+              <img src="images/oldahhman.png" alt="Old Man Climbs">
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Old Man Climbs</h3>
+                <img src="images/godot.png" alt="Godot">
+              </div>
+              <p class="project-description">
+                Mini Game submission for GDC game jam at UC Merced featuring Godot.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag">Godot</span>
+                <span class="tool-tag">Game Jam</span>
+              </div>
+              <div class="project-links">
+                <a href="https://itch.io/jam/uc-merced-gdc-game-jam-2023/rate/2353610" class="project-link" target="_blank">
+                  <i class="fas fa-gamepad"></i> View Project <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Spiral-Visualizer -->
+          <div class="project-card fade-in delay-5">
+            <div class="project-image">
+              <img src="images/spiral.png" alt="Spiral-Visualizer">
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Spiral-Visualizer</h3>
+                <img src="images/Matplotlib_icon.svg.png" alt="Matplotlib">
+              </div>
+              <p class="project-description">
+                Visualize spirals by putting the directions up, right, down, and left in a queue data structure.
+              </p>
+              <div class="project-tools">
+                <span class="tool-tag">Python</span>
+                <span class="tool-tag">Matplotlib</span>
+                <span class="tool-tag">Data Structures</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/BakedSoups/Visualize-Spirals" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div class="project-card fade-in delay-2">
-          <div class="project-image">
-            <img src="images/pic02.jpg" alt="Hyper Rosen">
-            <img class="gif-bg" src="gifs/hyper-rosen-demo.gif" alt="Hyper Rosen Demo">
-          </div>
-          <div class="project-content">
-            <div class="project-title">
-              <h3>Hyper Rosen</h3>
-              <img src="images/godot.png" alt="Godot">
-            </div>
-            <p class="project-description">3D Godot game simulating galaxy formations with Perlin noise and vector field enemies.</p>
-            <div class="project-tools">
-              <span class="tool-tag">Godot</span>
-              <span class="tool-tag">3D</span>
-              <span class="tool-tag">Perlin Noise</span>
-            </div>
-            <div class="project-links">
-            <a href="https://github.com/BakedSoups/HyperRosen" class="project-link" target="_blank">
-              <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
-            </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Other projects -->
-        <div class="project-card fade-in delay-3">
-          <div class="project-image">
-            <img src="images/nutrifinder.png" alt="NutriFinder App">
-          </div>
-          <div class="project-content">
-            <div class="project-title">
-              <h3>NutriFinder App</h3>
-              <img src="images/react.png" alt="React">
-              <img src="images/image.png" alt="Flask" style="height: 18px; margin-left: 5px;">
-            </div>
-            <p class="project-description">Flask-React Powered website returns a list of food items and nutritional info from restaurants that fits your dietary needs.</p>
-            <div class="project-tools">
-              <span class="tool-tag">React</span>
-              <span class="tool-tag">Flask</span>
-              <span class="tool-tag">Python</span>
-            </div>
-            <div class="project-links">
-            <a href="https://devpost.com/software/nutrifinder" class="project-link" target="_blank">
-              <i class="fas fa-globe"></i> View Project <i class="fas fa-arrow-right"></i>
-            </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="project-card fade-in delay-4">
-          <div class="project-image">
-            <img src="images/oldahhman.png" alt="Old Man Climbs">
-          </div>
-          <div class="project-content">
-            <div class="project-title">
-              <h3>Old Man Climbs</h3>
-              <img src="images/godot.png" alt="Godot">
-            </div>
-            <p class="project-description">Mini Game submission for GDC game jam at UC Merced featuring Godot.</p>
-            <div class="project-tools">
-              <span class="tool-tag">Godot</span>
-              <span class="tool-tag">Game Jam</span>
-            </div>
-            <div class="project-links">
-            <a href="https://itch.io/jam/uc-merced-gdc-game-jam-2023/rate/2353610" class="project-link" target="_blank">
-              <i class="fas fa-gamepad"></i> View Project <i class="fas fa-arrow-right"></i>
-            </a>
-            </div>
-          </div>
-        </div>
-        <div class="project-card fade-in delay-5">
-          <div class="project-image">
-            <img src="images/spiral.png" alt="Spiral-Visualizer">
-          </div>
-          <div class="project-content">
-            <div class="project-title">
-              <h3>Spiral-Visualizer</h3>
-              <img src="images/Matplotlib_icon.svg.png" alt="Matplotlib">
-            </div>
-            <p class="project-description">Visualize spirals by putting the directions up, right, down, and left in a queue data structure.</p>
-            <div class="project-tools">
-              <span class="tool-tag">Python</span>
-              <span class="tool-tag">Matplotlib</span>
-              <span class="tool-tag">Data Structures</span>
-            </div>
-            <div class="project-links">
-            <a href="https://github.com/BakedSoups/Visualize-Spirals" class="project-link" target="_blank">
-              <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
-            </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
-
+    
     <!-- Experience Tab -->
-    <div id="experience-tab" class="tab-content">
-      <h2 class="section-title">Experiences</h2>
-      <p>Professional roles where I've applied my technical skills to solve real-world problems.</p>
-      
-      <div style="margin-top: 1.5rem;">
+    <div id="experience" class="tab-content">
+      <section class="section">
+        <h2 class="section-title">Experience</h2>
+        <p>Professional roles where I've applied my technical skills to solve real-world problems.</p>
+        
         <div class="experience-timeline">
           <!-- MAGIC Lab -->
-          <div class="experience-card">
+          <div class="experience-card fade-in">
             <div class="experience-header">
               <div class="experience-title-container">
                 <h3><img src="images/San-Francisco-Dons-Logo-2001.png" alt="USF" style="height: 24px; margin-right: 8px; vertical-align: middle;"> MAGIC Lab</h3>
@@ -1182,7 +1247,7 @@
           </div>
           
           <!-- USF Marketing -->
-          <div class="experience-card">
+          <div class="experience-card fade-in">
             <div class="experience-header">
               <div class="experience-title-container">
                 <h3><img src="images/San-Francisco-Dons-Logo-2001.png" alt="USF" style="height: 24px; margin-right: 8px; vertical-align: middle;"> University of San Francisco Marketing</h3>
@@ -1190,7 +1255,6 @@
                   <img src="images/pandas.svg" alt="Slate" style="height: 18px; margin-left: 5px; vertical-align: middle;">
                   <img src="images/file-type-numpy-icon-1901x2048-oulkqypt.png" alt="Slate" style="height: 18px; margin-left: 5px; vertical-align: middle;">
                 </div>
-                
               </div>
               <div class="experience-duration">Dec 2024 - Present</div>
             </div>
@@ -1218,7 +1282,7 @@
           </div>
           
           <!-- SATAL -->
-          <div class="experience-card">
+          <div class="experience-card fade-in">
             <div class="experience-header">
               <div class="experience-title-container">
                 <h3><img src="images/ucm_logo_rgb_m_3.60692d9749f2.png" alt="UC Merced" style="height: 24px; margin-right: 8px; vertical-align: middle;"> Students Assessing Teaching and Learning (SATAL)</h3>
@@ -1226,8 +1290,6 @@
                   <img src="images/pylogo.png" alt="Python" style="height: 18px; margin-left: 5px; vertical-align: middle;">
                   <img src="images/icon.webp" alt="Qualtrics" style="height: 18px; margin-left: 5px; vertical-align: middle;">
                   <img src="images/chatgpt-logo-chat-gpt-icon-on-green-background-free-vector.jpg" alt="Python"style="height: 18px; margin-left: 5px; vertical-align: middle;">
-                
-                 
                 </div>
               </div>
               <div class="experience-duration">Dec 2023 - May 2024</div>
@@ -1254,16 +1316,13 @@
           </div>
           
           <!-- ID Tech -->
-          <div class="experience-card">
+          <div class="experience-card fade-in">
             <div class="experience-header">
               <div class="experience-title-container">
                 <h3><img src="images/stanford.webp" alt="Stanford" style="height: 24px; margin-right: 8px; vertical-align: middle;"> ID Tech Stanford Teaching Program</h3>
                 <div class="experience-role">Machine Learning Coding Instructor <img src="images/pylogo.png" alt="Python"style="height: 18px; margin-left: 5px; vertical-align: middle;">
                   <img src="images/chatgpt-logo-chat-gpt-icon-on-green-background-free-vector.jpg" alt="Python"style="height: 18px; margin-left: 5px; vertical-align: middle;">
                 </div>
-                  
-                  
-              
               </div>
               <div class="experience-duration">May 2024 - Aug 2024</div>
             </div>
@@ -1288,23 +1347,25 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
-
-    <!-- Languages of Choice Tab -->
-    <div id="languages-tab" class="tab-content">
-      <h2 class="section-title">Favorite Language</h2>
-      <p>My top programming language for building high-performance systems.</p>
-      
-      <div class="languages-container" style="margin-top: 1.5rem;">
-        <div class="language-card">
-          <div class="language-header">
-            <img src="images/Go_gopher_favicon.svg.png" alt="Go" class="language-icon">
-            <h3 class="language-name">Go</h3>
+    
+    <!-- Languages Tab -->
+    <div id="languages" class="tab-content">
+      <section class="section">
+        <h2 class="section-title">Favorite Language</h2>
+        <p>My top programming language for building high-performance systems.</p>
+        
+        <div class="languages-container" style="margin-top: 1.5rem;">
+          <div class="language-card">
+            <div class="language-header">
+              <img src="images/Go_gopher_favicon.svg.png" alt="Go" class="language-icon">
+              <h3 class="language-name">Go</h3>
+            </div>
+            <p class="language-description">When it comes to backend development, I choose Go for its exceptional performance, built-in concurrency, and simplicity. Go's goroutines and channels make it ideal for building scalable, high-performance services and distributed systems.</p>
           </div>
-          <p class="language-description">When it comes to backend development, I choose Go for its exceptional performance, built-in concurrency, and simplicity. Go's goroutines and channels make it ideal for building scalable, high-performance services and distributed systems.</p>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 
@@ -1339,7 +1400,7 @@
         
         // Show associated content
         const tabId = this.getAttribute('data-tab');
-        document.getElementById(`${tabId}-tab`).classList.add('active');
+        document.getElementById(tabId).classList.add('active');
       });
     });
     
@@ -1383,6 +1444,8 @@
         observer.observe(el);
       });
     });
+    
+    // Removed the project card expansion event listeners
   </script>
 </body>
 </html>
