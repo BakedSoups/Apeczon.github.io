@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreamville Game Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        /* Container for the game preview with fixed aspect ratio */
+        .game-preview-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            /* 16:9 aspect ratio container */
+            padding-top: 56.25%; 
+            background-color: #000;
+        }
+        
+        /* The iframe that will contain the game */
+        .game-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        p {
+            text-align: center;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .buttons a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .buttons a:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .game-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .game-info h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dreamville Game Preview</h1>
+   
+    <div class="game-preview-container">
+        <!-- iframe to load your Godot game with specific parameters -->
+        <iframe
+            src="static/godot/index.html"
+            class="game-preview"
+            allowfullscreen="true"
+            scrolling="no"
+            id="game-iframe">
+        </iframe>
+    </div>
+   
+    <p>This is an interactive preview of Dreamville, a gamified assignment tracker that helps you build your virtual city as you complete real-world tasks.</p>
+    
+    <div class="buttons">
+        <a href="static/godot/index.html" target="_blank">Play Full Screen</a>
+        <a href="https://github.com/complex-bit/DonsHack2025" target="_blank">View Source Code</a>
+    </div>
+    
+    <div class="game-info">
+        <h2>About Dreamville</h2>
+        <p>Gamified assignment tracker integrated with Canvas LMS. It removes self-accountability by only allowing you to check off assignments you've actually completed. Build your own virtual city with coins earned from completing tasks. Features a linear regression algorithm to measure assignment urgency based on completion patterns and difficulty.</p>
+    </div>
+
+    <footer>
+        &copy; 2025 - Dreamville Project
+    </footer>
+
+    <script>
+        // Wait for the iframe to load
+        document.getElementById('game-iframe').onload = function() {
+            const iframe = this;
+            
+            // Function to send a message to the iframe telling it to scale properly
+            function sendScaleMessage() {
+                try {
+                    iframe.contentWindow.postMessage({
+                        type: 'resize',
+                        width: iframe.clientWidth,
+                        height: iframe.clientHeight
+                    }, '*');
+                } catch (e) {
+                    console.error('Error sending message to iframe:', e);
+                }
+            }
+            
+            // Try to scale the content initially
+            setTimeout(sendScaleMessage, 500);
+            
+            // Retry a few times to ensure it takes effect
+            setTimeout(sendScaleMessage, 1000);
+            setTimeout(sendScaleMessage, 2000);
+            
+            // Also handle window resize events
+            window.addEventListener('resize', function() {
+                sendScaleMessage();
+            });
+        };
+        
+        // Listen for messages from the iframe (if your Godot export has been modified to send them)
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'godot_ready') {
+                console.log('Godot game is ready in iframe');
+                // You could do additional adjustments here if needed
+            }
+        });
+    </script>
+</body>
+</html>
