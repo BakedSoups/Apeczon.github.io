@@ -13,17 +13,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #010a18;     /* Darkest blue (left side of gradient) */
-      --bg-secondary: #031633;   /* Dark blue for secondary elements */
-      --text-primary: #ffffff;
-      --text-secondary: #b3b3b3;
-      --accent: #0066cc;         /* Medium blue for accents */
-      --accent-hover: #0077e6;   /* Slightly lighter blue for hover states */
-      --card-bg: #02132b;        /* Card background matching gradient */
-      --card-hover: #041e45;     /* Slightly lighter for hover states */
+      --bg-primary: #0a0f1f;     /* Dark navy/blue background */
+      --bg-secondary: #111731;   /* Slightly lighter navy */
+      --text-primary: #ffffff;   /* White text */
+      --text-secondary: #b3b3b3; /* Light gray text */
+      --accent: #1a56cc;         /* Medium blue accent */
+      --accent-hover: #2563eb;   /* Lighter blue for hover */
+      --card-bg: #111731;        /* Card background matching theme */
+      --card-hover: #1a2246;     /* Slightly lighter for hover */
       --success: #34a853;        /* Keep success color */
-      --highlight: #0088ff;      /* Light blue highlight from gradient */
-      /* Added font variables */
+      --highlight: #2563eb;      /* Blue highlight */
+      /* Font variables */
       --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       --font-weight-normal: 400;
       --font-weight-medium: 500;
@@ -99,7 +99,7 @@
     header, .nav-container, .hero, .project-card, 
     .experience-card, .language-card, footer, 
     .section, .skills-container {
-      background-color: rgba(2, 19, 43, 0.85); /* Semi-transparent dark blue */
+      background-color: rgba(10, 15, 31, 0.85); /* Semi-transparent dark navy */
       backdrop-filter: blur(5px);
       position: relative;
       z-index: 10;
@@ -112,7 +112,7 @@
       width: 100%;
       top: 0;
       z-index: 100;
-      background-color: rgba(1, 10, 24, 0.9); /* Darker blue from gradient */
+      background-color: rgba(6, 10, 22, 0.9); /* Darker navy with high opacity */
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
@@ -159,7 +159,7 @@
     .logo .title {
       font-weight: var(--font-weight-bold);
       font-size: 1.2rem;
-      background: linear-gradient(90deg, #0066cc, #0088ff); /* Blue gradient */
+      background: linear-gradient(90deg, #1a56cc, #2563eb); /* Blue gradient */
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -204,7 +204,7 @@
     
     .nav-link.active {
       color: var(--text-primary);
-      background-color: rgba(0, 102, 204, 0.1);
+      background-color: rgba(26, 86, 204, 0.1);
     }
     
     .nav-link.active::after {
@@ -214,8 +214,9 @@
       height: 2px;
       bottom: -2px;
       left: 10%;
-      background: linear-gradient(90deg, #0066cc, #0088ff); /* Blue gradient */
+      background: linear-gradient(90deg, #1a56cc, #2563eb); /* Blue gradient */
       border-radius: 2px;
+      opacity: 1; /* Ensure full visibility */
     }
     
     .mobile-nav-toggle {
@@ -251,9 +252,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-      display: none;
+      display: none; /* Hide the hero background */
     }
     
     .hero-inner {
@@ -271,7 +270,7 @@
       border: 3px solid transparent;
       background: 
         linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
-        linear-gradient(90deg, #0066cc, #0088ff) border-box;
+        linear-gradient(90deg, #1a56cc, #2563eb) border-box;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease;
@@ -289,7 +288,7 @@
     }
     
     .hero-content {
-      background-color: rgba(2, 19, 43, 0.75); /* Semi-transparent dark blue */
+      background-color: rgba(10, 15, 31, 0.75); /* Semi-transparent dark navy */
       padding: 1.25rem;
       border-radius: 12px;
       backdrop-filter: blur(8px);
@@ -303,7 +302,7 @@
     }
     
     .hero h1 span {
-      background: linear-gradient(90deg, #0066cc, #0088ff); /* Blue gradient */
+      background: linear-gradient(90deg, #1a56cc, #2563eb); /* Blue gradient */
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -385,8 +384,9 @@
       left: 0;
       width: 80px;
       height: 3px;
-      background: linear-gradient(90deg, #0066cc, #0088ff); /* Blue gradient */
+      background: linear-gradient(90deg, #1a56cc, #2563eb); /* Blue gradient */
       border-radius: 2px;
+      opacity: 1; /* Ensure full visibility */
     }
     
     #technologies .section-title {
@@ -443,20 +443,20 @@
       font-size: 0.75rem;
       padding: 0.15rem 0.5rem;
       border-radius: 4px;
-      background-color: rgba(3, 22, 51, 0.7); /* Darker blue with transparency */
+      background-color: rgba(17, 23, 49, 0.7); /* Darker navy with transparency */
       color: var(--text-secondary);
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      border: 1px solid rgba(0, 102, 204, 0.3); /* Blue border */
+      border: 1px solid rgba(26, 86, 204, 0.3); /* Blue border */
     }
     
     .skill-tag:hover {
-      background-color: rgba(4, 30, 69, 0.85);
+      background-color: rgba(26, 34, 70, 0.85);
       color: var(--text-primary);
       transform: translateY(-2px);
-      border-color: rgba(0, 136, 255, 0.6);
+      border-color: rgba(37, 99, 235, 0.6);
     }
     
     /* Projects Section Styles */
@@ -563,7 +563,7 @@
       padding: 0.2rem 0.5rem;
       border-radius: 20px;
       font-size: 0.7rem;
-      background-color: rgba(0, 102, 204, 0.2);
+      background-color: rgba(26, 86, 204, 0.2);
       color: var(--accent);
       white-space: nowrap;
     }
@@ -642,7 +642,7 @@
     .experience-duration {
       font-size: 0.85rem;
       color: var(--text-secondary);
-      background-color: rgba(0, 102, 204, 0.1);
+      background-color: rgba(26, 86, 204, 0.1);
       padding: 0.25rem 0.75rem;
       border-radius: 20px;
       display: inline-block;
@@ -741,18 +741,19 @@
       line-height: 1.5;
     }
     
+    /* Separator Bar */
     .separator {
-  height: 2px;
-  background: linear-gradient(90deg, 
-    rgba(0, 102, 204, 0.2), 
-    rgba(0, 102, 204, 0.8), 
-    rgba(0, 136, 255, 0.8), 
-    rgba(0, 102, 204, 0.2));
-  margin: 1rem auto;
-  width: 90%;
-  border-radius: 2px;
-  opacity: 1; /* Ensure full visibility */
-}
+      height: 2px;
+      background: linear-gradient(90deg, 
+        rgba(26, 86, 204, 0.2), 
+        rgba(26, 86, 204, 0.8), 
+        rgba(37, 99, 235, 0.8), 
+        rgba(26, 86, 204, 0.2));
+      margin: 1rem auto;
+      width: 90%;
+      border-radius: 2px;
+      opacity: 1; /* Ensure full visibility */
+    }
     
     footer {
       background-color: var(--bg-secondary);
@@ -919,7 +920,7 @@
   
     /* Make technologies section transparent */
     #technologies {
-      background-color: rgba(2, 19, 43, 0.4) !important; /* Very light background */
+      background-color: rgba(10, 15, 31, 0.4) !important; /* Very light background */
       backdrop-filter: blur(3px) !important; /* Light blur for readability */
       border-radius: 12px; /* Rounded corners */
       padding: 1rem !important; /* Add some padding */
