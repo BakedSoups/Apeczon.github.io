@@ -1089,10 +1089,7 @@
                 <h3>nextsteamgame.com</h3>
               </div>
               <p class="project-description">
-                Multi-source data aggregation from Steam API, YouTube API, and web scraping
-                Weighted tag system combining descriptive attributes (80%) and unique genre characteristics (20%)
-                One-shot recommendation approach for immediate, accurate results
-                SQLite database with 350+ games optimized for fast similarity searches
+                A game recommendation app backed by a custom ETL pipeline. It pulls data from Steam, YouTube, and websites, using VADER sentiment analysis, regex, gameplay keyword frequency, and spam filters to extract the most insightful reviews. From these, it procedurally generates tags and places each of the 20K+ games into a hierarchical genre tree (Genre → Subgenre → Sub-subgenre). Each game is turned into a vector capturing gameplay, tone, art, and music, stored in a vector DB. Searches prioritize gameplay similarity, with user-selected tags adjusting vector weights. Currently used by 100+ users.
               </p>
               <div class="project-tools">
                 <span class="tool-tag">Go</span>
@@ -1125,7 +1122,7 @@
                 <h3>Antitode Intelegence</h3>
               </div>
               <p class="project-description">
-                autonomous agent framework built to detect and mitigate training data poisoning in LLM development. Inspired by the scientific method, the system uses a modular suite of AI agents—hypothesis generators, script builders, critics, and testers—to audit data for adversarial patterns. to improve llm data input.
+                autonomous agent framework built to detect and mitigate training data poisoning in LLM development. Inspired by the scientific method, the system uses a modular suite of AI agents—hypothesis generators, script builders, critics, and testers—to audit data for adversarial patterns. to improve llm data input. utilizing a crewai framework and a eletron based ui. 
               </p>
               <div class="project-tools">
                 <span class="tool-tag">Crew AI</span>
