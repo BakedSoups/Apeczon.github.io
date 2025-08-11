@@ -38,6 +38,7 @@
         font-weight: var(--font-weight-normal); 
         letter-spacing: 0.01em; 
         position: relative;
+        zoom: 0.67;
       }
       
       body::before {
@@ -113,7 +114,7 @@
       .skill-tag { font-size:.75rem; padding:.15rem .5rem; border-radius:4px; background-color: rgba(17,23,49,.7); color: var(--text-secondary); transition: all .2s ease; display:inline-flex; align-items:center; gap:.35rem; border:1px solid rgba(26,86,204,.3); }
       .skill-tag:hover { background-color: rgba(26,34,70,.85); color: var(--text-primary); transform: translateY(-2px); border-color: rgba(37,99,235,.6); }
 
-      .projects-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:1rem; margin-top:0.75rem; width:100%; max-height: 65vh; overflow-y: auto; grid-auto-rows: minmax(280px, auto); }
+      .projects-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:1rem; margin-top:0.75rem; width:100%; max-height: 85vh; overflow-y: auto; grid-auto-rows: minmax(280px, auto); }
       .project-card { background-color: var(--card-bg); border-radius:16px; overflow:hidden; box-shadow:0 10px 20px rgba(0,0,0,.2); transition: all .3s ease; position:relative; width:100%; z-index:1; cursor:pointer; display: flex; flex-direction: column; min-height: 280px; }
       .project-card:hover { transform: translateY(-8px); box-shadow:0 15px 30px rgba(0,0,0,.3); }
       .project-image { height: 180px; position:relative; overflow:hidden; }
@@ -127,7 +128,7 @@
       .project-tools { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:auto; }
       .tool-tag { padding:.2rem .5rem; border-radius:20px; font-size:.7rem; background-color: rgba(26,86,204,.2); color: var(--accent); white-space:nowrap; }
 
-      .experience-timeline { display:flex; flex-direction:column; gap:1rem; width:100%; max-height: 65vh; overflow-y: auto; }
+      .experience-timeline { display:flex; flex-direction:column; gap:1rem; width:100%; max-height: 85vh; overflow-y: auto; }
       .experience-card { background-color: var(--card-bg); border-radius:16px; padding:1rem; box-shadow:0 10px 20px rgba(0,0,0,.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position:relative; border-left:4px solid var(--accent); width:100%; display: flex; flex-direction: column; }
       .experience-card:hover { transform: translateY(-5px); box-shadow:0 15px 30px rgba(0,0,0,.15); }
       .experience-header { display:flex; flex-direction:column; margin-bottom:0.75rem; }
