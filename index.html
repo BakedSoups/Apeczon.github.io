@@ -114,8 +114,8 @@
       .skill-tag { font-size:.75rem; padding:.15rem .5rem; border-radius:4px; background-color: rgba(17,23,49,.7); color: var(--text-secondary); transition: all .2s ease; display:inline-flex; align-items:center; gap:.35rem; border:1px solid rgba(26,86,204,.3); }
       .skill-tag:hover { background-color: rgba(26,34,70,.85); color: var(--text-primary); transform: translateY(-2px); border-color: rgba(37,99,235,.6); }
 
-      .projects-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:1rem; margin-top:0.75rem; width:100%; max-height: 105vh; overflow-y: auto; grid-auto-rows: minmax(280px, auto); }
-      .project-card { background-color: var(--card-bg); border-radius:16px; overflow:hidden; box-shadow:0 10px 20px rgba(0,0,0,.2); transition: all .3s ease; position:relative; width:100%; z-index:1; cursor:pointer; display: flex; flex-direction: column; min-height: 280px; }
+      .projects-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:1rem; margin-top:0.75rem; width:100%; max-height: 105vh; overflow-y: auto; grid-auto-rows: minmax(320px, auto); }
+      .project-card { background-color: var(--card-bg); border-radius:16px; overflow:hidden; box-shadow:0 10px 20px rgba(0,0,0,.2); transition: all .3s ease; position:relative; width:100%; z-index:1; cursor:pointer; display: flex; flex-direction: column; min-height: 320px; }
       .project-card:hover { transform: translateY(-8px); box-shadow:0 15px 30px rgba(0,0,0,.3); }
       .project-image { height: 180px; position:relative; overflow:hidden; }
       .project-image img { width:100%; height:100%; object-fit: cover; transition: transform .5s ease; }
@@ -129,7 +129,7 @@
       .tool-tag { padding:.2rem .5rem; border-radius:20px; font-size:.7rem; background-color: rgba(26,86,204,.2); color: var(--accent); white-space:nowrap; }
 
       .experience-timeline { display:flex; flex-direction:column; gap:1rem; width:100%; max-height: 105vh; overflow-y: auto; }
-      .experience-card { background-color: var(--card-bg); border-radius:16px; padding:1rem; box-shadow:0 10px 20px rgba(0,0,0,.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position:relative; border-left:4px solid var(--accent); width:100%; display: flex; flex-direction: column; }
+      .experience-card { background-color: var(--card-bg); border-radius:16px; padding:1.25rem; box-shadow:0 10px 20px rgba(0,0,0,.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position:relative; border-left:4px solid var(--accent); width:100%; display: flex; flex-direction: column; }
       .experience-card:hover { transform: translateY(-5px); box-shadow:0 15px 30px rgba(0,0,0,.15); }
       .experience-header { display:flex; flex-direction:column; margin-bottom:0.75rem; }
       .experience-title-container h3 { font-size:1.2rem; font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom:.25rem; word-break: break-word; }
@@ -169,7 +169,7 @@
         .experience-header{flex-direction:row; justify-content:space-between; align-items:flex-start;} 
         .experience-duration{margin-top:0;} 
         .languages-container{grid-template-columns: repeat(auto-fit, minmax(300px,1fr));}
-        .dashboard-layout{ display: flex; gap: 0.75rem; align-items: flex-start; }
+        .dashboard-layout{ display: flex; gap: 1.5rem; align-items: flex-start; }
         .dashboard-left{ flex: 1; }
         .dashboard-right{ flex: 1; }
       }
@@ -384,7 +384,7 @@
       @media (max-width:820px){ .modal{flex-direction:column; max-height: 95vh;} .modal-media{flex-basis:auto; max-height: 40vh;} .modal-body{padding: 1.5rem;} }
     </style>
   </head>
-  <body class="concise-mode">
+  <body>
     <header id="header">
       <div class="container">
         <div class="header-inner">
@@ -465,7 +465,7 @@
                 <div class="project-title"><h3>nextsteamgame.com</h3></div>
                 <p class="project-description">Gameplay‑first game recommender using ETL + vector similarity. 20k+ titles, user‑weighted tags.</p>
                 <div class="project-tools">
-                  <span class="tool-tag">Go</span><span class="tool-tag">Flask/Gunicorn</span><span class="tool-tag">HTMX</span><span class="tool-tag">SQLite3</span>
+                  <span class="tool-tag"><img src="images/go_icon.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Go</span><span class="tool-tag"><img src="images/fast_api_logo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">FastAPI</span><span class="tool-tag">HTMX</span><span class="tool-tag"><img src="images/Sql_data_base_with_logo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">SQLite3</span>
                 </div>
               </div>
             </div>
@@ -494,7 +494,7 @@
                 <div class="project-title"><h3>Dreamville</h3></div>
                 <p class="project-description">Gamified Canvas LMS tracker. Earn coins by completing tasks; urgency scored via regression.</p>
                 <div class="project-tools">
-                  <span class="tool-tag">Godot</span><span class="tool-tag">Go</span><span class="tool-tag">Canvas API</span>
+                  <span class="tool-tag"><img src="images/godot_icon.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Godot</span><span class="tool-tag"><img src="images/go_icon.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Go</span><span class="tool-tag">Canvas API</span>
                 </div>
               </div>
             </div>
@@ -507,7 +507,7 @@
               <div class="project-content">
                 <div class="project-title"><h3>Maldemic Simulator</h3></div>
                 <p class="project-description">Real‑time SIRD with Markov chains + grant‑funded NN work; 3D globe viz in Godot.</p>
-                <div class="project-tools"><span class="tool-tag">Godot</span><span class="tool-tag">NumPy</span><span class="tool-tag">SciPy</span></div>
+                <div class="project-tools"><span class="tool-tag"><img src="images/godot_icon.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Godot</span><span class="tool-tag"><img src="images/file-type-numpy-icon-1901x2048-oulkqypt.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">NumPy</span><span class="tool-tag">SciPy</span></div>
               </div>
             </div>
 
@@ -518,8 +518,8 @@
               </div>
               <div class="project-content">
                 <div class="project-title"><h3>USF Search Engine Crawler</h3></div>
-                <p class="project-description">Concurrent crawler + SQLite indexer. Worker pools, batch I/O, thousands of goroutines.</p>
-                <div class="project-tools"><span class="tool-tag">Go</span><span class="tool-tag">SQLite</span></div>
+                <p class="project-description">High-performance concurrent crawler with 300 extract workers + 300 DB workers. Batch processing (150 docs/batch) with 9000-job queue buffer for lightning-fast website indexing.</p>
+                <div class="project-tools"><span class="tool-tag"><img src="images/go_icon.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Go</span><span class="tool-tag"><img src="images/Sql_data_base_with_logo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">SQLite</span></div>
               </div>
             </div>
 
@@ -531,7 +531,7 @@
               <div class="project-content">
                 <div class="project-title"><h3>Hyper Rosen</h3></div>
                 <p class="project-description">3D galaxy toy with Perlin fields and vector‑field enemies in Godot.</p>
-                <div class="project-tools"><span class="tool-tag">Godot</span><span class="tool-tag">Perlin</span></div>
+                <div class="project-tools"><span class="tool-tag"><img src="images/godot_icon.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Godot</span><span class="tool-tag">Perlin</span></div>
               </div>
             </div>
 
@@ -543,7 +543,7 @@
               <div class="project-content">
                 <div class="project-title"><h3>NutriFinder</h3></div>
                 <p class="project-description">Dietary search over restaurant menus; Flask API + React client.</p>
-                <div class="project-tools"><span class="tool-tag">React</span><span class="tool-tag">Flask</span></div>
+                <div class="project-tools"><span class="tool-tag"><img src="images/react.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">React</span><span class="tool-tag"><img src="images/flask.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Flask</span></div>
               </div>
             </div>
 
@@ -555,7 +555,7 @@
               <div class="project-content">
                 <div class="project-title"><h3>Old Man Climbs</h3></div>
                 <p class="project-description">Mini jam game built in a weekend for UC Merced GDC.</p>
-                <div class="project-tools"><span class="tool-tag">Godot</span><span class="tool-tag">Game Jam</span></div>
+                <div class="project-tools"><span class="tool-tag"><img src="images/godot_icon.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Godot</span><span class="tool-tag">Game Jam</span></div>
               </div>
             </div>
 
@@ -567,7 +567,7 @@
               <div class="project-content">
                 <div class="project-title"><h3>Spiral Visualizer</h3></div>
                 <p class="project-description">Queue‑driven spiral plotting with Matplotlib.</p>
-                <div class="project-tools"><span class="tool-tag">Python</span><span class="tool-tag">Matplotlib</span></div>
+                <div class="project-tools"><span class="tool-tag"><img src="images/pylogo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Python</span><span class="tool-tag"><img src="images/Matplotlib_icon.svg.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Matplotlib</span></div>
               </div>
             </div>
           </div>
@@ -634,7 +634,7 @@
                   <li>Creating News Corpa datasets to quantify effectiveness of our sentiment models in real world examples.</li>
                 </ul>
               </div>
-              <div class="tech-used"><span class="tool-tag">Python</span><span class="tool-tag">SpaCy</span><span class="tool-tag">NetworkX</span><span class="tool-tag">ETL</span></div>
+              <div class="tech-used"><span class="tool-tag"><img src="images/pylogo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Python</span><span class="tool-tag">SpaCy</span><span class="tool-tag">NetworkX</span><span class="tool-tag">ETL</span></div>
             </div>
 
             <!-- iD Tech -->
@@ -653,7 +653,7 @@
                   <li>Rebuilt check‑in/out system using Seaborn heatmaps to optimize traffic flow, improving efficiency by 40% adopted by 2 other iD Tech camps.</li>
                 </ul>
               </div>
-              <div class="tech-used"><span class="tool-tag">Python</span><span class="tool-tag">PyTorch</span><span class="tool-tag">Keras</span><span class="tool-tag">NumPy</span><span class="tool-tag">Pandas</span><span class="tool-tag">Seaborn</span><span class="tool-tag">Google Workspace</span><span class="tool-tag">Classroom Instruction</span><span class="tool-tag">Organization Skills</span></div>
+              <div class="tech-used"><span class="tool-tag"><img src="images/pylogo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Python</span><span class="tool-tag"><img src="images/1200px-PyTorch_logo_icon.svg.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">PyTorch</span><span class="tool-tag">Keras</span><span class="tool-tag"><img src="images/file-type-numpy-icon-1901x2048-oulkqypt.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">NumPy</span><span class="tool-tag">Pandas</span><span class="tool-tag">Seaborn</span><span class="tool-tag">Google Workspace</span><span class="tool-tag">Classroom Instruction</span><span class="tool-tag">Organization Skills</span></div>
             </div>
 
             <!-- Strategic Enrollment -->
@@ -673,7 +673,7 @@
                   <li>Maintained updates to myUSF.edu using Jinja2 and HTML templates for consistent content updates.</li>
                 </ul>
               </div>
-              <div class="tech-used"><span class="tool-tag">SQL</span><span class="tool-tag">Pandas</span><span class="tool-tag">OpenAI</span><span class="tool-tag">Jinja2</span></div>
+              <div class="tech-used"><span class="tool-tag"><img src="images/Sql_data_base_with_logo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">SQL</span><span class="tool-tag">Pandas</span><span class="tool-tag">OpenAI</span><span class="tool-tag">Jinja2</span></div>
             </div>
 
             <!-- SATAL -->
@@ -693,7 +693,7 @@
                   <li>Helped boost GPA and student engagement across participating classes.</li>
                 </ul>
               </div>
-              <div class="tech-used"><span class="tool-tag">PyTorch</span><span class="tool-tag">LLM</span><span class="tool-tag">Flask</span></div>
+              <div class="tech-used"><span class="tool-tag"><img src="images/1200px-PyTorch_logo_icon.svg.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">PyTorch</span><span class="tool-tag">LLM</span><span class="tool-tag"><img src="images/flask.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Flask</span></div>
             </div>
 
             <!-- Candle Stories (Completed) -->
@@ -909,7 +909,7 @@
         <div class="modal-media"><img src="images/usfimage.png" alt="USF Search Engine preview"></div>
         <div class="modal-body">
           <div class="modal-title">USF Search Engine Crawler</div>
-          <div class="modal-desc">Concurrent Go web crawler with SQLite. Uses worker pools, batched DB transactions, and robust search over a local index.</div>
+          <div class="modal-desc">Scalable concurrent Go web crawler built for speed. Uses dual worker architecture: 300 extract workers download pages while 300 DB workers batch-upload to SQLite (150 docs/batch). 9000-job queue buffer enables lightning-fast crawling of entire domains like USF's website.</div>
           <div class="modal-tools"><span class="tool-tag">Go</span><span class="tool-tag">SQLite</span></div>
           <div class="modal-actions">
             <a class="btn" href="https://github.com/BakedSoups/USF-Search-Engine" target="_blank"><i class="fab fa-github"></i> View Project</a>
