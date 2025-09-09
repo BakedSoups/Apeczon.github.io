@@ -1,0 +1,206 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\setlength{\footskip}{4pt} 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.9cm, right=1.4cm, bottom=0.9cm}
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=3pt,
+    arc=0pt,outer arc=0pt,
+}
+
+\urlstyle{same}
+\raggedright
+
+\titleformat{\section}{
+  \vspace{-2pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{\item #1}
+\newcommand{\resumeSubheading}[4]{\vspace{0.5mm}\item
+\begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+\textbf{#1} & \textit{\footnotesize{#4}} \\
+\textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+\end{tabular*}
+\vspace{-2.5mm}}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=0mm,itemsep=0.5mm]}
+\newcommand{\resumeItemListStart}{\begin{justify}\begin{itemize}[leftmargin=3ex,rightmargin=2ex,itemsep=0.2mm]\small}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{0.5mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-0.8mm}}
+\newcommand{\cvsection}[1]{\vspace{1mm}
+\begin{tcolorbox}
+\textbf{\large #1}
+\end{tcolorbox}
+\vspace{-3mm}}
+
+\linespread{1.05}
+\newcommand{\name}{Alexander Peczon}
+\newcommand{\phone}{510-435-6806}
+\newcommand{\emaila}{peczonalex@gmail.com}
+
+\begin{document}
+\vspace{-8mm}
+\begin{center}
+\parbox{\dimexpr\linewidth-2.9cm\relax}{
+\centering
+\textbf{\Huge \name} \\
+\vspace{1mm}
+\footnotesize
+\begin{tabularx}{\textwidth}{c} 
+\faPhone\ +1-\phone \hspace{6mm} 
+\faEnvelope\ \href{mailto:\emaila}{\emaila} \hspace{6mm} 
+\faGithub\ \href{https://github.com/BakedSoups}{github.com/BakedSoups} \hspace{6mm} 
+\faLinkedin\ \href{https://linkedin.com/in/apeczon}{linkedin.com/in/apeczon}
+\end{tabularx}
+}
+\end{center}
+\vspace{-5mm}
+
+\section{\textbf{Education}}
+\vspace{-3mm}
+\resumeSubheading
+{University of San Francisco} {}
+{B.S. Computer Science}{Graduating 2026}
+\begin{itemize}[leftmargin=0.1in,label={}]
+\small{\item{Coursework: Linear Algebra, Statistics, Vector Calculus, Software Engineering, Computer Architecture}}
+\end{itemize}
+\vspace{-6mm}
+
+\section{\textbf{Experience}}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Alaris Security}{San Francisco}
+{Fullstack Engineer}{Aug 2025 – Present}
+\vspace{-3mm}
+
+\resumeItemListStart
+  \resumeItem{Designed scalable data pipeline with Prefect + Airflow, processing 500K+ security events daily and improving analytics reliability by 60\%.}
+  \resumeItem{Resolved critical UI bugs in React-based security platform, reducing system downtime by 90\% and improving user experience for 1000+ enterprise clients.}
+  \resumeItem{Authored comprehensive platform-wide data flow documentation, enabling leadership to evaluate scaling solutions and reducing onboarding time for new engineers by 50\%.}
+\resumeItemListEnd
+\vspace{-3mm}
+
+\resumeSubheading
+{Future Tilt (Ecommerce Marketing Agency)}{San Francisco}
+{Software Developer (Promoted from Intern)}{Jul 2025 – Present}
+\vspace{-3mm}
+
+\resumeItemListStart
+  \resumeItem{Built an AI template builder that auto-generates email boilerplates, cutting design prep time by 40\%.}
+  \resumeItem{Developed BigQuery dashboards analyzing 10M+ daily records, improving brand forecasting.}
+  \resumeItem{Maintained an AWS Lambda + BigQuery alerting pipeline, reducing manual checks by 80\%.}
+  \resumeItem{Automated Trello board updates via Lambda, streamlining campaign tracking for 15+ clients.}
+  \resumeItem{Deployed ECS Dockerized Lambda for real-time revenue alerts, cutting lag from 24h to <1h.}
+\resumeItemListEnd
+\vspace{-3mm}
+
+\resumeSubheading
+{USF MAGIC Lab}{San Francisco}
+{NLP Researcher}{Mar 2025 – Present}
+\vspace{-3mm}
+
+\resumeItemListStart
+  \resumeItem{Built an ETL pipeline (BeautifulSoup) scraping 20k+ news articles for sentiment analysis.}
+  \resumeItem{Developed SpaCy + NetworkX models to map sentiment and reveal bias trends.}
+\resumeItemListEnd
+\vspace{-3mm}
+
+\resumeSubheading
+{USF Strategic Enrollment Management}{San Francisco}
+{Web Intern and Analyst}{Jul 2024 – Present}
+\vspace{-3mm}
+
+\resumeItemListStart
+  \resumeItem{Created predictive models that improved enrollment forecasting accuracy by 15\%.}
+  \resumeItem{Developed semantic search + Pandas system, reducing record reconciliation time by 50\%.}
+  \resumeItem{Automated website updates with Python + Jinja2, cutting update time from hours to minutes.}
+\resumeItemListEnd
+\vspace{-3mm}
+
+
+\resumeSubheading
+{Students Assessing Teaching and Learning (SATAL)}{UC Merced}
+{Data Analyst}{Dec 2023 – May 2024}
+\vspace{-3mm}
+\resumeItemListStart
+  \resumeItem{Designed and conducted statistical analysis on 50+ classroom feedback surveys for educational improvement.}
+  \resumeItem{Built ML classification system using LLMs + TensorFlow, achieving 99\% accuracy in response categorization.}
+  \resumeItem{Processed complex XML-based Qualtrics survey data and created automated reporting systems for faculty.}
+  \resumeItem{Applied NLP techniques to extract insights from open-ended survey responses.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-4mm}
+
+\section{\textbf{Projects}}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{NextSteamGame.com Recommendation Engine}{San Francisco}
+{Vector Similarity Search \& Hierarchical Tagging}{Current}
+\vspace{-3mm}
+
+\resumeItemListStart
+  \resumeItem{Scaled to 20k+ users and 1k daily visitors with a recommendation system for 22k+ Steam games.}
+  \resumeItem{Built multi-source ETL (Steam API, YouTube, scraping) to process millions of reviews.}
+  \resumeItem{Designed hierarchical genre tree + vector embeddings, improving relevance by 40\%.}
+  \resumeItem{Generated procedural tags (art style, soundtrack, subjective features) for nuanced results.}
+  \resumeItem{Optimized search with hierarchical fallback and vector pruning, achieving sub-second latency.}
+\resumeItemListEnd
+\vspace{-3mm}
+
+\resumeSubheading
+{Maldemic Pandemic Simulator}{San Francisco}
+{Stochastic Modeling \& Deep Learning}{Dec 2024 – Feb 2025}
+\vspace{-3mm}
+
+\resumeItemListStart
+  \resumeItem{Built a real-time epidemic simulator with a Markov chain + NN model trained on COVID-19 data.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-5mm}
+
+\section{\textbf{Technical Skills}}
+\begin{itemize}[leftmargin=0.1in,label={},itemsep=0mm,parsep=0mm,topsep=0mm]
+\small{\item{
+ML: PyTorch, TensorFlow, Keras, Scikit-learn, Hugging Face, OpenAI API \\
+Programming: Python, SQL, JavaScript, React, C++, Go, NumPy, Pandas, Matplotlib, Seaborn, Docker, Kubernetes, Nginx, GraphQL, Plotly, Tableau \\
+Databases: PostgreSQL, BigQuery, SQLite, ChromaDB, MongoDB, BigGraph, Airflow, Prefect, Qdraunt
+}}
+\end{itemize}
+
+\end{document}

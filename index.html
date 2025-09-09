@@ -434,13 +434,19 @@
             <h2 style="margin: 0; color: var(--text-primary);">Data Software Engineer Dashboard</h2>
             <p style="margin: 0.5rem 0 0 0; color: var(--text-secondary); font-size: 0.9rem;">Projects & Professional Experience</p>
           </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem; position: relative;">
-            <label style="color: var(--text-secondary); font-size: 0.9rem;">Detailed View:</label>
-            <div class="toggle-container">
-              <div class="speech-bubble" id="speech-bubble">Press me to learn more!</div>
-              <button id="concise-toggle" class="toggle-switch" onclick="toggleConciseMode()">
-                <div class="toggle-slider"></div>
-              </button>
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <nav class="nav-menu" style="display: flex; gap: 0.5rem; margin: 0;">
+              <a href="#dashboard" class="nav-link active" onclick="showTab('dashboard')">Dashboard</a>
+              <a href="#blog" class="nav-link" onclick="showTab('blog')">Blog</a>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 0.5rem; position: relative;">
+              <label style="color: var(--text-secondary); font-size: 0.9rem;">Detailed View:</label>
+              <div class="toggle-container">
+                <div class="speech-bubble" id="speech-bubble">Press me to learn more!</div>
+                <button id="concise-toggle" class="toggle-switch" onclick="toggleConciseMode()">
+                  <div class="toggle-slider"></div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -448,9 +454,11 @@
     </div>
 
     <div class="container">
-      <div class="dashboard-layout">
-        <!-- Projects Left Side -->
-        <div class="dashboard-left">
+      <!-- Dashboard Tab Content -->
+      <div id="dashboard-content" class="tab-content active">
+        <div class="dashboard-layout">
+          <!-- Projects Left Side -->
+          <div class="dashboard-left">
           <section class="section">
             <h2 class="section-title">Side Projects I like</h2>
             <p>Dive deep into my projects — click to explore the depths of each creation.</p>
@@ -470,16 +478,17 @@
               </div>
             </div>
             
-            <!-- Antitode Intelligence -->
+            <!-- Antidote Intelligence -->
             <div class="project-card" data-modal-id="proj-antidote">
               <div class="project-image">
-                <img src="/images/AntitodeIntelegence.png" alt="Antitode Intelligence" />
+                <img src="images/AntitodeIntelegence.png" alt="Antidote Intelligence" />
+                <div class="project-badge">Open Source</div>
               </div>
               <div class="project-content">
-                <div class="project-title"><h3>Antitode Intelligence</h3></div>
-                <p class="project-description">Agent framework to detect training‑data poisoning with hypothesis → critic → test loops.</p>
+                <div class="project-title"><h3>Antidote Intelligence</h3></div>
+                <p class="project-description">Open source tool to help make LLMs more secure by detecting data poisoning. <a href="#blog" onclick="showTab('blog')" style="color: var(--accent); text-decoration: underline;">Read the blog post →</a></p>
                 <div class="project-tools">
-                  <span class="tool-tag">CrewAI</span><span class="tool-tag">Electron</span><span class="tool-tag">Docker</span>
+                  <span class="tool-tag">OpenAI GPT-4</span><span class="tool-tag">6-Agent Pipeline</span><span class="tool-tag">ML Security</span>
                 </div>
               </div>
             </div>
@@ -581,6 +590,26 @@
             <p>My voyage through professional waters, charting courses through real‑world challenges.</p>
             <div class="experience-timeline">
 
+            <!-- Alaris Security -->
+            <div class="experience-card">
+              <div class="experience-header">
+                <div class="experience-title-container">
+                  <h3><img src="images/alaris.ico" alt="Alaris Security" style="height:24px;margin-right:8px;vertical-align:middle;"> Alaris Security</h3>
+                  <div class="experience-role">Junior Fullstack Engineer</div>
+                </div>
+                <div class="experience-duration">Aug 2025 – Present</div>
+              </div>
+              <div class="experience-location"><i class="fas fa-map-marker-alt"></i><span>San Francisco</span></div>
+              <div class="experience-details">
+                <ul>
+                  <li>Designed scalable data pipeline with Prefect + Airflow, processing 500K+ security events daily and improving analytics reliability by 60%.</li>
+                  <li>Resolved critical UI bugs in React-based security platform, reducing system downtime by 90% and improving user experience for 1000+ enterprise clients.</li>
+                  <li>Authored comprehensive platform-wide data flow documentation, enabling leadership to evaluate scaling solutions and reducing onboarding time for new engineers by 50%.</li>
+                </ul>
+              </div>
+              <div class="tech-used"><span class="tool-tag">Prefect</span><span class="tool-tag">Airflow</span><span class="tool-tag">React</span><span class="tool-tag">Data Pipelines</span><span class="tool-tag">Security Platform</span></div>
+            </div>
+
             <!-- Future Tilt - Software Developer -->
             <div class="experience-card">
               <div class="experience-header">
@@ -593,10 +622,14 @@
               <div class="experience-location"><i class="fas fa-map-marker-alt"></i><span>San Francisco</span></div>
               <div class="experience-details">
                 <ul>
-                  <li>Created Web apps to speed up content creation within Klaviyo.</li>
+                  <li>Built an AI template builder that auto-generates email boilerplates, cutting design prep time by 40%.</li>
+                  <li>Developed BigQuery dashboards analyzing 10M+ daily records, improving brand forecasting.</li>
+                  <li>Maintained an AWS Lambda + BigQuery alerting pipeline, reducing manual checks by 80%.</li>
+                  <li>Automated Trello board updates via Lambda, streamlining campaign tracking for 15+ clients.</li>
+                  <li>Deployed ECS Dockerized Lambda for real-time revenue alerts, cutting lag from 24h to <1h.</li>
                 </ul>
               </div>
-              <div class="tech-used"><span class="tool-tag">AWS Lambda</span><span class="tool-tag">BigQuery</span><span class="tool-tag">Dashboards</span></div>
+              <div class="tech-used"><span class="tool-tag">AI Templates</span><span class="tool-tag">AWS Lambda</span><span class="tool-tag">BigQuery</span><span class="tool-tag">ECS</span><span class="tool-tag">Docker</span><span class="tool-tag">Trello API</span></div>
             </div>
 
             <!-- Future Tilt - Intern -->
@@ -630,8 +663,8 @@
               <div class="experience-location"><i class="fas fa-map-marker-alt"></i><span>San Francisco</span></div>
               <div class="experience-details">
                 <ul>
-                  <li>Finding new ways to visualize sentiment shifts using graphs powered by REBEL, PYBasa and pytorch.</li>
-                  <li>Creating News Corpa datasets to quantify effectiveness of our sentiment models in real world examples.</li>
+                  <li>Built an ETL pipeline (BeautifulSoup) scraping 20k+ news articles for sentiment analysis.</li>
+                  <li>Developed SpaCy + NetworkX models to map sentiment and reveal bias trends.</li>
                 </ul>
               </div>
               <div class="tech-used"><span class="tool-tag"><img src="images/pylogo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Python</span><span class="tool-tag">SpaCy</span><span class="tool-tag">NetworkX</span><span class="tool-tag">ETL</span></div>
@@ -668,9 +701,9 @@
               <div class="experience-location"><i class="fas fa-map-marker-alt"></i><span>San Francisco</span></div>
               <div class="experience-details">
                 <ul>
-                  <li>Built predictive models and automated data cleaning to forecast enrollment and optimize admissions events in SLATE.</li>
-                  <li>Developed a duplicate event matcher with Pandas, OpenAI, and regex, speeding up planning by 30%.</li>
-                  <li>Maintained updates to myUSF.edu using Jinja2 and HTML templates for consistent content updates.</li>
+                  <li>Created predictive models that improved enrollment forecasting accuracy by 15%.</li>
+                  <li>Developed semantic search + Pandas system, reducing record reconciliation time by 50%.</li>
+                  <li>Automated website updates with Python + Jinja2, cutting update time from hours to minutes.</li>
                 </ul>
               </div>
               <div class="tech-used"><span class="tool-tag"><img src="images/Sql_data_base_with_logo.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">SQL</span><span class="tool-tag">Pandas</span><span class="tool-tag">OpenAI</span><span class="tool-tag">Jinja2</span></div>
@@ -688,9 +721,10 @@
               <div class="experience-location"><i class="fas fa-map-marker-alt"></i><span>California</span></div>
               <div class="experience-details">
                 <ul>
-                  <li>Worked with a team of 8 to build AI tools (PyTorch, OpenAI) that analyzed 10,000+ classroom surveys, cutting manual work by 80%.</li>
-                  <li>Presented insights to 500+ students weekly and at Fresno State's Exemplary Practices Conference.</li>
-                  <li>Helped boost GPA and student engagement across participating classes.</li>
+                  <li>Designed and conducted statistical analysis on 50+ classroom feedback surveys for educational improvement.</li>
+                  <li>Built ML classification system using LLMs + TensorFlow, achieving 99% accuracy in response categorization.</li>
+                  <li>Processed complex XML-based Qualtrics survey data and created automated reporting systems for faculty.</li>
+                  <li>Applied NLP techniques to extract insights from open-ended survey responses.</li>
                 </ul>
               </div>
               <div class="tech-used"><span class="tool-tag"><img src="images/1200px-PyTorch_logo_icon.svg.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">PyTorch</span><span class="tool-tag">LLM</span><span class="tool-tag"><img src="images/flask.png" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle;">Flask</span></div>
@@ -738,100 +772,135 @@
           </section>
         </div>
       </div>
-    </div>
-
-    <!-- Skills -->
-    <div class="container">
-      <div class="separator"></div>
-      <section id="technologies" class="section" style="padding-top: .75rem; padding-bottom: .75rem;">
-        <h2 class="section-title" style="font-size: 1.25rem; margin-bottom: .5rem;">Arsenal & Tools</h2>
-        <div class="skills-container" style="margin-top: .25rem;">
-          <div class="skills-group">
-            <h3>Languages</h3>
-            <div class="skill-tags">
-              <div class="skill-tag">Python</div>
-              <div class="skill-tag">Java</div>
-              <div class="skill-tag">C</div>
-              <div class="skill-tag">C++</div>
-              <div class="skill-tag">JavaScript</div>
-              <div class="skill-tag">TypeScript</div>
-              <div class="skill-tag">Assembly</div>
-              <div class="skill-tag">Go</div>
-              <div class="skill-tag">Japanese (Beginner)</div>
-            </div>
+      </div>
+      
+      <!-- Blog Tab Content -->
+      <div id="blog-content" class="tab-content">
+        <div class="section">
+          <h2 class="section-title">Engineering Blog</h2>
+          <p>Latest insights from AI security and data science research.</p>
+          
+          <!-- Blog Navigation -->
+          <div style="margin: 1.5rem 0; display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button onclick="showBlogPost('antidote')" class="nav-link active" id="antidote-nav" style="padding: 0.5rem 1rem; border: 1px solid var(--accent); background: var(--accent); color: var(--text-primary); border-radius: 6px; cursor: pointer;">Latest: Antidote Intelligence</button>
+            <button onclick="showBlogPost('maldemic')" class="nav-link" id="maldemic-nav" style="padding: 0.5rem 1rem; border: 1px solid var(--text-secondary); background: transparent; color: var(--text-secondary); border-radius: 6px; cursor: pointer;">Earlier: Maldemic Simulation</button>
           </div>
-          <div class="skills-group">
-            <h3>Technologies</h3>
-            <div class="skill-tags">
-              <div class="skill-tag">Flask</div>
-              <div class="skill-tag">Matplotlib</div>
-              <div class="skill-tag">PyTorch</div>
-              <div class="skill-tag">NumPy</div>
-              <div class="skill-tag">Pandas</div>
-              <div class="skill-tag">Pygame</div>
-              <div class="skill-tag">tkinter</div>
-              <div class="skill-tag">React</div>
-              <div class="skill-tag">Angular</div>
-              <div class="skill-tag">Node</div>
-              <div class="skill-tag">Django</div>
-              <div class="skill-tag">Tailwind</div>
-              <div class="skill-tag">SQL</div>
-              <div class="skill-tag">Jupyter Notebooks</div>
-              <div class="skill-tag">PostgreSQL</div>
-              <div class="skill-tag">Keras</div>
-              <div class="skill-tag">SciPy</div>
-              <div class="skill-tag">Seaborn</div>
-              <div class="skill-tag">CUDA</div>
-              <div class="skill-tag">SQLite3</div>
-              <div class="skill-tag">ChromaDB</div>
-              <div class="skill-tag">Godot</div>
-              <div class="skill-tag">TensorFlow</div>
-              <div class="skill-tag">Scikit-learn</div>
-              <div class="skill-tag">Hugging Face</div>
-              <div class="skill-tag">Docker</div>
-              <div class="skill-tag">Kubernetes</div>
-              <div class="skill-tag">Nginx</div>
-              <div class="skill-tag">GraphQL</div>
-              <div class="skill-tag">Plotly</div>
-              <div class="skill-tag">Tableau</div>
-            </div>
-          </div>
-          <div class="skills-group">
-            <h3>Applications</h3>
-            <div class="skill-tags">
-              <div class="skill-tag">Microsoft Suite</div>
-              <div class="skill-tag">Adobe Suite</div>
-              <div class="skill-tag">Google Suite</div>
-              <div class="skill-tag">Excel</div>
-              <div class="skill-tag">Canva</div>
-              <div class="skill-tag">Git</div>
-              <div class="skill-tag">Godot</div>
-              <div class="skill-tag">Unity</div>
-              <div class="skill-tag">Qualtrics</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Languages -->
-    <div class="container">
-      <div class="separator"></div>
-        <section class="section">
-          <h2 class="section-title">Preferred Vessel</h2>
-          <p>My ship of choice for navigating the vast oceans of high‑performance system development.</p>
-          <div class="languages-container" style="margin-top: 1.5rem;">
-            <div class="language-card">
-              <div class="language-header">
-                <img src="images/Go_gopher_favicon.svg.png" alt="Go" class="language-icon">
-                <h3 class="language-name">Go</h3>
+          
+          <!-- Most Recent Blog Post - Antidote Intelligence -->
+          <article id="antidote-post" style="margin-top: 2rem;">
+            <header style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 1rem;">
+              <h3 style="font-size: 1.8rem; color: var(--text-primary); margin-bottom: 0.5rem;">Demoing Data Poisoning Detection at Continue DX</h3>
+              <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                <span style="color: var(--accent);">Latest Post</span> • December 2024 • ML Security Research Update
               </div>
-              <p class="language-description">In the vast ocean of backend development, Go is my trusted vessel. Its exceptional performance cuts through turbulent waters, while goroutines + channels navigate concurrent currents with elegant simplicity.</p>
+            </header>
+            
+            <div style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+              <p style="margin-bottom: 1.5rem;">
+                Recently had the opportunity to demo <strong style="color: var(--text-primary);">Antidote Intelligence</strong> at Continue DX, showcasing our content-aware data poisoning detection system to industry professionals. The response was incredibly encouraging, with several attendees expressing interest in the practical applications for enterprise ML pipelines.
+              </p>
+              
+              <h4 style="color: var(--accent); margin: 2rem 0 1rem 0; font-size: 1.2rem;">Current Outreach Efforts</h4>
+              <p style="margin-bottom: 1.5rem;">
+                I'm actively reaching out to <strong style="color: var(--text-primary);">vector embedding marketing vendors</strong> and <strong style="color: var(--text-primary);">MIT researchers</strong> to explore collaboration opportunities around data quality assessment. The core methodology we've developed—using AI agents for hypothesis generation and systematic validation—has broader applications beyond just poisoning detection.
+              </p>
+              
+              <h4 style="color: var(--accent); margin: 2rem 0 1rem 0; font-size: 1.2rem;">Key Technical Innovations</h4>
+              <ul style="margin-left: 2rem; margin-bottom: 1.5rem; list-style-type: disc;">
+                <li style="margin-bottom: 0.5rem;">6-agent pipeline for comprehensive content analysis</li>
+                <li style="margin-bottom: 0.5rem;">Statistical validation using sample size significance algorithms</li>
+                <li style="margin-bottom: 0.5rem;">Content-aware filtering that goes beyond metadata</li>
+                <li style="margin-bottom: 0.5rem;">Real-time detection for high-stakes ML applications</li>
+              </ul>
+              
+              <h4 style="color: var(--accent); margin: 2rem 0 1rem 0; font-size: 1.2rem;">Industry Impact Potential</h4>
+              <p style="margin-bottom: 1.5rem;">
+                The conversations at Continue DX reinforced something important: <strong style="color: var(--text-primary);">data quality is the silent crisis in ML</strong>. While everyone focuses on model architecture and training techniques, corrupted training data can undermine even the most sophisticated systems. This is especially critical in financial services, healthcare, and autonomous systems where the stakes are highest.
+              </p>
+              
+              <p style="margin-bottom: 1.5rem;">
+                Looking forward to sharing more updates as these partnerships develop. If you're working on data quality challenges or RAG system validation, I'd love to connect and discuss potential applications.
+              </p>
+              
+              <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(26,86,204,0.3);">
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                  <span class="tool-tag">ML Security</span>
+                  <span class="tool-tag">Data Quality</span>
+                  <span class="tool-tag">Research Collaboration</span>
+                  <span class="tool-tag">Industry Demo</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
+          </article>
+
+          <!-- Earlier Blog Post - Maldemic -->
+          <article id="maldemic-post" style="margin-top: 3rem; display: none;">
+            <header style="margin-bottom: 1.5rem; border-bottom: 2px solid var(--success); padding-bottom: 1rem;">
+              <h3 style="font-size: 1.8rem; color: var(--text-primary); margin-bottom: 0.5rem;">Maldemic: Create a Virus, Watch it Spread</h3>
+              <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                <span style="color: var(--success);">Earlier Post</span> • Feb 2025 • Realtime Pandemic Simulation
+              </div>
+            </header>
+            
+            <div style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+              <p style="margin-bottom: 1.5rem;">
+                <strong style="color: var(--text-primary);">Create a virus yourself and watch it spread.</strong> See live SIRD data between cities and learn how certain viruses spread more than others through our interactive realtime simulation.
+              </p>
+              
+              <h4 style="color: var(--success); margin: 2rem 0 1rem 0; font-size: 1.2rem;">Stochastic Markov Chain Algorithm</h4>
+              <p style="margin-bottom: 1.5rem;">
+                Using a <strong style="color: var(--text-primary);">Stochastic Markov Chain Algorithm</strong> written in NumPy and SciPy, we use distance between cities to determine how likely it is for the virus to spread. We then mix up the matrix and update the SIR accordingly.
+              </p>
+              
+              <p style="margin-bottom: 1.5rem;">
+                Once the Python program compiles this information, we then <strong style="color: var(--text-primary);">visualize this simulation in Godot</strong> with a beautiful 3D globe interface.
+              </p>
+              
+              <h4 style="color: var(--success); margin: 2rem 0 1rem 0; font-size: 1.2rem;">Mathematical Framework</h4>
+              <p style="margin-bottom: 1rem;">
+                The total state of the global population is distributed between N cities with distinction between susceptible, infected, and recovered populations:
+              </p>
+              <div style="background: rgba(10, 15, 31, 0.6); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; border-left: 4px solid var(--success);">
+                <p style="margin-bottom: 1rem; color: var(--text-primary);">Evolution equations:</p>
+                <p style="margin-bottom: 0.5rem;">x₀ = (s₀, i₀, r₀)</p>
+                <p style="margin-bottom: 1rem;">xₙ₊₁ = S(xₙ)</p>
+                <p style="margin-bottom: 0.5rem;">Where S(x) consists of:</p>
+                <p>xₙ₊₁ = C₂ ∘ Σ ∘ C₁(Msₙ, Miₙ, Mrₙ)</p>
+              </div>
+              
+              <h4 style="color: var(--success); margin: 2rem 0 1rem 0; font-size: 1.2rem;">Technical Implementation</h4>
+              <ul style="margin-left: 2rem; margin-bottom: 1.5rem; list-style-type: disc;">
+                <li style="margin-bottom: 0.5rem;"><strong style="color: var(--text-primary);">Markov Matrix M:</strong> Probabilistically shuffles population between cities</li>
+                <li style="margin-bottom: 0.5rem;"><strong style="color: var(--text-primary);">Global SIR Function Σ:</strong> Locally spreads diseases according to SIR model</li>
+                <li style="margin-bottom: 0.5rem;"><strong style="color: var(--text-primary);">Cleaning Functions C₁, C₂:</strong> Maintain population constants using Hare-Neimeyer Method</li>
+                <li style="margin-bottom: 0.5rem;"><strong style="color: var(--text-primary);">3D Visualization:</strong> Real-time Godot globe showing spread patterns</li>
+              </ul>
+              
+              <h4 style="color: var(--success); margin: 2rem 0 1rem 0; font-size: 1.2rem;">Grant Recognition</h4>
+              <p style="margin-bottom: 1.5rem;">
+                This project received <strong style="color: var(--text-primary);">grant funding to incorporate Neural Networks</strong> for enhanced predictive modeling. The combination of stochastic modeling with machine learning creates a powerful tool for understanding pandemic dynamics.
+              </p>
+              
+              <p style="margin-bottom: 1.5rem;">
+                The simulation allows users to experiment with different virus parameters and observe how mathematical models translate into real-world spread patterns, making complex epidemiological concepts accessible and interactive.
+              </p>
+              
+              <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(32,178,170,0.3);">
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                  <span class="tool-tag">NumPy</span>
+                  <span class="tool-tag">SciPy</span>
+                  <span class="tool-tag">Godot 3D</span>
+                  <span class="tool-tag">Markov Chains</span>
+                  <span class="tool-tag">SIRD Model</span>
+                  <span class="tool-tag">Grant Funded</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
+
 
     <footer>
       <div class="container"><div class="footer-content"><p class="footer-text">© 2025 Alex Peczon. All rights reserved.</p></div></div>
@@ -857,15 +926,30 @@
     </template>
 
     <template id="proj-antidote">
-      <div class="modal" role="dialog" aria-modal="true" aria-label="Antitode Intelligence details">
+      <div class="modal" role="dialog" aria-modal="true" aria-label="Antidote Intelligence details">
         <button class="modal-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-        <div class="modal-media"><img src="/images/AntitodeIntelegence.png" alt="Antitode Intelligence preview"></div>
+        <div class="modal-media"><img src="images/AntitodeIntelegence.png" alt="Antidote Intelligence preview"></div>
         <div class="modal-body">
-          <div class="modal-title">Antitode Intelligence</div>
-          <div class="modal-desc">Autonomous agent framework to detect and mitigate training‑data poisoning in LLM workflows. Inspired by the scientific method, agents generate hypotheses, build scripts, critique outputs, and test assumptions to audit datasets for adversarial patterns.</div>
-          <div class="modal-tools"><span class="tool-tag">CrewAI</span><span class="tool-tag">Electron</span><span class="tool-tag">Docker</span></div>
+          <div class="modal-title">Antidote Intelligence</div>
+          <div class="modal-desc">
+            <strong>Open source tool to help make LLMs more secure</strong> by detecting data poisoning in training datasets. Simple to use, powerful results.<br><br>
+            
+            <strong>How it works:</strong> 6-agent pipeline analyzes your data using OpenAI GPT-4 to identify potentially poisoned content before it corrupts your models.<br><br>
+            
+            <strong>Why it matters:</strong> Corrupted training data can make LLMs unreliable, biased, or unsafe. Antidote Intelligence helps you catch these issues early.<br><br>
+            
+            <strong>Open Source:</strong> Free tool for the AI community to build safer, more reliable language models.
+          </div>
+          <div class="modal-tools">
+            <span class="tool-tag">OpenAI GPT-4</span>
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">Statistical Analysis</span>
+            <span class="tool-tag">ML Security</span>
+            <span class="tool-tag">Data Validation</span>
+            <span class="tool-tag">Agent Framework</span>
+          </div>
           <div class="modal-actions">
-            <a class="btn" href="https://github.com/BakedSoups/Antitodte_Intelegence2/tree/main" target="_blank"><i class="fab fa-github"></i> View Code</a>
+            <a class="btn" href="https://github.com/BakedSoups/Antitodte_Intelegence2/tree/main" target="_blank"><i class="fab fa-github"></i> Open Source Code</a>
           </div>
         </div>
       </div>
@@ -1100,7 +1184,62 @@
         }
       }, 5000);
       
+      // Tab functionality
+      function showTab(tabName) {
+        // Hide all tab content
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        
+        // Remove active class from all nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('active');
+        });
+        
+        // Show selected tab content
+        document.getElementById(tabName + '-content').classList.add('active');
+        
+        // Add active class to clicked nav link
+        event.target.classList.add('active');
+        
+        // Prevent default link behavior
+        event.preventDefault();
+        return false;
+      }
+      
+      // Blog post switching functionality
+      function showBlogPost(postType) {
+        // Hide all blog posts
+        document.getElementById('antidote-post').style.display = 'none';
+        document.getElementById('maldemic-post').style.display = 'none';
+        
+        // Remove active class from all blog nav buttons
+        document.getElementById('antidote-nav').classList.remove('active');
+        document.getElementById('maldemic-nav').classList.remove('active');
+        
+        // Reset button styles
+        document.getElementById('antidote-nav').style.background = 'transparent';
+        document.getElementById('antidote-nav').style.color = 'var(--text-secondary)';
+        document.getElementById('maldemic-nav').style.background = 'transparent';
+        document.getElementById('maldemic-nav').style.color = 'var(--text-secondary)';
+        
+        // Show selected post and update active button
+        if (postType === 'antidote') {
+          document.getElementById('antidote-post').style.display = 'block';
+          document.getElementById('antidote-nav').classList.add('active');
+          document.getElementById('antidote-nav').style.background = 'var(--accent)';
+          document.getElementById('antidote-nav').style.color = 'var(--text-primary)';
+        } else if (postType === 'maldemic') {
+          document.getElementById('maldemic-post').style.display = 'block';
+          document.getElementById('maldemic-nav').classList.add('active');
+          document.getElementById('maldemic-nav').style.background = 'var(--success)';
+          document.getElementById('maldemic-nav').style.color = 'var(--text-primary)';
+        }
+      }
+      
       window.toggleConciseMode = toggleConciseMode;
+      window.showTab = showTab;
+      window.showBlogPost = showBlogPost;
     </script>
   </body>
 </html>
