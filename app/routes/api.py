@@ -1,16 +1,13 @@
-"""API routes - SSE metrics stream + project data."""
+"""API routes - metrics polling + project data."""
 
 from __future__ import annotations
 
-import asyncio
 import json
-from collections.abc import AsyncGenerator
 from pathlib import Path
 
 import msgspec
 import psutil
 from litestar import Controller, get
-from litestar.response import Stream
 
 from app.models import ServerMetrics
 
@@ -22,7 +19,6 @@ def _get_metrics() -> ServerMetrics:
     cpu = psutil.cpu_percent(interval=None)
     mem = psutil.virtual_memory().percent
     load = psutil.getloadavg()
-    # Map CPU load to boid count: 30 base + up to 170 more at 100% CPU
     boid_count = int(30 + (cpu / 100) * 170)
     return ServerMetrics(
         cpu_percent=cpu,
@@ -34,21 +30,13 @@ def _get_metrics() -> ServerMetrics:
     )
 
 
-class MetricsSSEController(Controller):
+class MetricsController(Controller):
     path = "/api/metrics"
 
-    @get("/stream")
-    async def stream(self) -> Stream:
-        async def _generate() -> AsyncGenerator[bytes, None]:
-            # prime psutil (first call returns 0.0)
-            psutil.cpu_percent(interval=None)
-            while True:
-                metrics = _get_metrics()
-                data = _encoder.encode(metrics).decode()
-                yield f"event: metrics\ndata: {data}\n\n".encode()
-                await asyncio.sleep(1)
-
-        return Stream(_generate(), media_type="text/event-stream")
+    @get("/")
+    async def get_metrics(self) -> ServerMetrics:
+        psutil.cpu_percent(interval=None)
+        return _get_metrics()
 
 
 class ProjectsController(Controller):

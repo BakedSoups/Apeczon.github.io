@@ -16,7 +16,6 @@
 
   <!-- htmx extensions -->
   <!-- Core extensions -->
-  <script src="https://unpkg.com/htmx-ext-sse@2.2.2/sse.js"></script>
   <script src="https://unpkg.com/idiomorph@0.3.0/dist/idiomorph-ext.min.js"></script>
   <script src="https://unpkg.com/htmx-ext-preload@2.1.0/preload.js"></script>
   <script src="https://unpkg.com/htmx-ext-head-support@2.0.2/head-support.js"></script>
@@ -34,7 +33,7 @@
   <script src="https://unpkg.com/mustache@4.2.0/mustache.min.js"></script>
 </head>
 
-<body hx-ext="sse,preload,head-support,response-targets,class-tools,loading-states,remove-me,multi-swap,json-enc,client-side-templates,path-params,debug">
+<body hx-ext="preload,head-support,response-targets,class-tools,loading-states,remove-me,multi-swap,json-enc,client-side-templates,path-params,debug">
 
   <!-- ═══ BOIDS CANVAS BACKGROUND ═══ -->
   <canvas id="boids-canvas"></canvas>
@@ -52,33 +51,17 @@
     </button>
   </div>
 
-  <!-- ═══ SERVER METRICS HUD (SSE-driven, client-side-templates) ═══ -->
-  <div id="metrics-hud"
-       hx-ext="sse"
-       sse-connect="/api/metrics/stream"
-       sse-swap="metrics"
-       hx-swap="innerHTML">
+  <!-- ═══ SERVER METRICS HUD (polling-driven) ═══ -->
+  <div id="metrics-hud">
     <div class="hud-inner">
       <span class="hud-dot"></span>
-      <span id="hud-cpu">CPU: ---%</span>
+      <span>CPU: ---%</span>
       <span class="hud-sep">|</span>
-      <span id="hud-mem">MEM: ---%</span>
+      <span>MEM: ---%</span>
       <span class="hud-sep">|</span>
-      <span id="hud-boids">BOIDS: ---</span>
+      <span>BOIDS: ---</span>
     </div>
   </div>
-
-  <!-- SSE mustache template for metrics HUD -->
-  <template id="metrics-template">
-    <div class="hud-inner">
-      <span class="hud-dot"></span>
-      <span>CPU: {% raw %}{{cpu_percent}}{% endraw %}%</span>
-      <span class="hud-sep">|</span>
-      <span>MEM: {% raw %}{{memory_percent}}{% endraw %}%</span>
-      <span class="hud-sep">|</span>
-      <span>BOIDS: {% raw %}{{boid_count}}{% endraw %}</span>
-    </div>
-  </template>
 
   <!-- ═══ HEADER ═══ -->
   <header id="header">
@@ -182,7 +165,7 @@
                 <div class="experience-header">
                   <div class="experience-title-container">
                     <h3>
-                      <img src="/images/{{ exp.logo }}" alt="{{ exp.company }}" class="company-logo" />
+                      <img src="/static/images/{{ exp.logo }}" alt="{{ exp.company }}" class="company-logo" />
                       {{ exp.company }}
                     </h3>
                     <div class="experience-role">{{ exp.role }}</div>

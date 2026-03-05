@@ -756,12 +756,22 @@
     requestAnimationFrame(frame);
   }
 
+  // Reduce entities on mobile for performance
+  const isMobile = W < 768;
+  if (isMobile) {
+    CONFIG.initialCount = 30;
+    CONFIG.predatorCount = 1;
+    CONFIG.whaleCount = 1;
+    CONFIG.rainDropCount = 60;
+  }
+
   initWater();
   initBoids(CONFIG.initialCount);
   initPredators();
   initWhales();
   initRain();
   yacht = new Yacht();
+  targetCount = CONFIG.initialCount;
   requestAnimationFrame(frame);
 
   // Public API

@@ -1,30 +1,22 @@
 /**
- * SSE Metrics Client
- *
- * Listens to the htmx SSE stream and updates:
- * 1. The boids simulation (count, color, speed)
- * 2. The HUD overlay numbers
- *
- * Uses htmx:sseMessage event to intercept SSE data before DOM swap,
- * so we can drive the canvas + let htmx handle the HUD template swap.
+ * Metrics Client - polls /api/metrics and updates HUD + boids
  */
 
 (function () {
   'use strict';
 
-  // Listen for SSE messages from htmx sse extension
-  document.body.addEventListener('htmx:sseBeforeMessage', function (evt) {
+  async function fetchMetrics() {
     try {
-      const data = JSON.parse(evt.detail.data);
+      const res = await fetch('/api/metrics/');
+      if (!res.ok) return;
+      const data = await res.json();
 
-      // Update boids simulation
       if (window.boidsAPI) {
         window.boidsAPI.setTargetCount(data.boid_count || 60);
         window.boidsAPI.setServerLoad((data.cpu_percent || 0) / 100);
         window.boidsAPI.setMemoryLoad((data.memory_percent || 0) / 100);
       }
 
-      // Update HUD elements directly (faster than waiting for swap)
       const hud = document.getElementById('metrics-hud');
       if (hud) {
         const inner = hud.querySelector('.hud-inner') || hud;
@@ -37,13 +29,14 @@
           <span>BOIDS: ${data.boid_count}</span>
         `;
       }
-
-      // Prevent default htmx swap since we handled it
-      evt.preventDefault();
     } catch (e) {
-      // Let htmx handle it if parse fails
+      // silent fail
     }
-  });
+  }
+
+  // Poll every 3 seconds
+  fetchMetrics();
+  setInterval(fetchMetrics, 3000);
 
   // ── Draggable HUD ──
   const hud = document.getElementById('metrics-hud');
