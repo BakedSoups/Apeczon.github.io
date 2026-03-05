@@ -26,11 +26,6 @@ app = Litestar(
             directories=[BASE / "static"],
             path="/static",
         ),
-        # serve images from old site so existing paths work
-        StaticFilesConfig(
-            directories=[BASE.parent / "images"],
-            path="/images",
-        ),
     ],
     compression_config=CompressionConfig(backend="gzip"),
     debug=True,

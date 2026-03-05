@@ -1,0 +1,6 @@
+litestar[jinja,standard]>=2.15
+litestar-htmx>=0.4
+jinja2-fragments>=1.5
+msgspec>=0.19
+psutil>=6.0
+uvicorn>=0.34
