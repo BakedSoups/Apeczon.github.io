@@ -1,0 +1,24 @@
+[project]
+name = "portfolio-v2"
+version = "1.0.0"
+description = "Alex Peczon's portfolio - Litestar + HTMX + native boids"
+requires-python = ">=3.11"
+dependencies = [
+    "litestar[jinja,standard]>=2.15",
+    "litestar-htmx>=0.4",
+    "jinja2-fragments>=1.5",
+    "msgspec>=0.19",
+    "psutil>=6.0",
+    "granian>=1.7",
+    "uvicorn>=0.34",
+]
+
+[project.scripts]
+serve = "app.main:run"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
