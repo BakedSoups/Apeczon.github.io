@@ -123,11 +123,15 @@
     });
   });
 
-  // ── Concise Mode Toggle ──
-  const toggle = document.getElementById('concise-toggle');
-  toggle?.addEventListener('click', () => {
-    document.body.classList.toggle('concise-mode');
-    toggle.classList.toggle('active');
+  // ── Panel Switcher (Projects / Experience) ──
+  document.querySelectorAll('.panel-switch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.panel-switch-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = document.getElementById(btn.dataset.panel + '-panel');
+      if (panel) panel.classList.add('active');
+    });
   });
 
   // ── Blog Post Switching ──
