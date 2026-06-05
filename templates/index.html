@@ -34,10 +34,6 @@
         <img src="/static/images/watched-the-tattoo-video-yesterday-and-made-a-high-quality-v0-wgc4mumo2qb81.png" alt="Logo" />
         <span class="title">BakedSoups</span>
       </a>
-      <nav class="nav-menu">
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#projects" class="nav-link">Projects</a>
-      </nav>
     </div>
   </header>
 
@@ -65,12 +61,16 @@
           </ul>
         </div>
       </div>
+      <nav class="hero-nav" aria-label="Portfolio sections">
+        <button class="hero-nav-link active" type="button" data-view="experience">Experience</button>
+        <button class="hero-nav-link" type="button" data-view="projects">Projects</button>
+      </nav>
     </div>
   </section>
 
   <main class="container">
     <div class="content-wrapper">
-      <section class="section" id="experience">
+      <section class="section content-view active" id="experience" data-view-panel="experience">
         <h2 class="section-title" classes="add reveal:0.2s">Where I moved data around for real</h2>
         <p class="section-intro">Work that sits somewhere between data engineering, applied ML, and product automation.</p>
         <div class="experience-timeline">
@@ -85,10 +85,10 @@
                 <div class="experience-role">{{ exp.role }}</div>
               </div>
               <div class="experience-duration">{{ exp.duration }}</div>
-            </div>
-            <div class="experience-location">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>{{ exp.location }}</span>
+              <div class="experience-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>{{ exp.location }}</span>
+              </div>
             </div>
             <div class="experience-details">
               <ul>
@@ -107,9 +107,9 @@
         </div>
       </section>
 
-      <section class="section" id="projects">
-        <h2 class="section-title" classes="add reveal:0.2s">Projects with a data-flow problem hiding inside</h2>
-        <p class="section-intro">A few systems where the interesting part was getting raw, weird inputs into something searchable, modeled, or useful.</p>
+      <section class="section content-view" id="projects" data-view-panel="projects">
+        <h2 class="section-title" classes="add reveal:0.2s">Projects</h2>
+        <p class="section-intro">These are mostly passion projects that I made with friends.</p>
         <div class="projects-grid" id="grid">
           {% for project in projects %}
           <div class="project-card"

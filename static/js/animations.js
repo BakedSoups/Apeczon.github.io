@@ -45,6 +45,21 @@
     });
   });
 
+  // ── Hero section switcher ──
+  document.querySelectorAll('.hero-nav-link[data-view]').forEach(button => {
+    button.addEventListener('click', () => {
+      const view = button.dataset.view;
+
+      document.querySelectorAll('.hero-nav-link[data-view]').forEach(item => {
+        item.classList.toggle('active', item === button);
+      });
+
+      document.querySelectorAll('[data-view-panel]').forEach(panel => {
+        panel.classList.toggle('active', panel.dataset.viewPanel === view);
+      });
+    });
+  });
+
   // ── Project Modal System ──
   const backdrop = document.getElementById('modal-backdrop');
   const modalContent = document.getElementById('modal-content');
