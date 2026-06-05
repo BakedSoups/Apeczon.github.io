@@ -2,11 +2,8 @@
  * Portfolio Animations
  *
  * - Header scroll shadow
- * - Tab switching (htmx-free, pure DOM)
  * - Copy to clipboard with toast (remove-me)
  * - Project modal system
- * - Concise mode toggle
- * - Blog post switching
  * - Scroll-triggered reveals (Intersection Observer)
  */
 
@@ -20,23 +17,6 @@
       header.classList.toggle('scrolled', window.scrollY > 50);
     }
   }, { passive: true });
-
-  // ── Tab switching ──
-  document.querySelectorAll('.nav-link[data-tab]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const tab = link.dataset.tab;
-
-      // Deactivate all tabs + links
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      document.querySelectorAll('.nav-link[data-tab]').forEach(l => l.classList.remove('active'));
-
-      // Activate selected
-      const content = document.getElementById(tab + '-content');
-      if (content) content.classList.add('active');
-      link.classList.add('active');
-    });
-  });
 
   // ── Copy to clipboard with toast ──
   function showToast(message, type = 'success') {
@@ -119,66 +99,6 @@
         backdrop.classList.add('active');
       } catch (err) {
         console.error('Failed to load project:', err);
-      }
-    });
-  });
-
-  // ── Panel Switcher (Projects / Experience) ──
-  document.querySelectorAll('.panel-switch-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.panel-switch-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      const panel = document.getElementById(btn.dataset.panel + '-panel');
-      if (panel) panel.classList.add('active');
-    });
-  });
-
-  // ── Blog Post Switching ──
-  document.querySelectorAll('.blog-nav-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const postSlug = btn.dataset.post;
-
-      // Deactivate all
-      document.querySelectorAll('.blog-post').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.blog-nav-btn').forEach(b => {
-        b.classList.remove('active');
-        b.style.background = 'transparent';
-        b.style.color = 'var(--text-secondary)';
-      });
-
-      // Activate selected
-      const post = document.getElementById(postSlug + '-post');
-      if (post) post.classList.add('active');
-      btn.classList.add('active');
-      btn.style.color = 'var(--text-primary)';
-
-      // Use accent or success color based on position
-      const colorVar = btn === document.querySelector('.blog-nav-btn')
-        ? 'var(--accent)' : 'var(--success)';
-      btn.style.background = colorVar;
-    });
-  });
-
-  // ── Boid Tools Toolbar ──
-  document.querySelectorAll('.boid-tool-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tool = btn.dataset.tool;
-      const isActive = btn.classList.contains('active');
-
-      // Deactivate all
-      document.querySelectorAll('.boid-tool-btn').forEach(b => b.classList.remove('active'));
-
-      if (isActive) {
-        // Toggle off
-        window.boidsAPI?.setActiveTool(null);
-        document.getElementById('boids-canvas').style.cursor = '';
-      } else {
-        // Activate this tool
-        btn.classList.add('active');
-        window.boidsAPI?.setActiveTool(tool);
-        const cursors = { attract: 'crosshair', repel: 'crosshair', spawn: 'cell' };
-        document.getElementById('boids-canvas').style.cursor = cursors[tool] || '';
       }
     });
   });

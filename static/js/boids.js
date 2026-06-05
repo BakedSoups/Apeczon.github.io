@@ -1,7 +1,7 @@
 /**
  * Native JS Boids Simulation - Canvas 2D
  * Koi fish schooling with predators, whales, yacht, rain ripples,
- * swimming animation, and interactive tools.
+ * swimming animation, and gentle mouse following.
  */
 
 (function () {
@@ -15,8 +15,8 @@
   const CONFIG = {
     initialCount: 80,
     maxCount: 230,
-    maxSpeed: 1.8,
-    minSpeed: 0.4,
+    maxSpeed: 1.35,
+    minSpeed: 0.35,
     perceptionRadius: 120,
     separationDist: 38,
     separationWeight: 2.0,
@@ -42,8 +42,8 @@
     swimFrequency: 3.5,
     swimAmplitude: 0.35,
     fishSegments: 8,
-    forceRadius: 140,
-    forceStrength: 0.12,
+    mouseFollowRadius: 420,
+    mouseFollowStrength: 0.018,
     whaleCount: 2,
     whaleSpeed: 0.3,
     rainDropCount: 180,
@@ -56,11 +56,9 @@
   let yacht = null;
   let rainDrops = [];
   let targetCount = CONFIG.initialCount;
-  let spawnedExtra = 0;
   let serverLoad = 0;
   let memoryLoad = 0;
 
-  let activeTool = null;
   let mouseX = -9999, mouseY = -9999;
   let mouseOnCanvas = false;
 
@@ -76,16 +74,23 @@
   let uiZones = [];
   function updateUIZones() {
     uiZones = [];
-    const els = document.querySelectorAll('#header, .hero, .content-wrapper');
+    const canvasRect = canvas.getBoundingClientRect();
+    const els = document.querySelectorAll('#header, .hero-content, .profile-picture');
     for (const el of els) {
       const r = el.getBoundingClientRect();
-      uiZones.push({ x: r.left, y: r.top, w: r.width, h: r.height });
+      uiZones.push({
+        x: r.left - canvasRect.left,
+        y: r.top - canvasRect.top,
+        w: r.width,
+        h: r.height
+      });
     }
   }
 
   function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    const rect = canvas.getBoundingClientRect();
+    W = canvas.width = Math.max(1, Math.floor(rect.width));
+    H = canvas.height = Math.max(1, Math.floor(rect.height));
     if (waterBuf1) initWater(); // reinit water on resize
     updateUIZones();
   }
@@ -361,18 +366,16 @@
       this.palette = CONFIG.koiPalettes[Math.floor(Math.random() * CONFIG.koiPalettes.length)];
       // Wandering speed variation (natural fish rhythm)
       this.wanderPhase = Math.random() * Math.PI * 2;
-      this.wanderFreq = 0.3 + Math.random() * 0.5; // how fast the speed oscillates
-      this.wanderAmp = 0.3 + Math.random() * 0.4;  // how much speed varies (0-1 range)
+      this.wanderFreq = 0.15 + Math.random() * 0.25; // how fast the speed oscillates
+      this.wanderAmp = 0.08 + Math.random() * 0.12;  // subtle speed variation
     }
 
     update(flock, preds) {
-      // Natural speed variation - fish randomly speed up and slow down
       this.wanderPhase += 0.016 * this.wanderFreq;
       const wanderMult = 1.0 - this.wanderAmp * 0.5 + Math.sin(this.wanderPhase) * this.wanderAmp * 0.5;
-      // Occasionally change rhythm
       if (Math.random() < 0.001) {
-        this.wanderFreq = 0.3 + Math.random() * 0.5;
-        this.wanderAmp = 0.3 + Math.random() * 0.4;
+        this.wanderFreq = 0.15 + Math.random() * 0.25;
+        this.wanderAmp = 0.08 + Math.random() * 0.12;
       }
 
       let sepX=0,sepY=0,sepN=0,aliX=0,aliY=0,aliN=0,cohX=0,cohY=0,cohN=0;
@@ -405,12 +408,12 @@
       if (cohN>0) { this.vx+=((cohX/cohN)-this.x)*CONFIG.cohesionWeight*0.0005; this.vy+=((cohY/cohN)-this.y)*CONFIG.cohesionWeight*0.0005; }
       if (fleeing) { this.vx+=fleeX*CONFIG.fleeWeight; this.vy+=fleeY*CONFIG.fleeWeight; }
 
-      if ((activeTool==='attract'||activeTool==='repel')&&mouseOnCanvas) {
+      if (mouseOnCanvas) {
         const dx=mouseX-this.x,dy=mouseY-this.y,d=Math.sqrt(dx*dx+dy*dy);
-        if (d<CONFIG.forceRadius&&d>0) {
-          const s=CONFIG.forceStrength*(1-d/CONFIG.forceRadius);
-          const dir=activeTool==='attract'?1:-1;
-          this.vx+=(dx/d)*s*dir; this.vy+=(dy/d)*s*dir;
+        if (d<CONFIG.mouseFollowRadius&&d>0) {
+          const pull=CONFIG.mouseFollowStrength*(1-d/CONFIG.mouseFollowRadius);
+          this.vx+=(dx/d)*pull;
+          this.vy+=(dy/d)*pull;
         }
       }
 
@@ -444,7 +447,7 @@
       if(Math.abs(da)>mt) da=Math.sign(da)*mt;
       this.heading+=da;
 
-      const sm=fleeing?1.8:(1+serverLoad*0.8);
+      const sm=fleeing?1.35:1;
       let sp=Math.sqrt(this.vx*this.vx+this.vy*this.vy);
       sp=Math.max(CONFIG.minSpeed*wanderMult, Math.min(CONFIG.maxSpeed*sm*wanderMult, sp));
       this.vx=Math.cos(this.heading)*sp; this.vy=Math.sin(this.heading)*sp;
@@ -705,30 +708,18 @@
   }
 
   function drawCursorForce() {
-    if(!mouseOnCanvas||!activeTool||activeTool==='spawn') return;
-    const c=activeTool==='attract'?'rgba(0,191,255,0.12)':'rgba(255,100,80,0.12)';
-    const s=activeTool==='attract'?'rgba(0,191,255,0.3)':'rgba(255,100,80,0.3)';
+    if(!mouseOnCanvas) return;
     ctx.save();
-    ctx.beginPath(); ctx.arc(mouseX,mouseY,CONFIG.forceRadius,0,Math.PI*2);
-    ctx.fillStyle=c; ctx.fill(); ctx.strokeStyle=s; ctx.lineWidth=1.5; ctx.stroke();
-    ctx.beginPath(); ctx.arc(mouseX,mouseY,CONFIG.forceRadius*0.3,0,Math.PI*2);
-    ctx.fillStyle=activeTool==='attract'?'rgba(0,191,255,0.15)':'rgba(255,100,80,0.15)'; ctx.fill();
+    ctx.beginPath();
+    ctx.arc(mouseX,mouseY,CONFIG.mouseFollowRadius*0.12,0,Math.PI*2);
+    ctx.fillStyle='rgba(0,191,255,0.08)';
+    ctx.fill();
     ctx.restore();
   }
 
   // Mouse tracking
   canvas.addEventListener('mousemove',(e)=>{const r=canvas.getBoundingClientRect();mouseX=e.clientX-r.left;mouseY=e.clientY-r.top;mouseOnCanvas=true;});
   canvas.addEventListener('mouseleave',()=>{mouseOnCanvas=false;});
-
-  // Spawn click
-  canvas.addEventListener('click',(e)=>{
-    if(activeTool!=='spawn')return;
-    const r=canvas.getBoundingClientRect();
-    const x=e.clientX-r.left, y=e.clientY-r.top;
-    const toAdd=Math.min(5,CONFIG.maxCount-boids.length);
-    for(let i=0;i<toAdd;i++) boids.push(new Boid(x+(Math.random()-0.5)*30, y+(Math.random()-0.5)*30));
-    spawnedExtra+=toAdd; targetCount=boids.length;
-  });
 
   // Animation loop
   function frame() {
@@ -776,11 +767,9 @@
 
   // Public API
   window.boidsAPI = {
-    setTargetCount(n) { targetCount=Math.max(10,Math.min(CONFIG.maxCount,n+spawnedExtra)); },
+    setTargetCount(n) { targetCount=Math.max(10,Math.min(CONFIG.maxCount,n)); },
     setServerLoad(v) { serverLoad=Math.max(0,Math.min(1,v)); },
     setMemoryLoad(v) { memoryLoad=Math.max(0,Math.min(1,v)); },
     getCount() { return boids.length; },
-    setActiveTool(tool) { activeTool=tool; },
-    getActiveTool() { return activeTool; },
   };
 })();

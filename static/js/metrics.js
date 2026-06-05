@@ -26,7 +26,7 @@
           <span class="hud-sep">|</span>
           <span>MEM: ${data.memory_percent.toFixed(1)}%</span>
           <span class="hud-sep">|</span>
-          <span>BOIDS: ${data.boid_count}</span>
+          <span>FLOWS: ${data.boid_count}</span>
         `;
       }
     } catch (e) {

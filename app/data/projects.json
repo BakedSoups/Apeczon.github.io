@@ -3,24 +3,50 @@
     {
       "slug": "nextsteamgame",
       "title": "nextsteamgame.com",
-      "description": "Gameplay-first game recommender using ETL + vector similarity. 20k+ titles, user-weighted tags.",
-      "long_description": "A game recommendation app backed by a custom ETL pipeline. It pulls data from Steam, YouTube, and the web, using VADER sentiment, regex, gameplay keyword frequency, and spam filters to extract the most insightful reviews. From these, it procedurally generates tags and places 20K+ games in a hierarchical genre tree. Each game becomes a vector capturing gameplay, tone, art, and music; searches prioritize gameplay similarity with user-weighted tags.",
+      "description": "Recommendation pipeline for 80K+ Steam games. Reviews, tags, vectors, and metadata go in; explainable similarity search comes out.",
+      "long_description": "My main data-flow project: a multi-stage recommendation system that turns Steam metadata, reviews, tags, and semantic signals into explainable game similarity search. The pipeline separates extraction, cleaning, ontology building, vector generation, ranking, and runtime serving so the product is fast without hiding how recommendations were made. It grew to 30K+ users, which was a nice reminder that weird data pipelines can become real products.",
       "image": "/static/images/446267084-5f2c0604-38f6-497f-ab21-1363ce99a627.png",
       "badge": "Live",
-      "tools": ["Go", "FastAPI", "HTMX", "SQLite3", "SpaCy", "VADER"],
+      "tools": ["PostgreSQL", "ChromaDB", "Qdrant", "ModernBERT", "FastAPI", "Docker"],
       "links": [
         {"label": "Visit Site", "url": "https://nextsteamgame.com/", "icon": "fa-solid fa-globe"},
         {"label": "View Code", "url": "https://github.com/BakedSoups/Steam_Reccomender", "icon": "fab fa-github"}
       ]
     },
     {
+      "slug": "usfsearch",
+      "title": "USF Search Engine Crawler",
+      "description": "Concurrent Go crawler with 300 extract workers and 300 DB workers. Basically a small lesson in backpressure.",
+      "long_description": "A high-throughput crawler built around data movement more than page scraping. 300 extract workers download and parse pages while 300 database workers batch writes into SQLite, with queue buffers keeping the system fed without falling over. It was a fun way to think through throughput, batching, worker coordination, and what happens when your pipeline moves faster than your database wants it to.",
+      "image": "/static/images/usfimage.png",
+      "badge": "Crawler",
+      "tools": ["Go", "SQLite", "Concurrency", "Batch Writes", "Queues"],
+      "links": [
+        {"label": "View Project", "url": "https://github.com/BakedSoups/USF-Search-Engine", "icon": "fab fa-github"},
+        {"label": "Documentation", "url": "https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing", "icon": "fa-solid fa-file"}
+      ]
+    },
+    {
+      "slug": "maldemic",
+      "title": "Maldemic Simulator",
+      "description": "Stochastic SIR simulation with Markov-chain mobility and a live 3D globe. Public health data, but make it move.",
+      "long_description": "A stochastic pandemic simulator that models disease spread across city coordinates using Markov-chain mobility and SIR dynamics. Python computes the population state transitions, then Godot renders the spread on a 3D globe so people can see the model instead of just reading equations. It earned 2nd place at BLOOM Hackathon and later received grant support for neural-network forecasting work.",
+      "image": "/static/images/maldemic_final.gif",
+      "badge": "2nd Place",
+      "tools": ["Python", "NumPy", "SciPy", "Godot", "Markov Chains", "SIR"],
+      "links": [
+        {"label": "View Project", "url": "https://github.com/BakedSoups/Pandemic", "icon": "fab fa-github"},
+        {"label": "Research Paper", "url": "https://drive.google.com/file/d/1tqMzypnbvTkRvCp1lzxrTIlANEhi2Kfb/view?usp=sharing", "icon": "fa-solid fa-file"}
+      ]
+    },
+    {
       "slug": "antidote",
       "title": "Antidote Intelligence",
-      "description": "Open source tool to help make LLMs more secure by detecting data poisoning.",
-      "long_description": "Open source tool to help make LLMs more secure by detecting data poisoning in training datasets. Simple to use, powerful results. Uses a 6-agent pipeline that analyzes your data using OpenAI GPT-4 to identify potentially poisoned content before it corrupts your models. Corrupted training data can make LLMs unreliable, biased, or unsafe. Antidote Intelligence helps you catch these issues early. Free tool for the AI community to build safer, more reliable language models.",
+      "description": "Data-poisoning detection for LLM training sets. Less model worship, more checking what we fed it.",
+      "long_description": "An open-source ML security tool for finding suspicious or poisoned content in training datasets before that data quietly becomes model behavior. The system uses a multi-agent analysis pipeline to inspect dataset content, generate hypotheses, and surface examples worth investigating. I like this project because it sits right at the point where data quality, automation, and model safety stop being abstract and start being operational.",
       "image": "/static/images/AntitodeIntelegence.png",
       "badge": "Open Source",
-      "tools": ["OpenAI GPT-4", "6-Agent Pipeline", "ML Security", "Python", "Statistical Analysis"],
+      "tools": ["Python", "OpenAI", "ML Security", "Data Quality", "Agent Pipeline"],
       "links": [
         {"label": "Open Source Code", "url": "https://github.com/BakedSoups/Antitodte_Intelegence2/tree/main", "icon": "fab fa-github"}
       ]
@@ -28,225 +54,184 @@
     {
       "slug": "dreamville",
       "title": "Dreamville",
-      "description": "Gamified Canvas LMS tracker. Earn coins by completing tasks; urgency scored via regression.",
-      "long_description": "Gamified assignment tracker for Canvas LMS. Removes self-accountability by letting you check off only tasks you've finished. Build a city with coins earned from tasks. Assignment urgency is estimated with a linear regression over completion patterns and difficulty.",
+      "description": "Canvas LMS task tracker where assignment urgency is scored from behavior instead of vibes.",
+      "long_description": "A gamified Canvas LMS tracker that pulls assignments into a game loop, then scores urgency using completion patterns and difficulty signals. The fun part was not the coins; it was turning school workflow data into something students could act on without needing another dashboard yelling at them.",
       "image": "/static/images/dreamville-preview.gif",
       "badge": "In Progress",
-      "tools": ["Godot", "Go", "Canvas API"],
+      "tools": ["Godot", "Go", "Canvas API", "Regression", "Workflow Data"],
       "links": [
         {"label": "View Code", "url": "https://github.com/complex-bit/DonsHack2025", "icon": "fab fa-github"}
       ]
     },
     {
-      "slug": "maldemic",
-      "title": "Maldemic Simulator",
-      "description": "Real-time SIRD with Markov chains + grant-funded NN work; 3D globe viz in Godot.",
-      "long_description": "Stochastic Markov-based SIRD simulator with a Godot 3D globe visualization. Models virus spread from city coordinates. Secured a grant to integrate neural networks for predictive spread analysis.",
-      "image": "/static/images/maldemic_final.gif",
-      "badge": null,
-      "tools": ["Godot", "NumPy", "SciPy"],
-      "links": [
-        {"label": "View Project", "url": "https://github.com/BakedSoups/Pandemic", "icon": "fab fa-github"},
-        {"label": "Research Paper", "url": "https://drive.google.com/file/d/1tqMzypnbvTkRvCp1lzxrTIlANEhi2Kfb/view?usp=sharing", "icon": "fa-solid fa-file"}
-      ]
-    },
-    {
-      "slug": "usfsearch",
-      "title": "USF Search Engine Crawler",
-      "description": "High-performance concurrent crawler with 300 extract workers + 300 DB workers.",
-      "long_description": "Scalable concurrent Go web crawler built for speed. Uses dual worker architecture: 300 extract workers download pages while 300 DB workers batch-upload to SQLite (150 docs/batch). 9000-job queue buffer enables lightning-fast crawling of entire domains like USF's website.",
-      "image": "/static/images/usfimage.png",
-      "badge": null,
-      "tools": ["Go", "SQLite"],
-      "links": [
-        {"label": "View Project", "url": "https://github.com/BakedSoups/USF-Search-Engine", "icon": "fab fa-github"},
-        {"label": "Documentation", "url": "https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing", "icon": "fa-solid fa-file"}
-      ]
-    },
-    {
-      "slug": "hyperrosen",
-      "title": "Hyper Rosen",
-      "description": "3D galaxy toy with Perlin fields and vector-field enemies in Godot.",
-      "long_description": "3D Godot game that simulates galaxy formations via Perlin noise; enemies navigate vector fields with emergent movement.",
-      "image": "/static/images/hyperrosen.png",
-      "badge": null,
-      "tools": ["Godot", "3D", "Perlin"],
-      "links": [
-        {"label": "View Project", "url": "https://github.com/BakedSoups/HyperRosen", "icon": "fab fa-github"}
-      ]
-    },
-    {
       "slug": "nutrifinder",
       "title": "NutriFinder",
-      "description": "Dietary search over restaurant menus; Flask API + React client.",
-      "long_description": "Returns food items and nutrition that match dietary needs across restaurants. Flask backend serves a React client with simple filters.",
+      "description": "Restaurant menu search for dietary constraints. Small app, useful filtering problem.",
+      "long_description": "A dietary search app that filters restaurant menu items by nutrition and constraint data. It is a smaller project, but it still has the shape I keep coming back to: pull in messy real-world information, normalize it enough to search, and give people a cleaner way to make a decision.",
       "image": "/static/images/nutrifinder.png",
       "badge": null,
-      "tools": ["React", "Flask", "Python"],
+      "tools": ["React", "Flask", "Python", "Search", "Filters"],
       "links": [
         {"label": "View Project", "url": "https://devpost.com/software/nutrifinder", "icon": "fa-solid fa-globe"}
       ]
     },
     {
+      "slug": "hyperrosen",
+      "title": "Hyper Rosen",
+      "description": "3D galaxy toy with Perlin fields and vector-field enemies. My simulation brain taking a walk.",
+      "long_description": "A 3D Godot experiment with galaxy formation, Perlin noise, and enemies that move through vector fields. It is less data engineering and more simulation play, but it shows the same interest in systems that evolve from local rules.",
+      "image": "/static/images/hyperrosen.png",
+      "badge": null,
+      "tools": ["Godot", "3D", "Perlin", "Vector Fields"],
+      "links": [
+        {"label": "View Project", "url": "https://github.com/BakedSoups/HyperRosen", "icon": "fab fa-github"}
+      ]
+    },
+    {
+      "slug": "spiral",
+      "title": "Spiral Visualizer",
+      "description": "Queue-driven spiral plotting with Matplotlib. Tiny, visual, useful for teaching data structures.",
+      "long_description": "A small visualization for spiral growth using queued directions. It is a compact teaching project, but I keep it around because visualizing state changes is often the fastest way to understand a system.",
+      "image": "/static/images/spiral.png",
+      "badge": null,
+      "tools": ["Python", "Matplotlib", "Queues"],
+      "links": [
+        {"label": "View Code", "url": "https://github.com/BakedSoups/Visualize-Spirals", "icon": "fab fa-github"}
+      ]
+    },
+    {
       "slug": "oldman",
       "title": "Old Man Climbs",
-      "description": "Mini jam game built in a weekend for UC Merced GDC.",
-      "long_description": "Small vertical climber built for a UC Merced game jam (weekend scope). Focus on physics feel and crunchy feedback.",
+      "description": "Weekend jam game from UC Merced GDC. Not data-heavy, just a nice artifact from making things fast.",
+      "long_description": "A small vertical climber built over a weekend for a UC Merced game jam. It is mostly here as a reminder that shipping small, complete things is its own skill.",
       "image": "/static/images/oldahhman.png",
       "badge": null,
       "tools": ["Godot", "Game Jam"],
       "links": [
         {"label": "View Project", "url": "https://itch.io/jam/uc-merced-gdc-game-jam-2023/rate/2353610", "icon": "fa-solid fa-gamepad"}
       ]
-    },
-    {
-      "slug": "spiral",
-      "title": "Spiral Visualizer",
-      "description": "Queue-driven spiral plotting with Matplotlib.",
-      "long_description": "Visualizes spiral growth by queueing directions (up/right/down/left). A small demo for students learning data structures.",
-      "image": "/static/images/spiral.png",
-      "badge": null,
-      "tools": ["Python", "Matplotlib"],
-      "links": [
-        {"label": "View Code", "url": "https://github.com/BakedSoups/Visualize-Spirals", "icon": "fab fa-github"}
-      ]
     }
   ],
   "experiences": [
     {
+      "company": "Future Tilt",
+      "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
+      "role": "Software Engineer",
+      "duration": "Jul 2025 - Present",
+      "location": "San Francisco",
+      "details": [
+        "Built ETL workflows with Airbyte, BigQuery, and AWS Lambda for analytics workloads supporting 50+ ecommerce clients and 20M+ daily queries.",
+        "Built a Lambda campaign orchestration service that syncs Google Sheets planning calendars with Klaviyo campaigns and Trello production tasks, cutting setup time by 50%.",
+        "Developed an AI email generation platform that turns campaign calendar data into editable marketing emails while pulling assets from Google Drive."
+      ],
+      "tech": ["Airbyte", "BigQuery", "AWS Lambda", "Klaviyo API", "Google Sheets", "Trello API"]
+    },
+    {
       "company": "Alaris Security",
       "logo": "alaris.ico",
       "role": "Junior Fullstack Engineer",
-      "duration": "Aug 2025 \u2013 Nov 2025",
+      "duration": "Aug 2025 - Nov 2025",
       "location": "San Francisco",
       "details": [
-        "Designed scalable data pipeline with Prefect + Airflow, processing 500K+ security events daily and improving analytics reliability by 60%.",
-        "Resolved critical UI bugs in React-based security platform, reducing system downtime by 90% and improving user experience for 1000+ enterprise clients.",
-        "Authored comprehensive platform-wide data flow documentation, enabling leadership to evaluate scaling solutions and reducing onboarding time for new engineers by 50%."
+        "Designed orchestration workflows with Prefect and Airflow to normalize CrowdStrike, Elastic, and Microsoft Defender telemetry for SOC analytics.",
+        "Built an agentic cybersecurity analysis system that searched across millions of security records and generated customer-specific NIS2 compliance reports.",
+        "Created customer-facing report tooling that linked AI-generated findings back to supporting telemetry, because security summaries are not useful if nobody can trace them."
       ],
-      "tech": ["Prefect", "Airflow", "React", "Data Pipelines", "Security Platform"]
-    },
-    {
-      "company": "Future Tilt (Ecommerce Marketing Agency)",
-      "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
-      "role": "Software Developer",
-      "duration": "Aug 2025 \u2013 Present",
-      "location": "San Francisco",
-      "details": [
-        "Built an AI template builder that auto-generates email boilerplates, cutting design prep time by 40%.",
-        "Developed BigQuery dashboards analyzing 10M+ daily records, improving brand forecasting.",
-        "Maintained an AWS Lambda + BigQuery alerting pipeline, reducing manual checks by 80%.",
-        "Automated Trello board updates via Lambda, streamlining campaign tracking for 15+ clients.",
-        "Deployed ECS Dockerized Lambda for real-time revenue alerts, cutting lag from 24h to <1h."
-      ],
-      "tech": ["AI Templates", "AWS Lambda", "BigQuery", "ECS", "Docker", "Trello API"]
-    },
-    {
-      "company": "Future Tilt (Ecommerce Marketing Agency)",
-      "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
-      "role": "Software Development Intern",
-      "duration": "Jul 2025 \u2013 Aug 2025",
-      "location": "San Francisco",
-      "details": [
-        "Building micro-services with AWS Lambda and BigQuery to take the busywork out of eCommerce, and improve sales forecasting.",
-        "Automating processes in our CRM, setting up Big Query integration."
-      ],
-      "tech": ["AWS", "Trello API", "Automation"]
+      "tech": ["Prefect", "Airflow", "CrowdStrike", "Elastic", "Microsoft Defender", "SOC Analytics"]
     },
     {
       "company": "USF MAGIC Lab",
       "logo": "San-Francisco-Dons-Logo-2001.png",
       "role": "NLP Research Assistant",
-      "duration": "Mar 2025 \u2013 Present",
+      "duration": "Mar 2025 - May 2026",
       "location": "San Francisco",
       "details": [
-        "Built an ETL pipeline (BeautifulSoup) scraping 20k+ news articles for sentiment analysis.",
-        "Developed SpaCy + NetworkX models to map sentiment and reveal bias trends."
+        "Built parallelized ETL pipelines across 5 virtual machines to generate entity-aware NLP datasets from 20,000+ news articles.",
+        "Developed an explainable entity-based sentiment framework that preserved relationship paths instead of flattening everything into a mystery score.",
+        "Used graph-based relationship extraction to connect articles, entities, sentiment, and evidence into datasets researchers could inspect."
       ],
-      "tech": ["Python", "SpaCy", "NetworkX", "ETL"]
+      "tech": ["Python", "Go", "NLP", "ETL", "Graph Extraction", "DuckDB"]
+    },
+    {
+      "company": "USF Strategic Enrollment Management",
+      "logo": "San-Francisco-Dons-Logo-2001.png",
+      "role": "Data Analyst / Web Intern",
+      "duration": "Jul 2024 - Jul 2025",
+      "location": "San Francisco",
+      "details": [
+        "Analyzed 500,000+ student records from SLATE, turning raw SQL exports into datasets, dashboards, and PCA models for admissions strategy.",
+        "Evaluated student interactions across admissions events and geographic regions to surface recruitment and marketing insights.",
+        "Automated recurring web and reporting updates with Python and Jinja2 so the data work did not become manual copy-paste theater."
+      ],
+      "tech": ["SQL", "Pandas", "PCA", "SLATE", "Jinja2", "Admissions Analytics"]
+    },
+    {
+      "company": "UC Merced - SATAL",
+      "logo": "ucm_logo_rgb_m_3.60692d9749f2.png",
+      "role": "Data Analyst Intern",
+      "duration": "Aug 2023 - May 2024",
+      "location": "Merced",
+      "details": [
+        "Analyzed thousands of Qualtrics survey responses and focus-group notes from 500+ students to identify drivers of engagement and academic performance.",
+        "Used Pandas and OpenAI-assisted categorization to turn open-ended feedback into structured themes faculty could act on.",
+        "Presented research on methodology at the Fresno State Exemplary Practices in Higher Education Conference."
+      ],
+      "tech": ["Pandas", "Qualtrics", "OpenAI", "Survey Analysis", "Research Methods"]
     },
     {
       "company": "iD Tech Camps (Stanford)",
       "logo": "stanford.webp",
       "role": "Machine Learning Instructor",
-      "duration": "Jun 2024 \u2013 Aug 2024",
+      "duration": "Jun 2024 - Aug 2024",
       "location": "Stanford, California",
       "details": [
-        "Taught high school students Python, neural networks, and key tools like NumPy, Pandas, Keras, and ChatGPT through project-based learning.",
-        "Rebuilt check-in/out system using Seaborn heatmaps to optimize traffic flow, improving efficiency by 40% adopted by 2 other iD Tech camps."
+        "Taught high school students Python, neural networks, NumPy, Pandas, Keras, and practical AI workflows through project-based lessons.",
+        "Rebuilt check-in/out analysis with Seaborn heatmaps to understand traffic flow and improve camp operations."
       ],
       "tech": ["Python", "PyTorch", "Keras", "NumPy", "Pandas", "Seaborn"]
-    },
-    {
-      "company": "USF Strategic Enrollment Management",
-      "logo": "San-Francisco-Dons-Logo-2001.png",
-      "role": "Predictive Analytics / Web Intern",
-      "duration": "Jul 2024 \u2013 Jul 2025",
-      "location": "San Francisco",
-      "details": [
-        "Created predictive models that improved enrollment forecasting accuracy by 15%.",
-        "Developed semantic search + Pandas system, reducing record reconciliation time by 50%.",
-        "Automated website updates with Python + Jinja2, cutting update time from hours to minutes."
-      ],
-      "tech": ["SQL", "Pandas", "OpenAI", "Jinja2"]
-    },
-    {
-      "company": "UC Merced - SATAL",
-      "logo": "ucm_logo_rgb_m_3.60692d9749f2.png",
-      "role": "Data Research Analyst",
-      "duration": "Jun 2023 \u2013 Sep 2024",
-      "location": "California",
-      "details": [
-        "Designed and conducted statistical analysis on 50+ classroom feedback surveys for educational improvement.",
-        "Built ML classification system using LLMs + TensorFlow, achieving 99% accuracy in response categorization.",
-        "Processed complex XML-based Qualtrics survey data and created automated reporting systems for faculty.",
-        "Applied NLP techniques to extract insights from open-ended survey responses."
-      ],
-      "tech": ["PyTorch", "LLM", "Flask"]
-    },
-    {
-      "company": "Candle Stories",
-      "logo": "candle_true_stories_logo.jpg",
-      "role": "Production Assistant",
-      "duration": "Apr 2025 \u2013 Aug 2025 \u00b7 Completed",
-      "location": "San Francisco",
-      "details": [
-        "Supported on-set operations and equipment handling across documentary shoots."
-      ],
-      "tech": ["Production", "Logistics"]
     },
     {
       "company": "Acme Builders Incorporated",
       "logo": "acme.jpeg",
       "role": "Data Analyst",
-      "duration": "May 2021 \u2013 Dec 2024",
+      "duration": "May 2021 - Dec 2024",
       "location": "Oakland",
       "details": [
-        "Started off as a construction laborer then worked on business logistics.",
-        "Built business data systems in Python using NumPy and Pandas to clean and organize records across department.",
-        "Organized, updated, and archived company records to support accurate data management."
+        "Moved from construction labor into business logistics and data cleanup, which is probably where the messy-data tolerance started.",
+        "Built Python systems with NumPy and Pandas to clean, organize, and archive records across departments."
       ],
-      "tech": ["Data Maintenance", "Business Data Management", "Google Workspace", "Data Control"]
+      "tech": ["Python", "Pandas", "NumPy", "Business Data", "Operations"]
+    },
+    {
+      "company": "Candle Stories",
+      "logo": "candle_true_stories_logo.jpg",
+      "role": "Production Assistant",
+      "duration": "Apr 2025 - Aug 2025",
+      "location": "San Francisco",
+      "details": [
+        "Supported documentary shoots, equipment handling, and on-set logistics. Less data pipeline, more real-world pipeline."
+      ],
+      "tech": ["Production", "Logistics"]
     }
   ],
   "blog_posts": [
     {
       "slug": "antidote",
-      "title": "Demoing Data Poisoning Detection at Continue DX",
+      "title": "Data Poisoning Detection at Continue DX",
       "date": "December 2024",
       "label": "Latest Post",
       "label_color": "accent",
-      "content_html": "<p>Recently had the opportunity to demo <strong>Antidote Intelligence</strong> at Continue DX, showcasing our content-aware data poisoning detection system to industry professionals. The response was incredibly encouraging, with several attendees expressing interest in the practical applications for enterprise ML pipelines.</p><h4>Current Outreach Efforts</h4><p>I'm actively reaching out to <strong>vector embedding marketing vendors</strong> and <strong>MIT researchers</strong> to explore collaboration opportunities around data quality assessment. The core methodology we've developed\u2014using AI agents for hypothesis generation and systematic validation\u2014has broader applications beyond just poisoning detection.</p><h4>Key Technical Innovations</h4><ul><li>6-agent pipeline for comprehensive content analysis</li><li>Statistical validation using sample size significance algorithms</li><li>Content-aware filtering that goes beyond metadata</li><li>Real-time detection for high-stakes ML applications</li></ul><h4>Industry Impact Potential</h4><p>The conversations at Continue DX reinforced something important: <strong>data quality is the silent crisis in ML</strong>. While everyone focuses on model architecture and training techniques, corrupted training data can undermine even the most sophisticated systems. This is especially critical in financial services, healthcare, and autonomous systems where the stakes are highest.</p><p>Looking forward to sharing more updates as these partnerships develop. If you're working on data quality challenges or RAG system validation, I'd love to connect and discuss potential applications.</p>",
-      "tags": ["ML Security", "Data Quality", "Research Collaboration", "Industry Demo"]
+      "content_html": "<p>I demoed <strong>Antidote Intelligence</strong> at Continue DX, showing a content-aware data poisoning detection system for ML training datasets. The basic pitch: before we argue about the model, let's look harder at the data we fed it.</p><h4>Why this matters</h4><p>Training data quality is one of those problems that hides until it becomes expensive. Bad examples, poisoned content, or subtle distribution weirdness can leak into model behavior long before anyone notices.</p><h4>What I built</h4><ul><li>Multi-agent review pipeline for suspicious dataset content</li><li>Hypothesis generation and validation around poisoned examples</li><li>Content-aware checks instead of only metadata-based filtering</li><li>Reports aimed at making data issues inspectable, not magical</li></ul><p>I am interested in this space because it treats data quality as infrastructure. The model gets the attention, but the dataset is where a lot of the story starts.</p>",
+      "tags": ["ML Security", "Data Quality", "Training Data", "Agent Pipeline"]
     },
     {
       "slug": "maldemic",
-      "title": "Maldemic: Create a Virus, Watch it Spread",
+      "title": "Maldemic: A Pandemic Model You Can Watch",
       "date": "Feb 2025",
       "label": "Earlier Post",
       "label_color": "success",
-      "content_html": "<p><strong>Create a virus yourself and watch it spread.</strong> See live SIRD data between cities and learn how certain viruses spread more than others through our interactive realtime simulation.</p><h4>Stochastic Markov Chain Algorithm</h4><p>Using a <strong>Stochastic Markov Chain Algorithm</strong> written in NumPy and SciPy, we use distance between cities to determine how likely it is for the virus to spread. We then mix up the matrix and update the SIR accordingly.</p><p>Once the Python program compiles this information, we then <strong>visualize this simulation in Godot</strong> with a beautiful 3D globe interface.</p><h4>Mathematical Framework</h4><p>The total state of the global population is distributed between N cities with distinction between susceptible, infected, and recovered populations:</p><div class='math-block'><p>Evolution equations:</p><p>x\u2080 = (s\u2080, i\u2080, r\u2080)</p><p>x\u2099\u208a\u2081 = S(x\u2099)</p><p>Where S(x) consists of:</p><p>x\u2099\u208a\u2081 = C\u2082 \u2218 \u03a3 \u2218 C\u2081(Ms\u2099, Mi\u2099, Mr\u2099)</p></div><h4>Technical Implementation</h4><ul><li><strong>Markov Matrix M:</strong> Probabilistically shuffles population between cities</li><li><strong>Global SIR Function \u03a3:</strong> Locally spreads diseases according to SIR model</li><li><strong>Cleaning Functions C\u2081, C\u2082:</strong> Maintain population constants using Hare-Neimeyer Method</li><li><strong>3D Visualization:</strong> Real-time Godot globe showing spread patterns</li></ul><h4>Grant Recognition</h4><p>This project received <strong>grant funding to incorporate Neural Networks</strong> for enhanced predictive modeling. The combination of stochastic modeling with machine learning creates a powerful tool for understanding pandemic dynamics.</p><p>The simulation allows users to experiment with different virus parameters and observe how mathematical models translate into real-world spread patterns, making complex epidemiological concepts accessible and interactive.</p>",
-      "tags": ["NumPy", "SciPy", "Godot 3D", "Markov Chains", "SIRD Model", "Grant Funded"]
+      "content_html": "<p><strong>Maldemic</strong> is a stochastic disease-spread simulator that turns SIR equations and city mobility into a live 3D globe. I like projects where the math becomes something you can inspect with your eyes.</p><h4>Data flow</h4><p>Python computes population movement with a Markov matrix, updates local susceptible/infected/recovered states, then passes the evolving state into a Godot visualization.</p><h4>Technical shape</h4><ul><li>Markov-chain mobility between cities</li><li>SIR disease dynamics for local spread</li><li>Population cleanup to keep totals consistent</li><li>3D globe rendering for real-time visual feedback</li></ul><p>The project won 2nd place at BLOOM Hackathon and received grant support for neural-network forecasting work.</p>",
+      "tags": ["NumPy", "SciPy", "Godot 3D", "Markov Chains", "SIR Model", "Simulation"]
     }
   ]
 }
