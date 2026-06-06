@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 from litestar import Controller, get
@@ -21,9 +22,9 @@ FILTER_TAGS = [
         "description": "Interactive projects where systems, simulations, procedural rules, or game loops do the talking.",
     },
     {
-        "label": "Long-term Builds",
+        "label": "Long term Builds",
         "slug": "long-term-builds",
-        "description": "Projects I kept building past the initial idea instead of leaving as one-off demos.",
+        "description": "Projects I kept building past the initial idea instead of leaving as one off demos.",
     },
 ]
 
@@ -37,11 +38,11 @@ def _load_data() -> dict:
     def _project_buckets(text: str) -> list[str]:
         buckets = []
 
-        if any(term in text for term in ("recommend", "search", "rag", "retrieval", "similar", "explainable", "why", "crawler", "filters")):
+        if re.search(r"\b(recommend\w*|search\w*|rag|retrieval|similar|explainable|why|crawler|filters?)\b", text):
             buckets.append("explainable-search")
         if any(term in text for term in ("godot", "game jam", "gdc", "itch.io", "simulator", "3d", "shaders")):
             buckets.append("games-sims")
-        if "long-term" in text:
+        if "long term" in text:
             buckets.append("long-term-builds")
 
         return buckets

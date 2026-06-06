@@ -3,14 +3,14 @@
     {
       "slug": "nextsteamgame",
       "title": "nextsteamgame.com",
-      "description": "A Steam game recommender for people who know exactly why they like a game, even when that reason is weirdly specific.",
-      "long_description": "I built this because most game recommenders stop at \"pick a game you like\" and then hand you a mystery list. I wanted something that lets people say what actually matters: Persona 5 for the jazz fusion OST and modern Tokyo setting, not just because it is an RPG. The goal is to help niche games surface for the right reasons, and to show users why a match made sense instead of hiding the recommendation behind a black box. It is free, open source, and very much a passion project; the implementation details live in the repo for anyone who wants the deeper data-flow tour.",
+      "description": "A Steam similarity tool for people who want control over why two games are considered similar.",
+      "long_description": "I built this because most similarity recommenders only let users pick a game, then hand back results without explaining what actually matched. If I like Persona 5 for the jazz fusion OST and modern Tokyo setting, I want to search from those reasons, not just a broad RPG label. The goal is to help people find new games, give niche games a better highlight, and show which features drove each recommendation.",
       "image": "/static/images/446267084-5f2c0604-38f6-497f-ab21-1363ce99a627.png",
       "video": "/static/videos/steam_rec_demo_silent.mp4",
       "badge": "Live",
       "github_stars_repo": "BakedSoups/Steam_Reccomender",
       "tools": [
-        "Long-term",
+        "Long term",
         "PostgreSQL",
         "ChromaDB",
         "Qdrant",
@@ -34,8 +34,8 @@
     {
       "slug": "superlinked-wine",
       "title": "Superlinked Wine Recommender",
-      "description": "Explainable wine search built with Superlinked SIE.",
-      "long_description": "An explainable wine recommender developed with the Superlinked team during early access to their SIE engine. Instead of only returning similar bottles, it shows which attributes shaped the match, like fizz, cherry notes, body, or acidity. The demo uses document processing, vector embeddings, and small-model inference to make wine discovery feel more transparent.",
+      "description": "An explainable wine search demo that shows which traits made a bottle match, not just a mystery list of similar wines.",
+      "long_description": "A wine recommender developed with the Superlinked team during early access to their SIE engine. It uses document processing, vector embeddings, and small model inference to explain why a result appears, whether the match came from fizz, cherry notes, body, acidity, or other wine attributes.",
       "image": "/static/images/superlinked_post.jpeg",
       "video": "/static/videos/superlinked_wine_sie_demo_silent.mp4",
       "badge": "Series A",
@@ -57,7 +57,7 @@
         }
       ],
       "tools": [
-        "Long-term",
+        "Long term",
         "Superlinked SIE",
         "Vector Search",
         "OCR",
@@ -96,13 +96,13 @@
     {
       "slug": "maldemic",
       "title": "Maldemic Simulator",
-      "description": "Stochastic SIR simulation with Markov-chain mobility and a live 3D globe. Public health data, but make it move.",
-      "long_description": "A stochastic pandemic simulator that models disease spread across city coordinates using Markov-chain mobility and SIR dynamics. Python computes the population state transitions, then Godot renders the spread on a 3D globe so people can see the model instead of just reading equations. It earned 2nd place at BLOOM Hackathon and later received grant support for neural-network forecasting work.",
+      "description": "A public health simulator built to make disease models easier for non researchers to see, question, and understand.",
+      "long_description": "We built Maldemic to help close the gap between researchers and the public. Disease models can feel locked behind papers and equations, so we turned SIR dynamics and Markov chain mobility into a 3D globe people can watch, question, and reason about. Python computes the stochastic population transitions, then Godot makes the spread visible for public education.",
       "image": "/static/images/maldemic_final.gif",
       "video": "/static/videos/maldemic_demo_silent.mp4",
       "badge": "2nd Place",
       "tools": [
-        "Long-term",
+        "Long term",
         "Python",
         "NumPy",
         "SciPy",
@@ -126,8 +126,8 @@
     {
       "slug": "nextchapter",
       "title": "Next Chapter",
-      "description": "Modular RAG for retirement planning questions. Personal finance, but less foggy.",
-      "long_description": "A hackathon project built to help people make sense of retirement planning questions like \"Can I retire in Asia?\" or \"How much should I start saving?\" The goal was not to automate away accountants, but to make the first pass through retirement variables faster, clearer, and less intimidating. We built a modular RAG system in about five hours with no WiFi, with finance guidance from Richard Vo at AMEX and teammates Eric Taylor and Faadil Shaik.",
+      "description": "A modular RAG tool that helps reduce retirement planning noise by letting people ask questions like \"Can I retire in the Philippines?\" and see the supporting data, not just a prompt answer.",
+      "long_description": "A hackathon project built to make retirement questions feel less foggy. Users can ask things like \"Can I retire in the Philippines?\" or \"How much should I start saving?\" and the system answers with retrieved context and visible data instead of pretending a prompt is a financial plan.",
       "image": "/static/images/nextchapter-preview.jpg",
       "badge": "Hackathon",
       "tools": [
@@ -158,12 +158,12 @@
     {
       "slug": "usfsearch",
       "title": "USF Search Engine Crawler",
-      "description": "Concurrent Go crawler with 300 extract workers and 300 DB workers. Basically a small lesson in backpressure.",
-      "long_description": "A high-throughput crawler built around data movement more than page scraping. 300 extract workers download and parse pages while 300 database workers batch writes into SQLite, with queue buffers keeping the system fed without falling over. It was a fun way to think through throughput, batching, worker coordination, and what happens when your pipeline moves faster than your database wants it to.",
+      "description": "A Go crawler that turns a university website into searchable data while handling worker queues, batching, and database backpressure.",
+      "long_description": "A search pipeline built around data movement more than page scraping. 300 extract workers download and parse pages while 300 database workers batch writes into SQLite, with queues keeping the system fed without falling over when the crawler moves faster than the database wants it to.",
       "image": "/static/images/usfimage.png",
       "badge": "Crawler",
       "tools": [
-        "Long-term",
+        "Long term",
         "Go",
         "SQLite",
         "Concurrency",
@@ -186,12 +186,12 @@
     {
       "slug": "antidote",
       "title": "Antidote Intelligence",
-      "description": "Data-poisoning detection for LLM training sets. Less model worship, more checking what we fed it.",
-      "long_description": "An open-source ML security tool for finding suspicious or poisoned content in training datasets before that data quietly becomes model behavior. The system uses a multi-agent analysis pipeline to inspect dataset content, generate hypotheses, and surface examples worth investigating. I like this project because it sits right at the point where data quality, automation, and model safety stop being abstract and start being operational.",
+      "description": "A dataset inspection tool for finding poisoned or suspicious training examples before they quietly become model behavior.",
+      "long_description": "An open source ML security project that treats training data as the place where model risk often starts. The system uses a multi agent analysis pipeline to inspect dataset content, generate hypotheses, and surface examples worth investigating before bad data becomes expensive behavior.",
       "image": "/static/images/AntitodeIntelegence.png",
       "badge": "Open Source",
       "tools": [
-        "Long-term",
+        "Long term",
         "Python",
         "OpenAI",
         "ML Security",
@@ -209,12 +209,12 @@
     {
       "slug": "dreamville",
       "title": "Dreamville",
-      "description": "Canvas LMS task tracker where assignment urgency is scored from behavior instead of vibes.",
-      "long_description": "A gamified Canvas LMS tracker that pulls assignments into a game loop, then scores urgency using completion patterns and difficulty signals. The fun part was not the coins; it was turning school workflow data into something students could act on without needing another dashboard yelling at them.",
+      "description": "A Canvas task tracker that turns assignment data into urgency signals so students know what to work on next without another noisy dashboard.",
+      "long_description": "A gamified Canvas LMS tracker that pulls assignments into a game loop, then scores urgency from completion patterns and difficulty signals. The useful part is turning school workflow data into a next action system students can act on without another dashboard yelling at them.",
       "image": "/static/images/dreamville-preview.gif",
       "badge": "In Progress",
       "tools": [
-        "Long-term",
+        "Long term",
         "Godot",
         "Go",
         "Canvas API",
@@ -232,8 +232,8 @@
     {
       "slug": "hyperrosen",
       "title": "Hyper Rosen",
-      "description": "Hackathon Godot galaxy with swirled Perlin planets, WFC city placement, enemies, and asteroids.",
-      "long_description": "A hackathon-built 3D Godot experiment in procedural space generation. We used swirled Perlin noise for planet placement so the world can keep expanding with an infinite-feeling galaxy structure, wave function collapse for city placement, and procedural systems for enemies and asteroids. It was not continued after the event, but I keep it here because it shows my interest in systems that evolve from local rules.",
+      "description": "A procedural galaxy prototype where planets, cities, enemies, and asteroids emerge from local generation rules instead of hand placement.",
+      "long_description": "A hackathon built Godot experiment in systems that can keep expanding. Swirled Perlin noise places planets, wave function collapse handles city placement, and procedural rules create enemies and asteroids, making the project feel like a small galaxy generated from reusable data rules.",
       "image": "/static/images/hyperrosen.png",
       "video": "/static/videos/hyperrosen_demo_silent.mp4",
       "badge": "Hackathon",
@@ -255,8 +255,8 @@
     {
       "slug": "cakewalk",
       "title": "Cake Walk",
-      "description": "One-day GDC game jam project about a little cake trying to make it through the street.",
-      "long_description": "A one-day game jam project we made and demoed at GDC Festival of Gaming. It was my first time at GDC, and showing a tiny game to a room full of people who love making things was genuinely special. Built with Keriya Son on 3D, Angie Peczon on art, Eric Taylor on shaders, and Ilce Perez on music. It was not continued after the jam, but the artifact captures the speed and joy of the event.",
+      "description": "A one day GDC game jam build that turned a tiny cake crossing the street into a playable demo people could try on the floor.",
+      "long_description": "A fast game jam pitch: make a tiny character readable, charming, and playable in a single day. We built and demoed Cake Walk at GDC Festival of Gaming with Keriya Son on 3D, Angie Peczon on art, Eric Taylor on shaders, and Ilce Perez on music.",
       "image": "/static/images/cakewalk_demo_image.png",
       "badge": "GDC Jam",
       "brand_icon": "/static/images/gdc_icon.webp",
@@ -300,8 +300,8 @@
     {
       "slug": "oldman",
       "title": "Old Man Climbs",
-      "description": "My first project, made in 2022 for a UC Merced game jam.",
-      "long_description": "A small vertical climber built over a weekend for a UC Merced game jam in 2022. It was my first project and was not continued after the jam, but it is still here as a reminder that shipping small, complete things is its own skill.",
+      "description": "A weekend game jam climber that taught me the first useful lesson: scope small enough to actually ship.",
+      "long_description": "A small vertical climber built over a weekend for a UC Merced game jam in 2022. It is here less as a technical flex and more as the first shipped artifact: a reminder that finishing a small loop teaches more than endlessly planning a bigger one.",
       "image": "/static/images/oldahhman.png",
       "badge": "First Project, 2022",
       "tools": [
@@ -320,12 +320,12 @@
     {
       "slug": "quick-autocorrect",
       "title": "Quick Autocorrect",
-      "description": "Obsidian plugin for fast autocorrect and personal dictionary cleanup while writing.",
-      "long_description": "A small Obsidian community plugin for cleaning up writing without leaving the note. It helps catch repeated misspellings, apply quick corrections, and keep a personal dictionary for words Obsidian should stop fighting you on. It is less glamorous than a big data system, but it has the same shape I like: take a messy stream of text and make it easier for people to work with.",
+      "description": "An Obsidian plugin that cleans up repeated writing mistakes in place so note taking stays fast instead of becoming typo management.",
+      "long_description": "A small community plugin for reducing friction while writing in Obsidian. It catches repeated misspellings, applies quick corrections, and keeps a personal dictionary for words Obsidian should stop fighting you on: a tiny version of the same pattern I like, cleaning a messy text stream into something easier to use.",
       "image": "/static/images/after.gif",
       "badge": "Obsidian",
       "tools": [
-        "Long-term",
+        "Long term",
         "TypeScript",
         "Obsidian",
         "Plugin",
@@ -342,12 +342,11 @@
     {
       "slug": "nutrifinder",
       "title": "NutriFinder",
-      "description": "Restaurant menu search for dietary constraints. Small app, useful filtering problem.",
-      "long_description": "A dietary search app that filters restaurant menu items by nutrition and constraint data. It is a smaller project, but it still has the shape I keep coming back to: pull in messy real-world information, normalize it enough to search, and give people a cleaner way to make a decision.",
+      "description": "A restaurant menu filter that helps people with dietary constraints find viable meals without reading every item manually.",
+      "long_description": "A small dietary search project with a practical pitch: pull in messy menu and nutrition information, normalize it enough to filter, and give people a cleaner way to decide what they can eat.",
       "image": "/static/images/nutrifinder.png",
       "badge": null,
       "tools": [
-        "Long-term",
         "React",
         "Flask",
         "Python",
@@ -365,12 +364,11 @@
     {
       "slug": "spiral",
       "title": "Spiral Visualizer",
-      "description": "Queue-driven spiral plotting with Matplotlib. Tiny, visual, useful for teaching data structures.",
-      "long_description": "A small visualization for spiral growth using queued directions. It is a compact teaching project, but I keep it around because visualizing state changes is often the fastest way to understand a system.",
+      "description": "A tiny queue visualizer that makes spiral growth and state changes easier to see than explain.",
+      "long_description": "A compact teaching visualization for spiral growth using queued directions. The pitch is simple: when a system changes step by step, showing the state often teaches faster than another paragraph of explanation.",
       "image": "/static/images/spiral.png",
       "badge": null,
       "tools": [
-        "Long-term",
         "Python",
         "Matplotlib",
         "Queues"
@@ -389,24 +387,27 @@
       "company": "Future Tilt",
       "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
       "role": "Software Engineer",
-      "duration": "Aug 2025 - Present",
+      "duration": "Jul 2025 to Present",
       "location": "San Francisco",
       "details": [
-        "Built ETL workflows with Airbyte, BigQuery, and AWS Lambda for analytics workloads supporting 50+ ecommerce clients and 20M+ daily queries.",
-        "Developed an AI email generation platform that turns campaign calendar data into editable marketing emails while pulling assets from Google Drive."
+        "Collaborated with a Data Consultant to build ETL pipelines with Airbyte, BigQuery, and AWS Lambda, capturing customer behavior and demographic data across 50+ ecommerce clients and 20M+ daily queries.",
+        "Developed an AI email template platform with React, FastAPI, Docker, Google OAuth, and Klaviyo template logic, transforming Google Sheets campaign calendars into editable emails with Google Drive asset sync.",
+        "Built customer segmentation and churn monitoring workflows with SQL and Python across Shopify and Klaviyo data to support more targeted marketing strategies."
       ],
       "tech": [
+        "React",
+        "FastAPI",
         "Airbyte",
         "BigQuery",
         "AWS Lambda",
         "Klaviyo API",
-        "Google Sheets",
-        "Trello API"
+        "Google OAuth",
+        "Docker"
       ],
       "link_preview": {
         "title": "Future Tilt",
         "url": "https://futuretilt.com/",
-        "description": "Actionable data, high-impact campaigns, and measurable ROI for DTC brands.",
+        "description": "Actionable data, high impact campaigns, and measurable ROI for DTC brands.",
         "image": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png"
       },
       "year": "2025",
@@ -416,7 +417,7 @@
       "company": "Superlinked (Series A)",
       "logo": "superlinked.png",
       "role": "SIE Demo Software Developer (Contract)",
-      "duration": "Mar 2026 - May 2026",
+      "duration": "Mar 2026 to May 2026",
       "location": "San Francisco Bay Area \u00b7 Hybrid",
       "details": [
         "Developed a paid launch demo for Superlinked's SIE engine during early access, working with Valentin Marek and Eric Taylor to showcase explainable wine recommendations.",
@@ -438,18 +439,19 @@
       "company": "USF MAGIC Lab",
       "logo": "San-Francisco-Dons-Logo-2001.png",
       "role": "NLP Research Assistant",
-      "duration": "Mar 2025 - May 2026",
+      "duration": "Mar 2025 to May 2026",
       "location": "San Francisco",
       "details": [
-        "Built parallelized ETL pipelines across 5 virtual machines to generate entity-aware NLP datasets from 20,000+ news articles.",
-        "Developed an explainable entity-based sentiment framework that preserved relationship paths instead of flattening everything into a mystery score.",
-        "Used graph-based relationship extraction to connect articles, entities, sentiment, and evidence into datasets researchers could inspect."
+        "Built parallelized ETL pipelines in Go across 5 virtual machines, using DuckDB analytical querying to generate entity aware NLP datasets from 20,000+ news articles.",
+        "Developed and evaluated an explainable aspect based sentiment analysis framework using REBEL, PyTorch, and graph based NLP methods, improving sentiment classification performance by 20% over VADER.",
+        "Used graph based relationship extraction to connect articles, entities, sentiment, and evidence into datasets researchers could inspect."
       ],
       "tech": [
-        "Python",
         "Go",
+        "Python",
         "NLP",
-        "ETL",
+        "PyTorch",
+        "REBEL",
         "Graph Extraction",
         "DuckDB"
       ],
@@ -457,23 +459,24 @@
       "show_year": true
     },
     {
-      "company": "Alaris Security (Pre-seed)",
+      "company": "Alaris Security (Pre seed)",
       "logo": "alaris.ico",
       "role": "Junior Fullstack Engineer",
-      "duration": "Aug 2025 - Nov 2025",
+      "duration": "Aug 2025 to Nov 2025",
       "location": "San Francisco",
       "details": [
-        "Designed orchestration workflows with Prefect and Airflow to normalize CrowdStrike, Elastic, and Microsoft Defender telemetry for SOC analytics.",
-        "Built an agentic cybersecurity analysis system that searched across millions of security records and generated customer-specific NIS2 compliance reports.",
-        "Created customer-facing report tooling that linked AI-generated findings back to supporting telemetry, because security summaries are not useful if nobody can trace them."
+        "Designed orchestration workflows with Prefect and Airflow to normalize CrowdStrike, Elastic, and Microsoft Defender telemetry while powering an agent driven cybersecurity analysis platform that reduced investigation time from 10 hours to approximately 1 hour.",
+        "Built customer facing compliance tooling with Next.js, React, and React PDF, generating NIS2 reports that linked agent generated findings from millions of raw SOC2 logs back to source telemetry.",
+        "Established reusable tRPC service patterns across a Next.js monorepo, consolidating 50+ frontend database calls into typed backend procedures."
       ],
       "tech": [
+        "Next.js",
+        "React PDF",
+        "tRPC",
         "Prefect",
         "Airflow",
         "CrowdStrike",
-        "Elastic",
-        "Microsoft Defender",
-        "SOC Analytics"
+        "Microsoft Defender"
       ],
       "year": "2025",
       "show_year": false
@@ -482,11 +485,11 @@
       "company": "Future Tilt",
       "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
       "role": "Software Engineering Intern",
-      "duration": "Jun 2025 - Aug 2025",
+      "duration": "Jun 2025 to Aug 2025",
       "location": "San Francisco",
       "details": [
         "Built a Lambda campaign orchestration service that syncs Google Sheets planning calendars with Klaviyo campaigns and Trello production tasks, cutting setup time by 50%.",
-        "Worked across Google Sheets, Klaviyo, Trello, and AWS Lambda to turn campaign planning data into production-ready automation."
+        "Worked across Google Sheets, Klaviyo, Trello, and AWS Lambda to turn campaign planning data into production ready automation."
       ],
       "tech": [
         "AWS Lambda",
@@ -502,10 +505,10 @@
       "company": "Candle Stories",
       "logo": "candle_true_stories_logo.jpg",
       "role": "Production Assistant",
-      "duration": "Apr 2025 - Aug 2025",
+      "duration": "Apr 2025 to Aug 2025",
       "location": "San Francisco",
       "details": [
-        "Supported documentary shoots, equipment handling, and on-set logistics. Less data pipeline, more real-world pipeline."
+        "Supported documentary shoots, equipment handling, and on set logistics. Less data pipeline, more real world pipeline."
       ],
       "tech": [
         "Production",
@@ -518,12 +521,12 @@
       "company": "USF Strategic Enrollment Management",
       "logo": "San-Francisco-Dons-Logo-2001.png",
       "role": "Data Analyst / Web Intern",
-      "duration": "Jul 2024 - Jul 2025",
+      "duration": "Jul 2024 to Jul 2025",
       "location": "San Francisco",
       "details": [
         "Analyzed 500,000+ student records from SLATE, turning raw SQL exports into datasets, dashboards, and PCA models for admissions strategy.",
-        "Evaluated student interactions across admissions events and geographic regions to surface recruitment and marketing insights.",
-        "Automated recurring web and reporting updates with Python and Jinja2 so the data work did not become manual copy-paste theater."
+        "Identified regional enrollment patterns, including strong correlations between Florida applicants and SEO driven recruitment channels, informing admissions marketing strategy.",
+        "Automated recurring web and reporting updates with Python and Jinja2 so the data work did not become manual copy paste theater."
       ],
       "tech": [
         "SQL",
@@ -540,32 +543,30 @@
       "company": "iD Tech Camps (Stanford)",
       "logo": "stanford.webp",
       "role": "Machine Learning Instructor",
-      "duration": "Jun 2024 - Aug 2024",
+      "duration": "Jun 2024 to Aug 2024",
       "location": "Stanford, California",
       "details": [
-        "Taught high school students Python, neural networks, NumPy, Pandas, Keras, and practical AI workflows through project-based lessons.",
-        "Rebuilt check-in/out analysis with Seaborn heatmaps to understand traffic flow and improve camp operations."
+        "Taught project based Python and machine learning lessons to high school students at Stanford, covering neural networks, NumPy, Pandas, and Keras."
       ],
       "tech": [
         "Python",
         "PyTorch",
         "Keras",
         "NumPy",
-        "Pandas",
-        "Seaborn"
+        "Pandas"
       ],
       "year": "2024",
       "show_year": true
     },
     {
-      "company": "UC Merced - SATAL",
+      "company": "UC Merced to SATAL",
       "logo": "ucm_logo_rgb_m_3.60692d9749f2.png",
       "role": "Data Analyst Intern",
-      "duration": "Aug 2023 - May 2024",
+      "duration": "Aug 2023 to May 2024",
       "location": "Merced",
       "details": [
-        "Analyzed thousands of Qualtrics survey responses and focus-group notes from 500+ students to identify drivers of engagement and academic performance.",
-        "Used Pandas and OpenAI-assisted categorization to turn open-ended feedback into structured themes faculty could act on.",
+        "Analyzed thousands of Qualtrics survey responses and focus group notes from 500+ students to identify drivers of engagement and academic performance.",
+        "Used Pandas and OpenAI assisted categorization to turn open ended feedback into structured themes faculty could act on.",
         "Presented research on methodology at the Fresno State Exemplary Practices in Higher Education Conference."
       ],
       "tech": [
@@ -582,8 +583,8 @@
       "company": "Acme Builders Incorporated",
       "logo": "acme.jpeg",
       "role": "Construction Worker \u2192 Accounting Assistant",
-      "duration": "May 2021 - Dec 2023",
-      "location": "Oakland \u00b7 On-site \u00b7 Part-time",
+      "duration": "May 2021 to Dec 2023",
+      "location": "Oakland \u00b7 On site \u00b7 Part time",
       "details": [
         "Built internal data systems in Python with NumPy and Pandas to clean, organize, and standardize records across departments.",
         "Updated, organized, and archived company documents to support payroll cycles, budgeting, and reliable business data management.",
@@ -609,7 +610,7 @@
       "date": "December 2024",
       "label": "Latest Post",
       "label_color": "accent",
-      "content_html": "<p>I demoed <strong>Antidote Intelligence</strong> at Continue DX, showing a content-aware data poisoning detection system for ML training datasets. The basic pitch: before we argue about the model, let's look harder at the data we fed it.</p><h4>Why this matters</h4><p>Training data quality is one of those problems that hides until it becomes expensive. Bad examples, poisoned content, or subtle distribution weirdness can leak into model behavior long before anyone notices.</p><h4>What I built</h4><ul><li>Multi-agent review pipeline for suspicious dataset content</li><li>Hypothesis generation and validation around poisoned examples</li><li>Content-aware checks instead of only metadata-based filtering</li><li>Reports aimed at making data issues inspectable, not magical</li></ul><p>I am interested in this space because it treats data quality as infrastructure. The model gets the attention, but the dataset is where a lot of the story starts.</p>",
+      "content_html": "<p>I demoed <strong>Antidote Intelligence</strong> at Continue DX, showing a content aware data poisoning detection system for ML training datasets. The basic pitch: before we argue about the model, let's look harder at the data we fed it.</p><h4>Why this matters</h4><p>Training data quality is one of those problems that hides until it becomes expensive. Bad examples, poisoned content, or subtle distribution weirdness can leak into model behavior long before anyone notices.</p><h4>What I built</h4><ul><li>Multi agent review pipeline for suspicious dataset content</li><li>Hypothesis generation and validation around poisoned examples</li><li>Content aware checks instead of only metadata based filtering</li><li>Reports aimed at making data issues inspectable, not magical</li></ul><p>I am interested in this space because it treats data quality as infrastructure. The model gets the attention, but the dataset is where a lot of the story starts.</p>",
       "tags": [
         "ML Security",
         "Data Quality",
@@ -623,7 +624,7 @@
       "date": "Feb 2025",
       "label": "Earlier Post",
       "label_color": "success",
-      "content_html": "<p><strong>Maldemic</strong> is a stochastic disease-spread simulator that turns SIR equations and city mobility into a live 3D globe. I like projects where the math becomes something you can inspect with your eyes.</p><h4>Data flow</h4><p>Python computes population movement with a Markov matrix, updates local susceptible/infected/recovered states, then passes the evolving state into a Godot visualization.</p><h4>Technical shape</h4><ul><li>Markov-chain mobility between cities</li><li>SIR disease dynamics for local spread</li><li>Population cleanup to keep totals consistent</li><li>3D globe rendering for real-time visual feedback</li></ul><p>The project won 2nd place at BLOOM Hackathon and received grant support for neural-network forecasting work.</p>",
+      "content_html": "<p><strong>Maldemic</strong> is a stochastic disease spread simulator that turns SIR equations and city mobility into a live 3D globe. I like projects where the math becomes something you can inspect with your eyes.</p><h4>Data flow</h4><p>Python computes population movement with a Markov matrix, updates local susceptible/infected/recovered states, then passes the evolving state into a Godot visualization.</p><h4>Technical shape</h4><ul><li>Markov chain mobility between cities</li><li>SIR disease dynamics for local spread</li><li>Population cleanup to keep totals consistent</li><li>3D globe rendering for real time visual feedback</li></ul><p>The project won 2nd place at BLOOM Hackathon and received grant support for neural network forecasting work.</p>",
       "tags": [
         "NumPy",
         "SciPy",
