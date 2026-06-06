@@ -100,6 +100,16 @@
               <span class="tool-tag">{{ tech }}</span>
               {% endfor %}
             </div>
+            {% if exp.link_preview %}
+            <a class="experience-preview" href="{{ exp.link_preview.url }}" target="_blank" rel="noopener">
+              <img src="/static/images/{{ exp.link_preview.image }}" alt="{{ exp.link_preview.title }}" />
+              <span>
+                <strong>{{ exp.link_preview.title }}</strong>
+                <small>{{ exp.link_preview.description }}</small>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            {% endif %}
           </div>
           {% endfor %}
         </div>

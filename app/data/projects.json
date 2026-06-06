@@ -9,10 +9,26 @@
       "video": "/static/videos/steam_rec_demo_silent.mp4",
       "badge": "Live",
       "github_stars_repo": "BakedSoups/Steam_Reccomender",
-      "tools": ["Long-term", "PostgreSQL", "ChromaDB", "Qdrant", "ModernBERT", "FastAPI", "Docker"],
+      "tools": [
+        "Long-term",
+        "PostgreSQL",
+        "ChromaDB",
+        "Qdrant",
+        "ModernBERT",
+        "FastAPI",
+        "Docker"
+      ],
       "links": [
-        {"label": "Visit Site", "url": "https://nextsteamgame.com/", "icon": "fa-solid fa-globe"},
-        {"label": "View Code", "url": "https://github.com/BakedSoups/Steam_Reccomender", "icon": "fab fa-github"}
+        {
+          "label": "Visit Site",
+          "url": "https://nextsteamgame.com/",
+          "icon": "fa-solid fa-globe"
+        },
+        {
+          "label": "View Code",
+          "url": "https://github.com/BakedSoups/Steam_Reccomender",
+          "icon": "fab fa-github"
+        }
       ]
     },
     {
@@ -26,16 +42,55 @@
       "brand_icon": "/static/images/superlinked.png",
       "brand_alt": "Superlinked",
       "media": [
-        {"label": "Post", "type": "image", "src": "/static/images/superlinked_post.jpeg", "thumbnail": "/static/images/superlinked_post.jpeg"},
-        {"label": "Demo", "type": "video", "src": "/static/videos/superlinked_wine_sie_demo_silent.mp4", "poster": "/static/images/superlinked_post.jpeg", "thumbnail": "/static/images/superlinked-wine-preview.jpg"}
+        {
+          "label": "Post",
+          "type": "image",
+          "src": "/static/images/superlinked_post.jpeg",
+          "thumbnail": "/static/images/superlinked_post.jpeg"
+        },
+        {
+          "label": "Demo",
+          "type": "video",
+          "src": "/static/videos/superlinked_wine_sie_demo_silent.mp4",
+          "poster": "/static/images/superlinked_post.jpeg",
+          "thumbnail": "/static/images/superlinked-wine-preview.jpg"
+        }
       ],
-      "tools": ["Long-term", "Superlinked SIE", "Vector Search", "OCR", "Small Models", "Chroma", "PostgreSQL"],
+      "tools": [
+        "Long-term",
+        "Superlinked SIE",
+        "Vector Search",
+        "OCR",
+        "Small Models",
+        "Chroma",
+        "PostgreSQL"
+      ],
       "links": [
-        {"label": "View Code", "url": "https://github.com/BakedSoups/WineRetrieval", "icon": "fab fa-github"},
-        {"label": "SIE Example", "url": "https://github.com/superlinked/sie/tree/main/examples/wine-recommender", "icon": "fab fa-github"},
-        {"label": "Docs", "url": "https://superlinked.com/docs/examples/wine-recommender", "icon": "fa-solid fa-file"},
-        {"label": "My Post", "url": "https://lnkd.in/g6aE9ic5", "icon": "fab fa-linkedin"},
-        {"label": "Superlinked Post", "url": "https://www.linkedin.com/posts/superlinked_you-can-now-use-the-superlinked-inference-activity-7458172694207848448-jd8H?utm_source=share&utm_medium=member_desktop&rcm=ACoAADuPwKgBYzoLBSuprHB0UxK8Lo1LrdR91w4", "icon": "fab fa-linkedin"}
+        {
+          "label": "View Code",
+          "url": "https://github.com/BakedSoups/WineRetrieval",
+          "icon": "fab fa-github"
+        },
+        {
+          "label": "SIE Example",
+          "url": "https://github.com/superlinked/sie/tree/main/examples/wine-recommender",
+          "icon": "fab fa-github"
+        },
+        {
+          "label": "Docs",
+          "url": "https://superlinked.com/docs/examples/wine-recommender",
+          "icon": "fa-solid fa-file"
+        },
+        {
+          "label": "My Post",
+          "url": "https://lnkd.in/g6aE9ic5",
+          "icon": "fab fa-linkedin"
+        },
+        {
+          "label": "Superlinked Post",
+          "url": "https://www.linkedin.com/posts/superlinked_you-can-now-use-the-superlinked-inference-activity-7458172694207848448-jd8H?utm_source=share&utm_medium=member_desktop&rcm=ACoAADuPwKgBYzoLBSuprHB0UxK8Lo1LrdR91w4",
+          "icon": "fab fa-linkedin"
+        }
       ]
     },
     {
@@ -46,10 +101,26 @@
       "image": "/static/images/maldemic_final.gif",
       "video": "/static/videos/maldemic_demo_silent.mp4",
       "badge": "2nd Place",
-      "tools": ["Long-term", "Python", "NumPy", "SciPy", "Godot", "Markov Chains", "SIR"],
+      "tools": [
+        "Long-term",
+        "Python",
+        "NumPy",
+        "SciPy",
+        "Godot",
+        "Markov Chains",
+        "SIR"
+      ],
       "links": [
-        {"label": "View Project", "url": "https://github.com/BakedSoups/Pandemic", "icon": "fab fa-github"},
-        {"label": "Research Paper", "url": "https://drive.google.com/file/d/1tqMzypnbvTkRvCp1lzxrTIlANEhi2Kfb/view?usp=sharing", "icon": "fa-solid fa-file"}
+        {
+          "label": "View Project",
+          "url": "https://github.com/BakedSoups/Pandemic",
+          "icon": "fab fa-github"
+        },
+        {
+          "label": "Research Paper",
+          "url": "https://drive.google.com/file/d/1tqMzypnbvTkRvCp1lzxrTIlANEhi2Kfb/view?usp=sharing",
+          "icon": "fa-solid fa-file"
+        }
       ]
     },
     {
@@ -59,11 +130,29 @@
       "long_description": "A hackathon project built to help people make sense of retirement planning questions like \"Can I retire in Asia?\" or \"How much should I start saving?\" The goal was not to automate away accountants, but to make the first pass through retirement variables faster, clearer, and less intimidating. We built a modular RAG system in about five hours with no WiFi, with finance guidance from Richard Vo at AMEX and teammates Eric Taylor and Faadil Shaik.",
       "image": "/static/images/nextchapter-preview.jpg",
       "badge": "Hackathon",
-      "tools": ["RAG", "LLMs", "FinTech", "Personal Finance", "AI for Good"],
+      "tools": [
+        "RAG",
+        "LLMs",
+        "FinTech",
+        "Personal Finance",
+        "AI for Good"
+      ],
       "links": [
-        {"label": "Watch Demo", "url": "/static/videos/nextchapter.mp4", "icon": "fa-solid fa-video"},
-        {"label": "Vimeo Demo", "url": "https://lnkd.in/gdTRHgBm", "icon": "fa-brands fa-vimeo-v"},
-        {"label": "View Code", "url": "https://lnkd.in/ggYVDEeE", "icon": "fab fa-github"}
+        {
+          "label": "Watch Demo",
+          "url": "/static/videos/nextchapter.mp4",
+          "icon": "fa-solid fa-video"
+        },
+        {
+          "label": "Vimeo Demo",
+          "url": "https://lnkd.in/gdTRHgBm",
+          "icon": "fa-brands fa-vimeo-v"
+        },
+        {
+          "label": "View Code",
+          "url": "https://lnkd.in/ggYVDEeE",
+          "icon": "fab fa-github"
+        }
       ]
     },
     {
@@ -73,10 +162,25 @@
       "long_description": "A high-throughput crawler built around data movement more than page scraping. 300 extract workers download and parse pages while 300 database workers batch writes into SQLite, with queue buffers keeping the system fed without falling over. It was a fun way to think through throughput, batching, worker coordination, and what happens when your pipeline moves faster than your database wants it to.",
       "image": "/static/images/usfimage.png",
       "badge": "Crawler",
-      "tools": ["Long-term", "Go", "SQLite", "Concurrency", "Batch Writes", "Queues"],
+      "tools": [
+        "Long-term",
+        "Go",
+        "SQLite",
+        "Concurrency",
+        "Batch Writes",
+        "Queues"
+      ],
       "links": [
-        {"label": "View Project", "url": "https://github.com/BakedSoups/USF-Search-Engine", "icon": "fab fa-github"},
-        {"label": "Documentation", "url": "https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing", "icon": "fa-solid fa-file"}
+        {
+          "label": "View Project",
+          "url": "https://github.com/BakedSoups/USF-Search-Engine",
+          "icon": "fab fa-github"
+        },
+        {
+          "label": "Documentation",
+          "url": "https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing",
+          "icon": "fa-solid fa-file"
+        }
       ]
     },
     {
@@ -86,9 +190,20 @@
       "long_description": "An open-source ML security tool for finding suspicious or poisoned content in training datasets before that data quietly becomes model behavior. The system uses a multi-agent analysis pipeline to inspect dataset content, generate hypotheses, and surface examples worth investigating. I like this project because it sits right at the point where data quality, automation, and model safety stop being abstract and start being operational.",
       "image": "/static/images/AntitodeIntelegence.png",
       "badge": "Open Source",
-      "tools": ["Long-term", "Python", "OpenAI", "ML Security", "Data Quality", "Agent Pipeline"],
+      "tools": [
+        "Long-term",
+        "Python",
+        "OpenAI",
+        "ML Security",
+        "Data Quality",
+        "Agent Pipeline"
+      ],
       "links": [
-        {"label": "Open Source Code", "url": "https://github.com/BakedSoups/Antitodte_Intelegence2/tree/main", "icon": "fab fa-github"}
+        {
+          "label": "Open Source Code",
+          "url": "https://github.com/BakedSoups/Antitodte_Intelegence2/tree/main",
+          "icon": "fab fa-github"
+        }
       ]
     },
     {
@@ -98,9 +213,20 @@
       "long_description": "A gamified Canvas LMS tracker that pulls assignments into a game loop, then scores urgency using completion patterns and difficulty signals. The fun part was not the coins; it was turning school workflow data into something students could act on without needing another dashboard yelling at them.",
       "image": "/static/images/dreamville-preview.gif",
       "badge": "In Progress",
-      "tools": ["Long-term", "Godot", "Go", "Canvas API", "Regression", "Workflow Data"],
+      "tools": [
+        "Long-term",
+        "Godot",
+        "Go",
+        "Canvas API",
+        "Regression",
+        "Workflow Data"
+      ],
       "links": [
-        {"label": "View Code", "url": "https://github.com/complex-bit/DonsHack2025", "icon": "fab fa-github"}
+        {
+          "label": "View Code",
+          "url": "https://github.com/complex-bit/DonsHack2025",
+          "icon": "fab fa-github"
+        }
       ]
     },
     {
@@ -111,9 +237,19 @@
       "image": "/static/images/hyperrosen.png",
       "video": "/static/videos/hyperrosen_demo_silent.mp4",
       "badge": "Hackathon",
-      "tools": ["Godot", "Hackathon", "Procedural Generation", "Perlin Noise", "Wave Function Collapse"],
+      "tools": [
+        "Godot",
+        "Hackathon",
+        "Procedural Generation",
+        "Perlin Noise",
+        "Wave Function Collapse"
+      ],
       "links": [
-        {"label": "View Project", "url": "https://github.com/4automatons/hyper-rosen2", "icon": "fab fa-github"}
+        {
+          "label": "View Project",
+          "url": "https://github.com/4automatons/hyper-rosen2",
+          "icon": "fab fa-github"
+        }
       ]
     },
     {
@@ -126,13 +262,39 @@
       "brand_icon": "/static/images/gdc_icon.webp",
       "brand_alt": "GDC",
       "media": [
-        {"label": "Cover", "type": "image", "src": "/static/images/cakewalk_demo_image.png", "thumbnail": "/static/images/cakewalk_demo_image.png"},
-        {"label": "GDC", "type": "image", "src": "/static/images/presenting_cakewalk.webp", "thumbnail": "/static/images/presenting_cakewalk.webp"},
-        {"label": "Demo", "type": "video", "src": "/static/videos/cake_walk_demo_in_gdc.mp4", "poster": "/static/images/cakewalk_demo_image.png", "thumbnail": "/static/images/cakewalk_demo_image.png"}
+        {
+          "label": "Cover",
+          "type": "image",
+          "src": "/static/images/cakewalk_demo_image.png",
+          "thumbnail": "/static/images/cakewalk_demo_image.png"
+        },
+        {
+          "label": "GDC",
+          "type": "image",
+          "src": "/static/images/presenting_cakewalk.webp",
+          "thumbnail": "/static/images/presenting_cakewalk.webp"
+        },
+        {
+          "label": "Demo",
+          "type": "video",
+          "src": "/static/videos/cake_walk_demo_in_gdc.mp4",
+          "poster": "/static/images/cakewalk_demo_image.png",
+          "thumbnail": "/static/images/cakewalk_demo_image.png"
+        }
       ],
-      "tools": ["Godot", "Game Jam", "3D", "Shaders", "Team Project"],
+      "tools": [
+        "Godot",
+        "Game Jam",
+        "3D",
+        "Shaders",
+        "Team Project"
+      ],
       "links": [
-        {"label": "Play on itch.io", "url": "https://itch.io/jam/the-jam-at-gdc/rate/4363262", "icon": "fa-solid fa-gamepad"}
+        {
+          "label": "Play on itch.io",
+          "url": "https://itch.io/jam/the-jam-at-gdc/rate/4363262",
+          "icon": "fa-solid fa-gamepad"
+        }
       ]
     },
     {
@@ -142,9 +304,17 @@
       "long_description": "A small vertical climber built over a weekend for a UC Merced game jam in 2022. It was my first project and was not continued after the jam, but it is still here as a reminder that shipping small, complete things is its own skill.",
       "image": "/static/images/oldahhman.png",
       "badge": "First Project, 2022",
-      "tools": ["Godot", "Game Jam", "2022"],
+      "tools": [
+        "Godot",
+        "Game Jam",
+        "2022"
+      ],
       "links": [
-        {"label": "View Project", "url": "https://itch.io/jam/uc-merced-gdc-game-jam-2023/rate/2353610", "icon": "fa-solid fa-gamepad"}
+        {
+          "label": "View Project",
+          "url": "https://itch.io/jam/uc-merced-gdc-game-jam-2023/rate/2353610",
+          "icon": "fa-solid fa-gamepad"
+        }
       ]
     },
     {
@@ -154,9 +324,19 @@
       "long_description": "A small Obsidian community plugin for cleaning up writing without leaving the note. It helps catch repeated misspellings, apply quick corrections, and keep a personal dictionary for words Obsidian should stop fighting you on. It is less glamorous than a big data system, but it has the same shape I like: take a messy stream of text and make it easier for people to work with.",
       "image": "/static/images/after.gif",
       "badge": "Obsidian",
-      "tools": ["Long-term", "TypeScript", "Obsidian", "Plugin", "Text UX"],
+      "tools": [
+        "Long-term",
+        "TypeScript",
+        "Obsidian",
+        "Plugin",
+        "Text UX"
+      ],
       "links": [
-        {"label": "Plugin Page", "url": "https://community.obsidian.md/plugins/quick-autocorrect", "icon": "fa-solid fa-puzzle-piece"}
+        {
+          "label": "Plugin Page",
+          "url": "https://community.obsidian.md/plugins/quick-autocorrect",
+          "icon": "fa-solid fa-puzzle-piece"
+        }
       ]
     },
     {
@@ -166,9 +346,20 @@
       "long_description": "A dietary search app that filters restaurant menu items by nutrition and constraint data. It is a smaller project, but it still has the shape I keep coming back to: pull in messy real-world information, normalize it enough to search, and give people a cleaner way to make a decision.",
       "image": "/static/images/nutrifinder.png",
       "badge": null,
-      "tools": ["Long-term", "React", "Flask", "Python", "Search", "Filters"],
+      "tools": [
+        "Long-term",
+        "React",
+        "Flask",
+        "Python",
+        "Search",
+        "Filters"
+      ],
       "links": [
-        {"label": "View Project", "url": "https://devpost.com/software/nutrifinder", "icon": "fa-solid fa-globe"}
+        {
+          "label": "View Project",
+          "url": "https://devpost.com/software/nutrifinder",
+          "icon": "fa-solid fa-globe"
+        }
       ]
     },
     {
@@ -178,38 +369,70 @@
       "long_description": "A small visualization for spiral growth using queued directions. It is a compact teaching project, but I keep it around because visualizing state changes is often the fastest way to understand a system.",
       "image": "/static/images/spiral.png",
       "badge": null,
-      "tools": ["Long-term", "Python", "Matplotlib", "Queues"],
+      "tools": [
+        "Long-term",
+        "Python",
+        "Matplotlib",
+        "Queues"
+      ],
       "links": [
-        {"label": "View Code", "url": "https://github.com/BakedSoups/Visualize-Spirals", "icon": "fab fa-github"}
+        {
+          "label": "View Code",
+          "url": "https://github.com/BakedSoups/Visualize-Spirals",
+          "icon": "fab fa-github"
+        }
       ]
     }
   ],
   "experiences": [
     {
-      "company": "Future Tilt",
-      "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
-      "role": "Software Engineer",
-      "duration": "Jul 2025 - Present",
-      "location": "San Francisco",
-      "details": [
-        "Built ETL workflows with Airbyte, BigQuery, and AWS Lambda for analytics workloads supporting 50+ ecommerce clients and 20M+ daily queries.",
-        "Built a Lambda campaign orchestration service that syncs Google Sheets planning calendars with Klaviyo campaigns and Trello production tasks, cutting setup time by 50%.",
-        "Developed an AI email generation platform that turns campaign calendar data into editable marketing emails while pulling assets from Google Drive."
-      ],
-      "tech": ["Airbyte", "BigQuery", "AWS Lambda", "Klaviyo API", "Google Sheets", "Trello API"]
-    },
-    {
       "company": "Superlinked (Series A)",
       "logo": "superlinked.png",
       "role": "SIE Demo Software Developer (Contract)",
       "duration": "Mar 2026 - May 2026",
-      "location": "San Francisco Bay Area · Hybrid",
+      "location": "San Francisco Bay Area \u00b7 Hybrid",
       "details": [
         "Developed a paid launch demo for Superlinked's SIE engine during early access, working with Valentin Marek and Eric Taylor to showcase explainable wine recommendations.",
         "Built a RAG wine recommender that used Vivino data, small inference models, OCR, and text embeddings to surface similar wines with clearer reasoning.",
         "Shipped a React UI and containerized Python monorepo in Docker, keeping OCR and embedding modules cleanly separated for documentation users."
       ],
-      "tech": ["Superlinked SIE", "React", "Python", "Docker", "RAG", "Small Models"]
+      "tech": [
+        "Superlinked SIE",
+        "React",
+        "Python",
+        "Docker",
+        "RAG",
+        "Small Models"
+      ],
+      "year": "2026",
+      "show_year": true
+    },
+    {
+      "company": "Future Tilt",
+      "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
+      "role": "Software Engineer",
+      "duration": "Aug 2025 - Present",
+      "location": "San Francisco",
+      "details": [
+        "Built ETL workflows with Airbyte, BigQuery, and AWS Lambda for analytics workloads supporting 50+ ecommerce clients and 20M+ daily queries.",
+        "Developed an AI email generation platform that turns campaign calendar data into editable marketing emails while pulling assets from Google Drive."
+      ],
+      "tech": [
+        "Airbyte",
+        "BigQuery",
+        "AWS Lambda",
+        "Klaviyo API",
+        "Google Sheets",
+        "Trello API"
+      ],
+      "link_preview": {
+        "title": "Future Tilt",
+        "url": "https://futuretilt.com/",
+        "description": "Actionable data, high-impact campaigns, and measurable ROI for DTC brands.",
+        "image": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png"
+      },
+      "year": "2025",
+      "show_year": false
     },
     {
       "company": "Alaris Security (Pre-seed)",
@@ -222,7 +445,52 @@
         "Built an agentic cybersecurity analysis system that searched across millions of security records and generated customer-specific NIS2 compliance reports.",
         "Created customer-facing report tooling that linked AI-generated findings back to supporting telemetry, because security summaries are not useful if nobody can trace them."
       ],
-      "tech": ["Prefect", "Airflow", "CrowdStrike", "Elastic", "Microsoft Defender", "SOC Analytics"]
+      "tech": [
+        "Prefect",
+        "Airflow",
+        "CrowdStrike",
+        "Elastic",
+        "Microsoft Defender",
+        "SOC Analytics"
+      ],
+      "year": "2025",
+      "show_year": false
+    },
+    {
+      "company": "Future Tilt",
+      "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
+      "role": "Software Engineering Intern",
+      "duration": "Jun 2025 - Aug 2025",
+      "location": "San Francisco",
+      "details": [
+        "Built a Lambda campaign orchestration service that syncs Google Sheets planning calendars with Klaviyo campaigns and Trello production tasks, cutting setup time by 50%.",
+        "Worked across Google Sheets, Klaviyo, Trello, and AWS Lambda to turn campaign planning data into production-ready automation."
+      ],
+      "tech": [
+        "AWS Lambda",
+        "Google Sheets",
+        "Klaviyo API",
+        "Trello API",
+        "Automation"
+      ],
+      "year": "2025",
+      "show_year": false
+    },
+    {
+      "company": "Candle Stories",
+      "logo": "candle_true_stories_logo.jpg",
+      "role": "Production Assistant",
+      "duration": "Apr 2025 - Aug 2025",
+      "location": "San Francisco",
+      "details": [
+        "Supported documentary shoots, equipment handling, and on-set logistics. Less data pipeline, more real-world pipeline."
+      ],
+      "tech": [
+        "Production",
+        "Logistics"
+      ],
+      "year": "2025",
+      "show_year": false
     },
     {
       "company": "USF MAGIC Lab",
@@ -235,7 +503,16 @@
         "Developed an explainable entity-based sentiment framework that preserved relationship paths instead of flattening everything into a mystery score.",
         "Used graph-based relationship extraction to connect articles, entities, sentiment, and evidence into datasets researchers could inspect."
       ],
-      "tech": ["Python", "Go", "NLP", "ETL", "Graph Extraction", "DuckDB"]
+      "tech": [
+        "Python",
+        "Go",
+        "NLP",
+        "ETL",
+        "Graph Extraction",
+        "DuckDB"
+      ],
+      "year": "2025",
+      "show_year": true
     },
     {
       "company": "USF Strategic Enrollment Management",
@@ -248,7 +525,37 @@
         "Evaluated student interactions across admissions events and geographic regions to surface recruitment and marketing insights.",
         "Automated recurring web and reporting updates with Python and Jinja2 so the data work did not become manual copy-paste theater."
       ],
-      "tech": ["SQL", "Pandas", "PCA", "SLATE", "Jinja2", "Admissions Analytics"]
+      "tech": [
+        "SQL",
+        "Pandas",
+        "PCA",
+        "SLATE",
+        "Jinja2",
+        "Admissions Analytics"
+      ],
+      "year": "2024",
+      "show_year": false
+    },
+    {
+      "company": "iD Tech Camps (Stanford)",
+      "logo": "stanford.webp",
+      "role": "Machine Learning Instructor",
+      "duration": "Jun 2024 - Aug 2024",
+      "location": "Stanford, California",
+      "details": [
+        "Taught high school students Python, neural networks, NumPy, Pandas, Keras, and practical AI workflows through project-based lessons.",
+        "Rebuilt check-in/out analysis with Seaborn heatmaps to understand traffic flow and improve camp operations."
+      ],
+      "tech": [
+        "Python",
+        "PyTorch",
+        "Keras",
+        "NumPy",
+        "Pandas",
+        "Seaborn"
+      ],
+      "year": "2024",
+      "show_year": true
     },
     {
       "company": "UC Merced - SATAL",
@@ -261,42 +568,38 @@
         "Used Pandas and OpenAI-assisted categorization to turn open-ended feedback into structured themes faculty could act on.",
         "Presented research on methodology at the Fresno State Exemplary Practices in Higher Education Conference."
       ],
-      "tech": ["Pandas", "Qualtrics", "OpenAI", "Survey Analysis", "Research Methods"]
-    },
-    {
-      "company": "iD Tech Camps (Stanford)",
-      "logo": "stanford.webp",
-      "role": "Machine Learning Instructor",
-      "duration": "Jun 2024 - Aug 2024",
-      "location": "Stanford, California",
-      "details": [
-        "Taught high school students Python, neural networks, NumPy, Pandas, Keras, and practical AI workflows through project-based lessons.",
-        "Rebuilt check-in/out analysis with Seaborn heatmaps to understand traffic flow and improve camp operations."
+      "tech": [
+        "Pandas",
+        "Qualtrics",
+        "OpenAI",
+        "Survey Analysis",
+        "Research Methods"
       ],
-      "tech": ["Python", "PyTorch", "Keras", "NumPy", "Pandas", "Seaborn"]
+      "year": "2023",
+      "show_year": true
     },
     {
       "company": "Acme Builders Incorporated",
       "logo": "acme.jpeg",
-      "role": "Data Analyst",
-      "duration": "May 2021 - Dec 2024",
-      "location": "Oakland",
+      "role": "Construction Worker \u2192 Accounting Assistant",
+      "duration": "May 2021 - Dec 2023",
+      "location": "Oakland \u00b7 On-site \u00b7 Part-time",
       "details": [
-        "Moved from construction labor into business logistics and data cleanup, which is probably where the messy-data tolerance started.",
-        "Built Python systems with NumPy and Pandas to clean, organize, and archive records across departments."
+        "Built internal data systems in Python with NumPy and Pandas to clean, organize, and standardize records across departments.",
+        "Updated, organized, and archived company documents to support payroll cycles, budgeting, and reliable business data management.",
+        "Used OCR workflows to streamline organization of scanned documents between accounts."
       ],
-      "tech": ["Python", "Pandas", "NumPy", "Business Data", "Operations"]
-    },
-    {
-      "company": "Candle Stories",
-      "logo": "candle_true_stories_logo.jpg",
-      "role": "Production Assistant",
-      "duration": "Apr 2025 - Aug 2025",
-      "location": "San Francisco",
-      "details": [
-        "Supported documentary shoots, equipment handling, and on-set logistics. Less data pipeline, more real-world pipeline."
+      "tech": [
+        "Python",
+        "Pandas",
+        "NumPy",
+        "OCR",
+        "Business Data",
+        "Accounting",
+        "Construction"
       ],
-      "tech": ["Production", "Logistics"]
+      "year": "2021",
+      "show_year": true
     }
   ],
   "blog_posts": [
@@ -307,7 +610,12 @@
       "label": "Latest Post",
       "label_color": "accent",
       "content_html": "<p>I demoed <strong>Antidote Intelligence</strong> at Continue DX, showing a content-aware data poisoning detection system for ML training datasets. The basic pitch: before we argue about the model, let's look harder at the data we fed it.</p><h4>Why this matters</h4><p>Training data quality is one of those problems that hides until it becomes expensive. Bad examples, poisoned content, or subtle distribution weirdness can leak into model behavior long before anyone notices.</p><h4>What I built</h4><ul><li>Multi-agent review pipeline for suspicious dataset content</li><li>Hypothesis generation and validation around poisoned examples</li><li>Content-aware checks instead of only metadata-based filtering</li><li>Reports aimed at making data issues inspectable, not magical</li></ul><p>I am interested in this space because it treats data quality as infrastructure. The model gets the attention, but the dataset is where a lot of the story starts.</p>",
-      "tags": ["ML Security", "Data Quality", "Training Data", "Agent Pipeline"]
+      "tags": [
+        "ML Security",
+        "Data Quality",
+        "Training Data",
+        "Agent Pipeline"
+      ]
     },
     {
       "slug": "maldemic",
@@ -316,7 +624,14 @@
       "label": "Earlier Post",
       "label_color": "success",
       "content_html": "<p><strong>Maldemic</strong> is a stochastic disease-spread simulator that turns SIR equations and city mobility into a live 3D globe. I like projects where the math becomes something you can inspect with your eyes.</p><h4>Data flow</h4><p>Python computes population movement with a Markov matrix, updates local susceptible/infected/recovered states, then passes the evolving state into a Godot visualization.</p><h4>Technical shape</h4><ul><li>Markov-chain mobility between cities</li><li>SIR disease dynamics for local spread</li><li>Population cleanup to keep totals consistent</li><li>3D globe rendering for real-time visual feedback</li></ul><p>The project won 2nd place at BLOOM Hackathon and received grant support for neural-network forecasting work.</p>",
-      "tags": ["NumPy", "SciPy", "Godot 3D", "Markov Chains", "SIR Model", "Simulation"]
+      "tags": [
+        "NumPy",
+        "SciPy",
+        "Godot 3D",
+        "Markov Chains",
+        "SIR Model",
+        "Simulation"
+      ]
     }
   ]
 }
