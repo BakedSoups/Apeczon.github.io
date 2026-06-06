@@ -8,23 +8,34 @@
       "image": "/static/images/446267084-5f2c0604-38f6-497f-ab21-1363ce99a627.png",
       "video": "/static/videos/steam_rec_demo_silent.mp4",
       "badge": "Live",
-      "tools": ["PostgreSQL", "ChromaDB", "Qdrant", "ModernBERT", "FastAPI", "Docker"],
+      "github_stars_repo": "BakedSoups/Steam_Reccomender",
+      "tools": ["Long-term", "PostgreSQL", "ChromaDB", "Qdrant", "ModernBERT", "FastAPI", "Docker"],
       "links": [
         {"label": "Visit Site", "url": "https://nextsteamgame.com/", "icon": "fa-solid fa-globe"},
         {"label": "View Code", "url": "https://github.com/BakedSoups/Steam_Reccomender", "icon": "fab fa-github"}
       ]
     },
     {
-      "slug": "usfsearch",
-      "title": "USF Search Engine Crawler",
-      "description": "Concurrent Go crawler with 300 extract workers and 300 DB workers. Basically a small lesson in backpressure.",
-      "long_description": "A high-throughput crawler built around data movement more than page scraping. 300 extract workers download and parse pages while 300 database workers batch writes into SQLite, with queue buffers keeping the system fed without falling over. It was a fun way to think through throughput, batching, worker coordination, and what happens when your pipeline moves faster than your database wants it to.",
-      "image": "/static/images/usfimage.png",
-      "badge": "Crawler",
-      "tools": ["Go", "SQLite", "Concurrency", "Batch Writes", "Queues"],
+      "slug": "superlinked-wine",
+      "title": "Superlinked Wine Recommender",
+      "description": "Explainable wine search built with Superlinked SIE.",
+      "long_description": "An explainable wine recommender developed with the Superlinked team during early access to their SIE engine. Instead of only returning similar bottles, it shows which attributes shaped the match, like fizz, cherry notes, body, or acidity. The demo uses document processing, vector embeddings, and small-model inference to make wine discovery feel more transparent.",
+      "image": "/static/images/superlinked_post.jpeg",
+      "video": "/static/videos/superlinked_wine_sie_demo_silent.mp4",
+      "badge": "Series A",
+      "brand_icon": "/static/images/superlinked.png",
+      "brand_alt": "Superlinked",
+      "media": [
+        {"label": "Post", "type": "image", "src": "/static/images/superlinked_post.jpeg", "thumbnail": "/static/images/superlinked_post.jpeg"},
+        {"label": "Demo", "type": "video", "src": "/static/videos/superlinked_wine_sie_demo_silent.mp4", "poster": "/static/images/superlinked_post.jpeg", "thumbnail": "/static/images/superlinked-wine-preview.jpg"}
+      ],
+      "tools": ["Long-term", "Superlinked SIE", "Vector Search", "OCR", "Small Models", "Chroma", "PostgreSQL"],
       "links": [
-        {"label": "View Project", "url": "https://github.com/BakedSoups/USF-Search-Engine", "icon": "fab fa-github"},
-        {"label": "Documentation", "url": "https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing", "icon": "fa-solid fa-file"}
+        {"label": "View Code", "url": "https://github.com/BakedSoups/WineRetrieval", "icon": "fab fa-github"},
+        {"label": "SIE Example", "url": "https://github.com/superlinked/sie/tree/main/examples/wine-recommender", "icon": "fab fa-github"},
+        {"label": "Docs", "url": "https://superlinked.com/docs/examples/wine-recommender", "icon": "fa-solid fa-file"},
+        {"label": "My Post", "url": "https://lnkd.in/g6aE9ic5", "icon": "fab fa-linkedin"},
+        {"label": "Superlinked Post", "url": "https://www.linkedin.com/posts/superlinked_you-can-now-use-the-superlinked-inference-activity-7458172694207848448-jd8H?utm_source=share&utm_medium=member_desktop&rcm=ACoAADuPwKgBYzoLBSuprHB0UxK8Lo1LrdR91w4", "icon": "fab fa-linkedin"}
       ]
     },
     {
@@ -35,10 +46,37 @@
       "image": "/static/images/maldemic_final.gif",
       "video": "/static/videos/maldemic_demo_silent.mp4",
       "badge": "2nd Place",
-      "tools": ["Python", "NumPy", "SciPy", "Godot", "Markov Chains", "SIR"],
+      "tools": ["Long-term", "Python", "NumPy", "SciPy", "Godot", "Markov Chains", "SIR"],
       "links": [
         {"label": "View Project", "url": "https://github.com/BakedSoups/Pandemic", "icon": "fab fa-github"},
         {"label": "Research Paper", "url": "https://drive.google.com/file/d/1tqMzypnbvTkRvCp1lzxrTIlANEhi2Kfb/view?usp=sharing", "icon": "fa-solid fa-file"}
+      ]
+    },
+    {
+      "slug": "nextchapter",
+      "title": "Next Chapter",
+      "description": "Modular RAG for retirement planning questions. Personal finance, but less foggy.",
+      "long_description": "A hackathon project built to help people make sense of retirement planning questions like \"Can I retire in Asia?\" or \"How much should I start saving?\" The goal was not to automate away accountants, but to make the first pass through retirement variables faster, clearer, and less intimidating. We built a modular RAG system in about five hours with no WiFi, with finance guidance from Richard Vo at AMEX and teammates Eric Taylor and Faadil Shaik.",
+      "image": "/static/images/nextchapter-preview.jpg",
+      "badge": "Hackathon",
+      "tools": ["RAG", "LLMs", "FinTech", "Personal Finance", "AI for Good"],
+      "links": [
+        {"label": "Watch Demo", "url": "/static/videos/nextchapter.mp4", "icon": "fa-solid fa-video"},
+        {"label": "Vimeo Demo", "url": "https://lnkd.in/gdTRHgBm", "icon": "fa-brands fa-vimeo-v"},
+        {"label": "View Code", "url": "https://lnkd.in/ggYVDEeE", "icon": "fab fa-github"}
+      ]
+    },
+    {
+      "slug": "usfsearch",
+      "title": "USF Search Engine Crawler",
+      "description": "Concurrent Go crawler with 300 extract workers and 300 DB workers. Basically a small lesson in backpressure.",
+      "long_description": "A high-throughput crawler built around data movement more than page scraping. 300 extract workers download and parse pages while 300 database workers batch writes into SQLite, with queue buffers keeping the system fed without falling over. It was a fun way to think through throughput, batching, worker coordination, and what happens when your pipeline moves faster than your database wants it to.",
+      "image": "/static/images/usfimage.png",
+      "badge": "Crawler",
+      "tools": ["Long-term", "Go", "SQLite", "Concurrency", "Batch Writes", "Queues"],
+      "links": [
+        {"label": "View Project", "url": "https://github.com/BakedSoups/USF-Search-Engine", "icon": "fab fa-github"},
+        {"label": "Documentation", "url": "https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing", "icon": "fa-solid fa-file"}
       ]
     },
     {
@@ -48,7 +86,7 @@
       "long_description": "An open-source ML security tool for finding suspicious or poisoned content in training datasets before that data quietly becomes model behavior. The system uses a multi-agent analysis pipeline to inspect dataset content, generate hypotheses, and surface examples worth investigating. I like this project because it sits right at the point where data quality, automation, and model safety stop being abstract and start being operational.",
       "image": "/static/images/AntitodeIntelegence.png",
       "badge": "Open Source",
-      "tools": ["Python", "OpenAI", "ML Security", "Data Quality", "Agent Pipeline"],
+      "tools": ["Long-term", "Python", "OpenAI", "ML Security", "Data Quality", "Agent Pipeline"],
       "links": [
         {"label": "Open Source Code", "url": "https://github.com/BakedSoups/Antitodte_Intelegence2/tree/main", "icon": "fab fa-github"}
       ]
@@ -60,9 +98,65 @@
       "long_description": "A gamified Canvas LMS tracker that pulls assignments into a game loop, then scores urgency using completion patterns and difficulty signals. The fun part was not the coins; it was turning school workflow data into something students could act on without needing another dashboard yelling at them.",
       "image": "/static/images/dreamville-preview.gif",
       "badge": "In Progress",
-      "tools": ["Godot", "Go", "Canvas API", "Regression", "Workflow Data"],
+      "tools": ["Long-term", "Godot", "Go", "Canvas API", "Regression", "Workflow Data"],
       "links": [
         {"label": "View Code", "url": "https://github.com/complex-bit/DonsHack2025", "icon": "fab fa-github"}
+      ]
+    },
+    {
+      "slug": "hyperrosen",
+      "title": "Hyper Rosen",
+      "description": "Hackathon Godot galaxy with swirled Perlin planets, WFC city placement, enemies, and asteroids.",
+      "long_description": "A hackathon-built 3D Godot experiment in procedural space generation. We used swirled Perlin noise for planet placement so the world can keep expanding with an infinite-feeling galaxy structure, wave function collapse for city placement, and procedural systems for enemies and asteroids. It was not continued after the event, but I keep it here because it shows my interest in systems that evolve from local rules.",
+      "image": "/static/images/hyperrosen.png",
+      "video": "/static/videos/hyperrosen_demo_silent.mp4",
+      "badge": "Hackathon",
+      "tools": ["Godot", "Hackathon", "Procedural Generation", "Perlin Noise", "Wave Function Collapse"],
+      "links": [
+        {"label": "View Project", "url": "https://github.com/4automatons/hyper-rosen2", "icon": "fab fa-github"}
+      ]
+    },
+    {
+      "slug": "cakewalk",
+      "title": "Cake Walk",
+      "description": "One-day GDC game jam project about a little cake trying to make it through the street.",
+      "long_description": "A one-day game jam project we made and demoed at GDC Festival of Gaming. It was my first time at GDC, and showing a tiny game to a room full of people who love making things was genuinely special. Built with Keriya Son on 3D, Angie Peczon on art, Eric Taylor on shaders, and Ilce Perez on music. It was not continued after the jam, but the artifact captures the speed and joy of the event.",
+      "image": "/static/images/cakewalk_demo_image.png",
+      "badge": "GDC Jam",
+      "brand_icon": "/static/images/gdc_icon.webp",
+      "brand_alt": "GDC",
+      "media": [
+        {"label": "Cover", "type": "image", "src": "/static/images/cakewalk_demo_image.png", "thumbnail": "/static/images/cakewalk_demo_image.png"},
+        {"label": "GDC", "type": "image", "src": "/static/images/presenting_cakewalk.webp", "thumbnail": "/static/images/presenting_cakewalk.webp"},
+        {"label": "Demo", "type": "video", "src": "/static/videos/cake_walk_demo_in_gdc.mp4", "poster": "/static/images/cakewalk_demo_image.png", "thumbnail": "/static/images/cakewalk_demo_image.png"}
+      ],
+      "tools": ["Godot", "Game Jam", "3D", "Shaders", "Team Project"],
+      "links": [
+        {"label": "Play on itch.io", "url": "https://itch.io/jam/the-jam-at-gdc/rate/4363262", "icon": "fa-solid fa-gamepad"}
+      ]
+    },
+    {
+      "slug": "oldman",
+      "title": "Old Man Climbs",
+      "description": "My first project, made in 2022 for a UC Merced game jam.",
+      "long_description": "A small vertical climber built over a weekend for a UC Merced game jam in 2022. It was my first project and was not continued after the jam, but it is still here as a reminder that shipping small, complete things is its own skill.",
+      "image": "/static/images/oldahhman.png",
+      "badge": "First Project, 2022",
+      "tools": ["Godot", "Game Jam", "2022"],
+      "links": [
+        {"label": "View Project", "url": "https://itch.io/jam/uc-merced-gdc-game-jam-2023/rate/2353610", "icon": "fa-solid fa-gamepad"}
+      ]
+    },
+    {
+      "slug": "quick-autocorrect",
+      "title": "Quick Autocorrect",
+      "description": "Obsidian plugin for fast autocorrect and personal dictionary cleanup while writing.",
+      "long_description": "A small Obsidian community plugin for cleaning up writing without leaving the note. It helps catch repeated misspellings, apply quick corrections, and keep a personal dictionary for words Obsidian should stop fighting you on. It is less glamorous than a big data system, but it has the same shape I like: take a messy stream of text and make it easier for people to work with.",
+      "image": "/static/images/after.gif",
+      "badge": "Obsidian",
+      "tools": ["Long-term", "TypeScript", "Obsidian", "Plugin", "Text UX"],
+      "links": [
+        {"label": "Plugin Page", "url": "https://community.obsidian.md/plugins/quick-autocorrect", "icon": "fa-solid fa-puzzle-piece"}
       ]
     },
     {
@@ -72,22 +166,9 @@
       "long_description": "A dietary search app that filters restaurant menu items by nutrition and constraint data. It is a smaller project, but it still has the shape I keep coming back to: pull in messy real-world information, normalize it enough to search, and give people a cleaner way to make a decision.",
       "image": "/static/images/nutrifinder.png",
       "badge": null,
-      "tools": ["React", "Flask", "Python", "Search", "Filters"],
+      "tools": ["Long-term", "React", "Flask", "Python", "Search", "Filters"],
       "links": [
         {"label": "View Project", "url": "https://devpost.com/software/nutrifinder", "icon": "fa-solid fa-globe"}
-      ]
-    },
-    {
-      "slug": "hyperrosen",
-      "title": "Hyper Rosen",
-      "description": "3D galaxy toy with Perlin fields and vector-field enemies. My simulation brain taking a walk.",
-      "long_description": "A 3D Godot experiment with galaxy formation, Perlin noise, and enemies that move through vector fields. It is less data engineering and more simulation play, but it shows the same interest in systems that evolve from local rules.",
-      "image": "/static/images/hyperrosen.png",
-      "video": "/static/videos/hyperrosen_demo_silent.mp4",
-      "badge": null,
-      "tools": ["Godot", "3D", "Perlin", "Vector Fields"],
-      "links": [
-        {"label": "View Project", "url": "https://github.com/BakedSoups/HyperRosen", "icon": "fab fa-github"}
       ]
     },
     {
@@ -97,21 +178,9 @@
       "long_description": "A small visualization for spiral growth using queued directions. It is a compact teaching project, but I keep it around because visualizing state changes is often the fastest way to understand a system.",
       "image": "/static/images/spiral.png",
       "badge": null,
-      "tools": ["Python", "Matplotlib", "Queues"],
+      "tools": ["Long-term", "Python", "Matplotlib", "Queues"],
       "links": [
         {"label": "View Code", "url": "https://github.com/BakedSoups/Visualize-Spirals", "icon": "fab fa-github"}
-      ]
-    },
-    {
-      "slug": "oldman",
-      "title": "Old Man Climbs",
-      "description": "Weekend jam game from UC Merced GDC. Not data-heavy, just a nice artifact from making things fast.",
-      "long_description": "A small vertical climber built over a weekend for a UC Merced game jam. It is mostly here as a reminder that shipping small, complete things is its own skill.",
-      "image": "/static/images/oldahhman.png",
-      "badge": null,
-      "tools": ["Godot", "Game Jam"],
-      "links": [
-        {"label": "View Project", "url": "https://itch.io/jam/uc-merced-gdc-game-jam-2023/rate/2353610", "icon": "fa-solid fa-gamepad"}
       ]
     }
   ],
@@ -130,7 +199,7 @@
       "tech": ["Airbyte", "BigQuery", "AWS Lambda", "Klaviyo API", "Google Sheets", "Trello API"]
     },
     {
-      "company": "Alaris Security",
+      "company": "Alaris Security (Pre-seed)",
       "logo": "alaris.ico",
       "role": "Junior Fullstack Engineer",
       "duration": "Aug 2025 - Nov 2025",

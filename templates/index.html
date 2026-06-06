@@ -48,10 +48,8 @@
         <div class="hero-content">
           <h1><span class="typing-text">Hey, I'm </span><span class="gradient-text">Alex</span></h1>
           <p class="hero-subtitle">Data software engineer. I like turning messy APIs, logs, reviews, surveys, and spreadsheets into pipelines people can actually use.</p>
-          <div class="hero-metrics" aria-label="Data systems highlights">
-            <span><strong>20M+</strong> daily analytics queries supported</span>
-            <span><strong>80K+</strong> games piped into recommendations</span>
-            <span><strong>500K+</strong> student records analyzed</span>
+          <div class="hero-metrics" aria-label="Personal tags">
+            <span><strong>Favorite language:</strong> Python</span>
           </div>
           <ul class="social-icons">
             <li><a href="https://www.linkedin.com/in/alexander-peczon-1747a523a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
@@ -114,16 +112,49 @@
           {% for project in projects %}
           <div class="project-card"
                classes="add fade-up:{{ loop.index0 * 0.1 }}s">
-            <div class="project-image">
-              {% if project.video %}
-              <video autoplay muted loop playsinline preload="metadata" poster="{{ project.image }}" aria-label="{{ project.title }} demo">
-                <source src="{{ project.video }}" type="video/mp4" />
-              </video>
-              {% else %}
-              <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy" />
-              {% endif %}
-              {% if project.badge %}
-              <div class="project-badge">{{ project.badge }}</div>
+            <div class="project-media">
+              <div class="project-image" data-media-stage>
+                {% if project.video and not project.media %}
+                <video autoplay muted loop playsinline preload="metadata" poster="{{ project.image }}" aria-label="{{ project.title }} demo">
+                  <source src="{{ project.video }}" type="video/mp4" />
+                </video>
+                {% else %}
+                <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy" />
+                {% endif %}
+                {% if project.badge or project.brand_icon or project.github_stars_repo %}
+                <div class="project-badges">
+                  {% if project.brand_icon %}
+                  <img class="project-brand-icon" src="{{ project.brand_icon }}" alt="{{ project.brand_alt or project.title }}" loading="lazy" />
+                  {% endif %}
+                  {% if project.badge %}
+                  <div class="project-badge">{{ project.badge }}</div>
+                  {% endif %}
+                  {% if project.github_stars_repo %}
+                  <div class="project-star-badge" data-github-stars="{{ project.github_stars_repo }}" aria-label="GitHub stars">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Stars</span>
+                  </div>
+                  {% endif %}
+                </div>
+                {% endif %}
+              </div>
+              {% if project.media %}
+              <div class="project-media-options" aria-label="{{ project.title }} media options">
+                {% for item in project.media %}
+                <button class="project-media-option{% if loop.first %} active{% endif %}"
+                        type="button"
+                        data-media-type="{{ item.type }}"
+                        data-media-src="{{ item.src }}"
+                        data-media-poster="{{ item.poster or project.image }}"
+                        data-media-alt="{{ project.title }} {{ item.label }}">
+                  <img src="{{ item.thumbnail or item.poster or item.src }}" alt="" loading="lazy" />
+                  <span>{{ item.label }}</span>
+                  {% if item.type == "video" %}
+                  <i class="fa-solid fa-play"></i>
+                  {% endif %}
+                </button>
+                {% endfor %}
+              </div>
               {% endif %}
             </div>
             <div class="project-content">
