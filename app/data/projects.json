@@ -199,6 +199,19 @@
       "tech": ["Airbyte", "BigQuery", "AWS Lambda", "Klaviyo API", "Google Sheets", "Trello API"]
     },
     {
+      "company": "Superlinked (Series A)",
+      "logo": "superlinked.png",
+      "role": "SIE Demo Software Developer (Contract)",
+      "duration": "Mar 2026 - May 2026",
+      "location": "San Francisco Bay Area · Hybrid",
+      "details": [
+        "Developed a paid launch demo for Superlinked's SIE engine during early access, working with Valentin Marek and Eric Taylor to showcase explainable wine recommendations.",
+        "Built a RAG wine recommender that used Vivino data, small inference models, OCR, and text embeddings to surface similar wines with clearer reasoning.",
+        "Shipped a React UI and containerized Python monorepo in Docker, keeping OCR and embedding modules cleanly separated for documentation users."
+      ],
+      "tech": ["Superlinked SIE", "React", "Python", "Docker", "RAG", "Small Models"]
+    },
+    {
       "company": "Alaris Security (Pre-seed)",
       "logo": "alaris.ico",
       "role": "Junior Fullstack Engineer",
