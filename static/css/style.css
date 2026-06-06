@@ -152,6 +152,83 @@ header.scrolled {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
+.portfolio-query {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+  max-width: 900px;
+}
+
+.portfolio-query-label,
+.portfolio-query-result,
+.portfolio-query-description {
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+  line-height: 1.3;
+}
+
+.portfolio-query-label {
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.portfolio-query-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.query-chip {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(7, 7, 7, 0.58);
+  color: #d8d8d8;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.38rem 0.62rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.query-chip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.query-chip.active {
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.portfolio-query-copy {
+  flex: 1 1 100%;
+  display: grid;
+  gap: 0.15rem;
+  max-width: 760px;
+}
+
+.portfolio-query-result,
+.portfolio-query-description {
+  margin: 0;
+}
+
+.portfolio-query-result {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.portfolio-query-description {
+  max-width: 680px;
+}
+
 /* ═══ HERO ═══ */
 .hero {
   min-height: 520px;
@@ -265,6 +342,35 @@ header.scrolled {
   font-weight: 700;
 }
 
+.resume-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.resume-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  background: rgba(7, 7, 7, 0.6);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.resume-links a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.34);
+  transform: translateY(-1px);
+}
+
 /* Typing animation for hero */
 .typing-text {
   display: inline;
@@ -331,6 +437,10 @@ header.scrolled {
 .content-view.active {
   display: block;
   animation: fadeIn 0.25s ease forwards;
+}
+
+.filtered-out {
+  display: none !important;
 }
 
 .section-title {

@@ -386,28 +386,6 @@
   ],
   "experiences": [
     {
-      "company": "Superlinked (Series A)",
-      "logo": "superlinked.png",
-      "role": "SIE Demo Software Developer (Contract)",
-      "duration": "Mar 2026 - May 2026",
-      "location": "San Francisco Bay Area \u00b7 Hybrid",
-      "details": [
-        "Developed a paid launch demo for Superlinked's SIE engine during early access, working with Valentin Marek and Eric Taylor to showcase explainable wine recommendations.",
-        "Built a RAG wine recommender that used Vivino data, small inference models, OCR, and text embeddings to surface similar wines with clearer reasoning.",
-        "Shipped a React UI and containerized Python monorepo in Docker, keeping OCR and embedding modules cleanly separated for documentation users."
-      ],
-      "tech": [
-        "Superlinked SIE",
-        "React",
-        "Python",
-        "Docker",
-        "RAG",
-        "Small Models"
-      ],
-      "year": "2026",
-      "show_year": true
-    },
-    {
       "company": "Future Tilt",
       "logo": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png",
       "role": "Software Engineer",
@@ -433,6 +411,50 @@
       },
       "year": "2025",
       "show_year": false
+    },
+    {
+      "company": "Superlinked (Series A)",
+      "logo": "superlinked.png",
+      "role": "SIE Demo Software Developer (Contract)",
+      "duration": "Mar 2026 - May 2026",
+      "location": "San Francisco Bay Area \u00b7 Hybrid",
+      "details": [
+        "Developed a paid launch demo for Superlinked's SIE engine during early access, working with Valentin Marek and Eric Taylor to showcase explainable wine recommendations.",
+        "Built a RAG wine recommender that used Vivino data, small inference models, OCR, and text embeddings to surface similar wines with clearer reasoning.",
+        "Shipped a React UI and containerized Python monorepo in Docker, keeping OCR and embedding modules cleanly separated for documentation users."
+      ],
+      "tech": [
+        "Superlinked SIE",
+        "React",
+        "Python",
+        "Docker",
+        "RAG",
+        "Small Models"
+      ],
+      "year": "2026",
+      "show_year": true
+    },
+    {
+      "company": "USF MAGIC Lab",
+      "logo": "San-Francisco-Dons-Logo-2001.png",
+      "role": "NLP Research Assistant",
+      "duration": "Mar 2025 - May 2026",
+      "location": "San Francisco",
+      "details": [
+        "Built parallelized ETL pipelines across 5 virtual machines to generate entity-aware NLP datasets from 20,000+ news articles.",
+        "Developed an explainable entity-based sentiment framework that preserved relationship paths instead of flattening everything into a mystery score.",
+        "Used graph-based relationship extraction to connect articles, entities, sentiment, and evidence into datasets researchers could inspect."
+      ],
+      "tech": [
+        "Python",
+        "Go",
+        "NLP",
+        "ETL",
+        "Graph Extraction",
+        "DuckDB"
+      ],
+      "year": "2025",
+      "show_year": true
     },
     {
       "company": "Alaris Security (Pre-seed)",
@@ -491,28 +513,6 @@
       ],
       "year": "2025",
       "show_year": false
-    },
-    {
-      "company": "USF MAGIC Lab",
-      "logo": "San-Francisco-Dons-Logo-2001.png",
-      "role": "NLP Research Assistant",
-      "duration": "Mar 2025 - May 2026",
-      "location": "San Francisco",
-      "details": [
-        "Built parallelized ETL pipelines across 5 virtual machines to generate entity-aware NLP datasets from 20,000+ news articles.",
-        "Developed an explainable entity-based sentiment framework that preserved relationship paths instead of flattening everything into a mystery score.",
-        "Used graph-based relationship extraction to connect articles, entities, sentiment, and evidence into datasets researchers could inspect."
-      ],
-      "tech": [
-        "Python",
-        "Go",
-        "NLP",
-        "ETL",
-        "Graph Extraction",
-        "DuckDB"
-      ],
-      "year": "2025",
-      "show_year": true
     },
     {
       "company": "USF Strategic Enrollment Management",
@@ -587,7 +587,7 @@
       "details": [
         "Built internal data systems in Python with NumPy and Pandas to clean, organize, and standardize records across departments.",
         "Updated, organized, and archived company documents to support payroll cycles, budgeting, and reliable business data management.",
-        "Used OCR workflows to streamline organization of scanned documents between accounts."
+        "Used OCR workflows to reduce manual document sorting and make scanned account records easier to organize."
       ],
       "tech": [
         "Python",

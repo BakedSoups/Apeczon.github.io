@@ -9,10 +9,60 @@ from litestar import Controller, get
 from litestar.response import Template
 
 DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "projects.json"
+FILTER_TAGS = [
+    {
+        "label": "Explainable Search Engines",
+        "slug": "explainable-search",
+        "description": "Projects that help users search or recommend things while showing why the result makes sense.",
+    },
+    {
+        "label": "Games + Sims",
+        "slug": "games-sims",
+        "description": "Interactive projects where systems, simulations, procedural rules, or game loops do the talking.",
+    },
+    {
+        "label": "Long-term Builds",
+        "slug": "long-term-builds",
+        "description": "Projects I kept building past the initial idea instead of leaving as one-off demos.",
+    },
+]
 
 
 def _load_data() -> dict:
-    return json.loads(DATA_FILE.read_text())
+    data = json.loads(DATA_FILE.read_text())
+
+    def _text(parts: list[str]) -> str:
+        return " ".join(parts).lower()
+
+    def _project_buckets(text: str) -> list[str]:
+        buckets = []
+
+        if any(term in text for term in ("recommend", "search", "rag", "retrieval", "similar", "explainable", "why", "crawler", "filters")):
+            buckets.append("explainable-search")
+        if any(term in text for term in ("godot", "game jam", "gdc", "itch.io", "simulator", "3d", "shaders")):
+            buckets.append("games-sims")
+        if "long-term" in text:
+            buckets.append("long-term-builds")
+
+        return buckets
+
+    def _search_text(parts: list[str], buckets: list[str]) -> str:
+        text = " ".join(parts).lower()
+        return " ".join([text, *buckets])
+
+    for project in data["projects"]:
+        searchable = [
+            project["title"],
+            project["description"],
+            project["long_description"],
+            *project["tools"],
+        ]
+        text = _text(searchable)
+        project["filter_buckets"] = _project_buckets(text)
+        project["search_text"] = _search_text(searchable, project["filter_buckets"])
+
+    data["filter_tags"] = FILTER_TAGS
+    return data
 
 
 class PagesController(Controller):
@@ -27,6 +77,7 @@ class PagesController(Controller):
                 "projects": data["projects"],
                 "experiences": data["experiences"],
                 "blog_posts": data["blog_posts"],
+                "filter_tags": data["filter_tags"],
             },
         )
 
@@ -39,5 +90,6 @@ class PagesController(Controller):
                 "projects": data["projects"],
                 "experiences": data["experiences"],
                 "blog_posts": data["blog_posts"],
+                "filter_tags": data["filter_tags"],
             },
         )

@@ -76,6 +76,64 @@
     playProjectVideos();
   }
 
+  // ── Portfolio tag filter ──
+  const filterButtons = Array.from(document.querySelectorAll('.query-chip[data-filter]'));
+  const filterStatus = document.querySelector('[data-filter-status]');
+  const filterDescription = document.querySelector('[data-filter-copy]');
+  let activeFilter = 'all';
+
+  function getFilterLabel() {
+    return filterButtons.find(button => button.dataset.filter === activeFilter)?.textContent?.trim() || 'All';
+  }
+
+  function getFilterDescription() {
+    return filterButtons.find(button => button.dataset.filter === activeFilter)?.dataset.filterDescription || '';
+  }
+
+  function applyPortfolioFilter() {
+    document.querySelectorAll('.project-card').forEach(card => {
+      const buckets = (card.dataset.buckets || '').split(' ');
+      const matches = activeFilter === 'all' || buckets.includes(activeFilter);
+      card.classList.toggle('filtered-out', !matches);
+    });
+
+    if (!filterStatus) return;
+
+    const items = Array.from(document.querySelectorAll('.project-card'));
+    const visibleCount = items.filter(item => !item.classList.contains('filtered-out')).length;
+    const plural = visibleCount === 1 ? 'project' : 'projects';
+
+    if (activeFilter === 'all') {
+      filterStatus.textContent = 'showing everything';
+    } else if (visibleCount === 0) {
+      filterStatus.textContent = `no projects in ${getFilterLabel()}`;
+    } else {
+      filterStatus.textContent = `${visibleCount} ${plural} in ${getFilterLabel()}`;
+    }
+
+    if (filterDescription) {
+      filterDescription.textContent = getFilterDescription();
+    }
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter || 'all';
+      filterButtons.forEach(item => {
+        const isActive = item === button;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-pressed', String(isActive));
+      });
+      applyPortfolioFilter();
+    });
+  });
+
+  document.querySelectorAll('.hero-nav-link[data-view]').forEach(button => {
+    button.addEventListener('click', applyPortfolioFilter);
+  });
+
+  applyPortfolioFilter();
+
   // ── Project media switchers ──
   document.querySelectorAll('.project-media-options').forEach(options => {
     const media = options.closest('.project-media');

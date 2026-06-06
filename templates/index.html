@@ -51,6 +51,20 @@
           <div class="hero-metrics" aria-label="Personal tags">
             <span><strong>Favorite language:</strong> Python</span>
           </div>
+          <div class="resume-links" aria-label="Resume downloads">
+            <a href="/static/resumes/Alex_Peczon_DS.pdf" target="_blank" rel="noopener">
+              <i class="fa-solid fa-file-lines"></i>
+              <span>DS Resume</span>
+            </a>
+            <a href="/static/resumes/Alex_Peczon_Data_Analyst.pdf" target="_blank" rel="noopener">
+              <i class="fa-solid fa-chart-simple"></i>
+              <span>Data Analyst</span>
+            </a>
+            <a href="/static/resumes/Alex_Peczon_SWE.pdf" target="_blank" rel="noopener">
+              <i class="fa-solid fa-code"></i>
+              <span>SWE Resume</span>
+            </a>
+          </div>
           <ul class="social-icons">
             <li><a href="https://www.linkedin.com/in/alexander-peczon-1747a523a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
             <li><a href="https://github.com/BakedSoups" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
@@ -118,9 +132,24 @@
       <section class="section content-view" id="projects" data-view-panel="projects">
         <h2 class="section-title" classes="add reveal:0.2s">Projects</h2>
         <p class="section-intro">These are mostly passion projects that I made with friends.</p>
+        <div class="portfolio-query" aria-label="Project filters">
+          <span class="portfolio-query-label">show me</span>
+          <div class="portfolio-query-tags">
+            <button class="query-chip active" type="button" data-filter="all" data-filter-description="All projects, no bucket applied." aria-pressed="true">All</button>
+            {% for tag in filter_tags %}
+            <button class="query-chip" type="button" data-filter="{{ tag['slug'] }}" data-filter-description="{{ tag['description'] }}" aria-pressed="false">{{ tag['label'] }}</button>
+            {% endfor %}
+          </div>
+          <div class="portfolio-query-copy">
+            <p class="portfolio-query-result" data-filter-status>showing everything</p>
+            <p class="portfolio-query-description" data-filter-copy>All projects, no bucket applied.</p>
+          </div>
+        </div>
         <div class="projects-grid" id="grid">
           {% for project in projects %}
           <div class="project-card"
+               data-search="{{ project.search_text }}"
+               data-buckets="{{ project.filter_buckets|join(' ') }}"
                classes="add fade-up:{{ loop.index0 * 0.1 }}s">
             <div class="project-media">
               <div class="project-image" data-media-stage>
