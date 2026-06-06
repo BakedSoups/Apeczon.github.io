@@ -3,7 +3,6 @@
  *
  * - Header scroll shadow
  * - Copy to clipboard with toast (remove-me)
- * - Project modal system
  * - Scroll-triggered reveals (Intersection Observer)
  */
 
@@ -46,6 +45,15 @@
   });
 
   // ── Hero section switcher ──
+  function playProjectVideos() {
+    document.querySelectorAll('#projects video').forEach(video => {
+      video.muted = true;
+      video.play().catch(() => {
+        // Some browsers wait for the first user gesture before autoplay.
+      });
+    });
+  }
+
   document.querySelectorAll('.hero-nav-link[data-view]').forEach(button => {
     button.addEventListener('click', () => {
       const view = button.dataset.view;
@@ -57,66 +65,16 @@
       document.querySelectorAll('[data-view-panel]').forEach(panel => {
         panel.classList.toggle('active', panel.dataset.viewPanel === view);
       });
-    });
-  });
 
-  // ── Project Modal System ──
-  const backdrop = document.getElementById('modal-backdrop');
-  const modalContent = document.getElementById('modal-content');
-
-  function closeModal() {
-    backdrop.classList.remove('active');
-  }
-
-  backdrop?.addEventListener('click', (e) => {
-    if (e.target === backdrop) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  // Fetch project data and show modal
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', async () => {
-      const slug = card.dataset.slug;
-      if (!slug) return;
-
-      try {
-        const res = await fetch(`/api/projects/${slug}`);
-        const project = await res.json();
-
-        if (project.error) return;
-
-        modalContent.innerHTML = `
-          <button class="modal-close" aria-label="Close" onclick="document.getElementById('modal-backdrop').classList.remove('active')">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-          <div class="modal-media">
-            <img src="${project.image}" alt="${project.title}" />
-          </div>
-          <div class="modal-body">
-            <div class="modal-title">${project.title}</div>
-            <div class="modal-desc">${project.long_description}</div>
-            <div class="modal-tools">
-              ${project.tools.map(t => `<span class="tool-tag">${t}</span>`).join('')}
-            </div>
-            <div class="modal-actions">
-              ${project.links.map(l => `
-                <a class="btn" href="${l.url}" target="_blank">
-                  <i class="${l.icon}"></i> ${l.label}
-                </a>
-              `).join('')}
-            </div>
-          </div>
-        `;
-
-        backdrop.classList.add('active');
-      } catch (err) {
-        console.error('Failed to load project:', err);
+      if (view === 'projects') {
+        playProjectVideos();
       }
     });
   });
+
+  if (document.querySelector('#projects.content-view.active')) {
+    playProjectVideos();
+  }
 
   // ── Scroll Reveal (Intersection Observer) ──
   const observer = new IntersectionObserver((entries) => {

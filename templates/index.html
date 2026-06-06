@@ -113,20 +113,33 @@
         <div class="projects-grid" id="grid">
           {% for project in projects %}
           <div class="project-card"
-               data-slug="{{ project.slug }}"
                classes="add fade-up:{{ loop.index0 * 0.1 }}s">
             <div class="project-image">
+              {% if project.video %}
+              <video autoplay muted loop playsinline preload="metadata" poster="{{ project.image }}" aria-label="{{ project.title }} demo">
+                <source src="{{ project.video }}" type="video/mp4" />
+              </video>
+              {% else %}
               <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy" />
+              {% endif %}
               {% if project.badge %}
               <div class="project-badge">{{ project.badge }}</div>
               {% endif %}
             </div>
             <div class="project-content">
               <div class="project-title"><h3>{{ project.title }}</h3></div>
-              <p class="project-description">{{ project.description }}</p>
+              <p class="project-description">{{ project.long_description }}</p>
               <div class="project-tools">
                 {% for tool in project.tools %}
                 <span class="tool-tag">{{ tool }}</span>
+                {% endfor %}
+              </div>
+              <div class="project-links">
+                {% for link in project.links %}
+                <a class="project-link" href="{{ link.url }}" target="_blank" rel="noopener">
+                  <i class="{{ link.icon }}"></i>
+                  <span>{{ link.label }}</span>
+                </a>
                 {% endfor %}
               </div>
             </div>
@@ -136,10 +149,6 @@
       </section>
     </div>
   </main>
-
-  <div class="modal-backdrop" id="modal-backdrop">
-    <div class="modal" id="modal-content" role="dialog" aria-modal="true"></div>
-  </div>
 
   <div id="toast-container"></div>
 

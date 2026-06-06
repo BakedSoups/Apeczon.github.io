@@ -3,9 +3,10 @@
     {
       "slug": "nextsteamgame",
       "title": "nextsteamgame.com",
-      "description": "Recommendation pipeline for 80K+ Steam games. Reviews, tags, vectors, and metadata go in; explainable similarity search comes out.",
-      "long_description": "My main data-flow project: a multi-stage recommendation system that turns Steam metadata, reviews, tags, and semantic signals into explainable game similarity search. The pipeline separates extraction, cleaning, ontology building, vector generation, ranking, and runtime serving so the product is fast without hiding how recommendations were made. It grew to 30K+ users, which was a nice reminder that weird data pipelines can become real products.",
+      "description": "A Steam game recommender for people who know exactly why they like a game, even when that reason is weirdly specific.",
+      "long_description": "I built this because most game recommenders stop at \"pick a game you like\" and then hand you a mystery list. I wanted something that lets people say what actually matters: Persona 5 for the jazz fusion OST and modern Tokyo setting, not just because it is an RPG. The goal is to help niche games surface for the right reasons, and to show users why a match made sense instead of hiding the recommendation behind a black box. It is free, open source, and very much a passion project; the implementation details live in the repo for anyone who wants the deeper data-flow tour.",
       "image": "/static/images/446267084-5f2c0604-38f6-497f-ab21-1363ce99a627.png",
+      "video": "/static/videos/steam_rec_demo_silent.mp4",
       "badge": "Live",
       "tools": ["PostgreSQL", "ChromaDB", "Qdrant", "ModernBERT", "FastAPI", "Docker"],
       "links": [
@@ -32,6 +33,7 @@
       "description": "Stochastic SIR simulation with Markov-chain mobility and a live 3D globe. Public health data, but make it move.",
       "long_description": "A stochastic pandemic simulator that models disease spread across city coordinates using Markov-chain mobility and SIR dynamics. Python computes the population state transitions, then Godot renders the spread on a 3D globe so people can see the model instead of just reading equations. It earned 2nd place at BLOOM Hackathon and later received grant support for neural-network forecasting work.",
       "image": "/static/images/maldemic_final.gif",
+      "video": "/static/videos/maldemic_demo_silent.mp4",
       "badge": "2nd Place",
       "tools": ["Python", "NumPy", "SciPy", "Godot", "Markov Chains", "SIR"],
       "links": [
@@ -81,6 +83,7 @@
       "description": "3D galaxy toy with Perlin fields and vector-field enemies. My simulation brain taking a walk.",
       "long_description": "A 3D Godot experiment with galaxy formation, Perlin noise, and enemies that move through vector fields. It is less data engineering and more simulation play, but it shows the same interest in systems that evolve from local rules.",
       "image": "/static/images/hyperrosen.png",
+      "video": "/static/videos/hyperrosen_demo_silent.mp4",
       "badge": null,
       "tools": ["Godot", "3D", "Perlin", "Vector Fields"],
       "links": [
