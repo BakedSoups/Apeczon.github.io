@@ -659,7 +659,26 @@ if (root) {
     rocket.add(flame);
 
     group.add(rocket);
-    return { rocket, body, nose, flame };
+    const astronaut = new THREE.Group();
+    const suit = new THREE.Mesh(
+      new THREE.SphereGeometry(0.032, 10, 8),
+      new THREE.MeshBasicMaterial({ color: 0xf8fafc }),
+    );
+    const visor = new THREE.Mesh(
+      new THREE.SphereGeometry(0.018, 10, 8),
+      new THREE.MeshBasicMaterial({ color: 0x7dd3fc }),
+    );
+    visor.position.set(0.018, 0.006, 0.006);
+    const pack = new THREE.Mesh(
+      new THREE.BoxGeometry(0.026, 0.034, 0.018),
+      new THREE.MeshBasicMaterial({ color: 0x94a3b8 }),
+    );
+    pack.position.set(-0.018, -0.002, -0.002);
+    astronaut.add(suit, visor, pack);
+    astronaut.visible = false;
+    group.add(astronaut);
+
+    return { rocket, body, nose, flame, astronaut, suit, visor, pack };
   }
 
   const rockets = [
@@ -675,6 +694,8 @@ if (root) {
   const tempPrev = new THREE.Vector3();
   const tempNext = new THREE.Vector3();
   const tempDirection = new THREE.Vector3();
+  const tempTangent = new THREE.Vector3();
+  const tempBinormal = new THREE.Vector3();
 
   function getLandingPoint(target, output) {
     target.planet.getWorldPosition(tempCenter);
@@ -685,6 +706,33 @@ if (root) {
     target.planet.getWorldScale(tempScale);
     output.copy(tempCenter).addScaledVector(tempNormal, target.radius * tempScale.x + 0.08);
     return group.worldToLocal(output);
+  }
+
+  function getPlanetCenter(target, output) {
+    target.planet.getWorldPosition(output);
+    return group.worldToLocal(output);
+  }
+
+  function positionAstronaut(item, target, arrivalProgress) {
+    getLandingPoint(target, tempNext);
+    getPlanetCenter(target, tempCenter);
+    tempNormal.copy(tempNext).sub(tempCenter);
+    if (tempNormal.lengthSq() < 0.0001) tempNormal.set(0, 1, 0);
+    tempNormal.normalize();
+    tempTangent.set(-tempNormal.y, tempNormal.x, 0);
+    if (tempTangent.lengthSq() < 0.0001) tempTangent.set(1, 0, 0);
+    tempTangent.normalize();
+    tempBinormal.crossVectors(tempNormal, tempTangent).normalize();
+
+    const walk = Math.sin(arrivalProgress * Math.PI) * 0.18;
+    const step = Math.sin(arrivalProgress * Math.PI * 8) * 0.018;
+    item.astronaut.position.copy(tempNext)
+      .addScaledVector(tempTangent, walk)
+      .addScaledVector(tempBinormal, step)
+      .addScaledVector(tempNormal, 0.045);
+    item.astronaut.rotation.z = Math.atan2(tempNormal.y, tempNormal.x) - Math.PI / 2;
+    item.astronaut.rotation.y = Math.sin(arrivalProgress * Math.PI * 2) * 0.35;
+    item.astronaut.visible = true;
   }
 
   function getRocketRoutePoint(item, progress, output) {
@@ -794,12 +842,16 @@ if (root) {
       item.rocket.rotation.y = Math.atan2(tempDirection.z, Math.max(0.001, Math.abs(tempDirection.x))) * 0.55;
       const local = t < 0.5 ? t / 0.5 : (t - 0.5) / 0.5;
       const isLanded = local < 0.18 || local > 0.82;
+      item.astronaut.visible = false;
       if (isLanded) {
         const target = local < 0.18
           ? (t < 0.5 ? item.from : item.to)
           : (t < 0.5 ? item.to : item.from);
         getLandingPoint(target, tempNext);
         item.rocket.position.copy(tempNext);
+        if (local > 0.82) {
+          positionAstronaut(item, target, (local - 0.82) / 0.18);
+        }
       }
       item.flame.visible = !isLanded;
       item.flame.material.opacity = isLanded ? 0 : 0.18 + Math.pow(Math.sin(frame * 12 + item.offset * 8), 2) * 0.2;
@@ -865,6 +917,12 @@ if (root) {
         item.nose.geometry.dispose();
         item.nose.material.dispose();
         item.flame.material.dispose();
+        item.suit.geometry.dispose();
+        item.suit.material.dispose();
+        item.visor.geometry.dispose();
+        item.visor.material.dispose();
+        item.pack.geometry.dispose();
+        item.pack.material.dispose();
       });
       disposableTextures.forEach((texture) => texture.dispose());
       renderer.dispose();
