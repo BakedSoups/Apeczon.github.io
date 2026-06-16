@@ -578,8 +578,9 @@
       "duration": "Aug 2023 to May 2024",
       "location": "Merced",
       "details": [
-        "Analyzed thousands of Qualtrics survey responses and focus group notes from 500+ students to identify drivers of engagement and academic performance.",
-        "Used Pandas and OpenAI assisted categorization to turn open ended feedback into structured themes faculty could act on.",
+        "Started my first day as a Data Analyst Intern at SATAL UC Merced, using survey data and student feedback to improve enrollment support, course experiences, and faculty decision making.",
+        "Built a survey response normalization pipeline using Pandas and OpenAI assisted categorization to bucket thousands of open ended Qualtrics responses into structured themes, transforming unstructured student feedback into analyzable datasets for faculty action.",
+        "Analyzed survey responses tied to student grade outcomes across lab sections and lectures, splitting fieldwork across a team of 6 to conduct weekly focus groups and large scale surveys, then compiling findings into weekly reports delivered to 5+ faculty members, contributing to measurable improvements in student outcomes and faculty relationships.",
         "Presented research on methodology at the Fresno State Exemplary Practices in Higher Education Conference."
       ],
       "tech": [
@@ -754,6 +755,23 @@
       ],
       "blog_year": 2025,
       "sort_date": "2025-02"
+    },
+    {
+      "slug": "ucm-game-dev-club-2023",
+      "title": "UC Merced Game Dev Club and My First Data Internship",
+      "date": "August 2023",
+      "label": "Journal Entry",
+      "excerpt": "A 2023 note on being secretary of the UC Merced Game Dev Club, hosting showcases and jams, and starting my first data analyst internship at SATAL.",
+      "content_html": "<figure class=\"post-header-image journal-header\"><img src=\"/static/images/UCM%20Game%20dev%20club.jpeg\" alt=\"UC Merced Game Dev Club event\" loading=\"lazy\"/><figcaption>UC Merced Game Dev Club, back when I was trying to get more students to actually start making games.</figcaption></figure><p>In 2023, I was the secretary of the <strong>UC Merced Game Dev Club</strong>. A lot of the work was not glamorous: planning, messaging people, getting rooms, keeping events moving, and making sure students felt like they could show up even if they had never shipped anything before.</p><p>We hosted a successful showcase where people brought in games they had been building, talked through what worked, and got to see other students care about the same weird problems: controls, art, music, level design, scope, and how to make a tiny idea feel playable.</p><h4>Game jams and mixers</h4><p>We also hosted a game jam that produced some genuinely cool student projects. The best part was watching people form teams quickly and make something real under a deadline. I also helped host a mixer for students who wanted to get started with game development but did not know who to work with yet.</p><p>That year also overlapped with my first day as a <strong>Data Analyst Intern at SATAL UC Merced</strong>. I was using survey data and student feedback to improve enrollment support, course experiences, and faculty decision making. Looking back, both roles were about the same thing: turning scattered student energy into something organized enough that people could act on it.</p><figure class=\"post-header-image journal-secondary\"><img src=\"/static/images/satal-fresno-state-poster.png\" alt=\"SATAL Fresno State presentation poster\" loading=\"lazy\"/><figcaption>We ended up presenting this SATAL work at Fresno State, showing how student feedback could become faculty-facing evidence instead of disappearing into end-of-term forms.</figcaption></figure><p>That presentation mattered to me because it made the internship feel real. We were not just cleaning survey data for a class assignment; we were turning student perspectives into something instructors could discuss, revise around, and bring back into their courses.</p>",
+      "tags": [
+        "UC Merced",
+        "Game Dev Club",
+        "Game Jam",
+        "SATAL",
+        "Journal"
+      ],
+      "blog_year": 2023,
+      "sort_date": "2023-08"
     }
   ]
 }
