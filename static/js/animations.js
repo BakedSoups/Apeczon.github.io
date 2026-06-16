@@ -44,13 +44,47 @@
     });
   });
 
-  // ── Hero section switcher ──
-  function playProjectVideos() {
-    document.querySelectorAll('#projects video').forEach(video => {
+  // ── Lazy video playback ──
+  function loadLazyVideo(video, shouldPlay = false) {
+    const source = video.querySelector('source[data-src]');
+    if (source) {
+      source.src = source.dataset.src;
+      source.removeAttribute('data-src');
+      video.load();
+    }
+
+    if (shouldPlay) {
       video.muted = true;
       video.play().catch(() => {
         // Some browsers wait for the first user gesture before autoplay.
       });
+    }
+  }
+
+  const lazyVideoObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (!(video instanceof HTMLVideoElement)) return;
+
+        if (entry.isIntersecting) {
+          loadLazyVideo(video, true);
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.22, rootMargin: '260px 0px' })
+    : null;
+
+  function observeLazyVideos(scope = document) {
+    scope.querySelectorAll('video').forEach(video => {
+      video.muted = true;
+      video.preload = 'none';
+      if (lazyVideoObserver) {
+        lazyVideoObserver.observe(video);
+      } else {
+        loadLazyVideo(video, false);
+      }
     });
   }
 
@@ -79,10 +113,6 @@
         panel.classList.toggle('active', panel.dataset.viewPanel === view);
       });
 
-      if (view === 'projects') {
-        playProjectVideos();
-      }
-
       if (enteringEditorial) {
         window.setTimeout(() => {
           document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -102,9 +132,7 @@
     });
   });
 
-  if (document.querySelector('#projects.content-view.active')) {
-    playProjectVideos();
-  }
+  observeLazyVideos();
 
   if (document.querySelector('#blog.content-view.active')) {
     document.body.classList.add('editorial-mode');
@@ -203,16 +231,17 @@
           video.muted = true;
           video.loop = true;
           video.playsInline = true;
-          video.preload = 'metadata';
+          video.preload = 'none';
           video.poster = poster || '';
+          video.dataset.lazyVideo = '';
           video.setAttribute('aria-label', alt);
 
           const source = document.createElement('source');
-          source.src = src;
+          source.dataset.src = src;
           source.type = 'video/mp4';
           video.appendChild(source);
           stage.prepend(video);
-          video.play().catch(() => {});
+          observeLazyVideos(stage);
         } else {
           const image = document.createElement('img');
           image.src = src;

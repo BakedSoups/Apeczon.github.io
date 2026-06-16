@@ -42,13 +42,17 @@ body::before {
   z-index: 1;
 }
 
-/* ═══ BOIDS CANVAS ═══ */
-#boids-canvas {
+#future-scene {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#future-scene canvas {
+  display: block;
   width: 100%;
   height: 100%;
-  z-index: 0;
 }
 
 /* ═══ LAYOUT ═══ */
@@ -238,18 +242,19 @@ header.scrolled {
   position: relative;
   z-index: 10;
   overflow: hidden;
-  background: #070707;
+  background: #020307;
 }
 
 .hero-shade {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 35%, rgba(255, 255, 255, 0.08), transparent 28%),
-    linear-gradient(90deg, rgba(7, 12, 24, 0.84) 0%, rgba(7, 12, 24, 0.58) 42%, rgba(7, 12, 24, 0.16) 100%),
-    linear-gradient(180deg, rgba(6, 10, 22, 0.16) 0%, rgba(10, 18, 32, 0.92) 100%);
+    radial-gradient(circle at 68% 42%, rgba(125, 211, 252, 0.08), transparent 34%),
+    radial-gradient(circle at 28% 36%, rgba(255, 255, 255, 0.045), transparent 26%),
+    linear-gradient(90deg, rgba(2, 3, 7, 0.92) 0%, rgba(2, 3, 7, 0.74) 42%, rgba(2, 3, 7, 0.34) 100%),
+    linear-gradient(180deg, rgba(2, 3, 7, 0.4) 0%, rgba(4, 8, 18, 0.96) 100%);
 }
 
 .hero-inner {
@@ -1805,7 +1810,7 @@ body.editorial-mode .hero {
   border-bottom: 1px solid #dedede;
 }
 
-body.editorial-mode #boids-canvas,
+body.editorial-mode #future-scene,
 body.editorial-mode .hero-shade,
 body.editorial-mode .hero-inner {
   display: none;

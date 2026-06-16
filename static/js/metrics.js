@@ -1,5 +1,5 @@
 /**
- * Metrics Client - polls /api/metrics and updates HUD + boids
+ * Metrics Client - polls /api/metrics and updates HUD + hero motion.
  */
 
 (function () {

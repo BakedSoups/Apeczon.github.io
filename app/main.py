@@ -1,4 +1,4 @@
-"""Litestar portfolio app - HTMX + native boids."""
+"""Litestar portfolio app - HTMX + lightweight hero motion."""
 
 from __future__ import annotations
 
