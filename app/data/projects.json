@@ -4,7 +4,7 @@
       "slug": "nextsteamgame",
       "title": "nextsteamgame.com",
       "description": "A Steam similarity tool for people who want control over why two games are considered similar.",
-      "long_description": "I built this because most similarity recommenders only let users pick a game, then hand back results without explaining what actually matched. If I like Persona 5 for the jazz fusion OST and modern Tokyo setting, I want to search from those reasons, not just a broad RPG label. The goal is to help people find new games, give niche games a better highlight, and show which features drove each recommendation.",
+      "long_description": "A semantic Steam recommender for 80,000+ games built around the idea that games should match by what they are, not only by player overlap. The pipeline filters up to 2,000 reviews per game, classifies useful review pools with ModernBERT, extracts identity tags and focus vectors, canonicalizes noisy generated tags, then precomputes candidate relationships so users can rerank recommendations by soundtrack, setting, mechanics, narrative, pacing, and vibe.",
       "image": "/static/images/446267084-5f2c0604-38f6-497f-ab21-1363ce99a627.png",
       "video": "/static/videos/steam_rec_demo_silent.mp4",
       "badge": "Live",
@@ -442,18 +442,20 @@
       "duration": "Mar 2025 to May 2026",
       "location": "San Francisco",
       "details": [
-        "Built parallelized ETL pipelines in Go across 5 virtual machines, using DuckDB analytical querying to generate entity aware NLP datasets from 20,000+ news articles.",
-        "Developed and evaluated an explainable aspect based sentiment analysis framework using REBEL, PyTorch, and graph based NLP methods, improving sentiment classification performance by 20% over VADER.",
-        "Used graph based relationship extraction to connect articles, entities, sentiment, and evidence into datasets researchers could inspect."
+        "Co-authored AeVAA, a modular explainable ABSA framework that models entity sentiment through clause extraction, coreference resolution, relation extraction, graph construction, and survey-derived sentiment formulas.",
+        "Designed a human annotation study with 36 participants and 3,900+ sentiment judgments across action, association, ownership, and temporal aggregation relationships, deriving interpretable formulas that explained roughly 50% of sentiment variance.",
+        "Evaluated AeVAA on SemEval 2014, achieving 78.58% restaurant accuracy and 68.52% laptop accuracy while producing explanatory traces that identified sentiment attribution and modifier extraction errors.",
+        "Built concurrent ETL pipelines across 20,000+ news articles into DuckDB relationship datasets for entity-level sentiment evaluation and media bias research."
       ],
       "tech": [
         "Go",
         "Python",
         "NLP",
         "PyTorch",
-        "REBEL",
-        "Graph Extraction",
-        "DuckDB"
+        "ModernBERT",
+        "NetworkX",
+        "DuckDB",
+        "SemEval"
       ],
       "year": "2025",
       "show_year": true
@@ -524,16 +526,17 @@
       "duration": "Jul 2024 to Jul 2025",
       "location": "San Francisco",
       "details": [
-        "Analyzed 500,000+ student records from SLATE, turning raw SQL exports into datasets, dashboards, and PCA models for admissions strategy.",
-        "Identified regional enrollment patterns, including strong correlations between Florida applicants and SEO driven recruitment channels, informing admissions marketing strategy.",
-        "Automated recurring web and reporting updates with Python and Jinja2 so the data work did not become manual copy paste theater."
+        "Conducted year-over-year exploratory analysis on 500,000+ SLATE prospect records, identifying COVID-era enrollment declines, geographic acceptance and declination trends, and regional recruitment event patterns linked to stronger student conversion.",
+        "Built a Go microservice that canonicalized inconsistently named recruitment events from raw CSV exports, surfacing attendance gaps and event performance metrics used by admissions leadership to evaluate which events to host or cut.",
+        "Automated recurring prospective-student website updates with Python and Jinja2 workflows over a legacy SLATE-hosted HTML and React system, eliminating manual copy-paste updates across enrollment marketing pages."
       ],
       "tech": [
+        "Go",
         "SQL",
         "Pandas",
-        "PCA",
         "SLATE",
         "Jinja2",
+        "React",
         "Admissions Analytics"
       ],
       "year": "2024",
@@ -605,12 +608,59 @@
   ],
   "blog_posts": [
     {
+      "slug": "nextsteamgame",
+      "title": "How I Built a Semantic Recommendation Engine for 80,000 Steam Games",
+      "date": "May 2026",
+      "label": "Case Study",
+      "label_color": "accent",
+      "content_html": "<p><strong>NextSteamGame</strong> is a Steam recommendation project built around a simple complaint: most game recommenders know that two games are related, but they rarely explain why. Player-overlap signals are useful, but they flatten intent. Someone may like Persona 5 for the jazz fusion soundtrack and modern Tokyo setting; another person may like it for social simulation and dungeon crawling. Those are different reasons, and a good recommendation system should let users separate them.</p><div class=\"case-study-visual game-vector-exhibit\" aria-label=\"Game vector and micro tag example\"><div class=\"game-vector-copy\"><strong>Games as vectors</strong><p>I think games can be represented as weighted profiles: not just genre, but the parts that actually make the game feel like itself.</p></div><div class=\"single-vector-card\"><svg class=\"mini-radar\" viewBox=\"0 0 220 210\" role=\"img\" aria-label=\"Persona 5 Royal game vector radar\"><polygon class=\"radar-grid\" points=\"110,35 181.33,86.82 154.08,170.68 65.92,170.68 38.67,86.82\"/><polygon class=\"radar-grid\" points=\"110,60 157.55,94.55 139.39,150.45 80.61,150.45 62.45,94.55\"/><polygon class=\"radar-grid\" points=\"110,84 134.72,101.96 125.28,131.04 94.72,131.04 85.28,101.96\"/><line class=\"radar-axis\" x1=\"110\" y1=\"110\" x2=\"110\" y2=\"30\"/><line class=\"radar-axis\" x1=\"110\" y1=\"110\" x2=\"186\" y2=\"85\"/><line class=\"radar-axis\" x1=\"110\" y1=\"110\" x2=\"158\" y2=\"178\"/><line class=\"radar-axis\" x1=\"110\" y1=\"110\" x2=\"62\" y2=\"178\"/><line class=\"radar-axis\" x1=\"110\" y1=\"110\" x2=\"34\" y2=\"85\"/><polygon class=\"radar-matched\" points=\"110,45 171,90 150,165 74,158 50,90\"/><circle class=\"radar-dot\" cx=\"110\" cy=\"45\" r=\"3.5\"/><circle class=\"radar-dot\" cx=\"171\" cy=\"90\" r=\"3.5\"/><circle class=\"radar-dot\" cx=\"150\" cy=\"165\" r=\"3.5\"/><circle class=\"radar-dot\" cx=\"74\" cy=\"158\" r=\"3.5\"/><circle class=\"radar-dot\" cx=\"50\" cy=\"90\" r=\"3.5\"/><text x=\"110\" y=\"17\">Music</text><text x=\"201\" y=\"86\">Setting</text><text x=\"166\" y=\"199\">Systems</text><text x=\"54\" y=\"199\">Narrative</text><text x=\"17\" y=\"86\">Vibe</text></svg><p>Persona 5 Royal: jazz fusion, modern urban fantasy, social simulation, dungeon crawling, stylish UI.</p></div><div class=\"micro-tag-panel\"><strong>Micro-tags normal genres miss</strong><div class=\"micro-tag-list\"><span>confidant system</span><span>persona fusion system</span><span>day-night cycle</span><span>stylish art direction</span><span>modern Tokyo setting</span><span>oppression and rebellion</span><span>social link</span><span>dungeon exploration</span><span>jazz fusion soundtrack</span><span>character driven narrative</span></div></div></div><h4>The problem</h4><p>Most recommendation systems lean on the pattern \"players who liked X also liked Y.\" That works well for popular games, but it struggles with niche tastes and gives weak explanations. I wanted a system that could represent a game as a shape: soundtrack, setting, systems, narrative, vibe, and the small micro-tags that genre labels leave behind.</p><h4>The pipeline</h4><ul><li>Collect Steam metadata, appids, genres, tags, descriptions, release data, and storefront artwork.</li><li>Pull up to 2,000 reviews per game, then remove spam and low-signal reviews with regex filters, word diversity scoring, quality heuristics, and descriptive phrase detection.</li><li>Classify useful reviews with ModernBERT into pools for gameplay, art, soundtrack, systems depth, narrative, and general description.</li><li>Generate semantic identity data: focus vectors, mechanics, narrative, vibe, structure loop, signature tags, niche anchors, music tags, and micro-tags.</li><li>Canonicalize noisy generated tags with heuristics, fuzzy matching, embedding similarity, and vector search so tags like fast action, quick action, and high-speed combat can be grouped without losing useful distinctions.</li><li>Precompute candidate relationships offline, then let the live FastAPI and React app apply user-controlled reranking at runtime.</li></ul><h4>Why the architecture is cool</h4><p>The key design choice is splitting expensive semantic work from cheap interactive reranking. Computing every similarity at runtime would be wasteful, so candidate relationships are built offline. When a user searches, the app retrieves candidates, applies the user's weights, and reranks recommendations based on the profile dimensions they care about.</p><h4>From review to recommendation</h4><p>A raw review like \"the combat is fast, the soundtrack goes hard, and the boss fights feel like rhythm puzzles\" becomes structured signals: fast combat, high-energy soundtrack, boss-focused structure, rhythm-like timing, and mechanical precision. Those signals can then be weighted independently by the user.</p><h4>What it demonstrates</h4><ul><li>80,000+ Steam games indexed</li><li>Up to 2,000 reviews analyzed per game</li><li>Semantic vectors, identity tags, and canonicalized genre/tag relationships</li><li>30,000+ users and discovery across 8,000+ unique games</li><li>A retrieval design cheap enough to run on constrained cloud infrastructure</li></ul><h4>What I learned</h4><p>Review text is noisy, so filtering before embeddings matters. LLM-generated tags are useful, but raw generated tags need canonicalization. Most importantly, recommendations feel better when users can inspect and control the reason behind a match instead of accepting a mystery list.</p>",
+      "tags": [
+        "Recommendation Systems",
+        "Vector Search",
+        "ModernBERT",
+        "FastAPI",
+        "Semantic Retrieval",
+        "Steam"
+      ]
+    },
+    {
+      "slug": "aevaa-absa",
+      "title": "Building Explainable ABSA Without Hiding the Reasoning",
+      "date": "October 2025",
+      "label": "Research Note",
+      "label_color": "accent",
+      "content_html": "<p><strong>AeVAA</strong> is a research project about a question I keep coming back to: machine learning and AI are powerful, but can we build systems where the important reasoning stays inspectable?</p><p>Aspect-based sentiment analysis usually tries to predict whether a sentence is positive, negative, or neutral toward a target. That is useful, but it often hides the path from text to judgment. AeVAA takes a different route: split the problem into modules, keep intermediate artifacts, and use survey-derived formulas to explain how sentiment moves between entities.</p><div class=\"equation-feature\"><span>\u03a3(x)<sup>k</sup> = \u03c3(s<sup>k</sup>, i<sup>k</sup>, r<sup>k</sup>)</span><small>Sentiment as a function of local score, interaction, and relation context.</small></div><h4>The core idea</h4><p>Instead of asking one model for one answer, AeVAA builds a trace. It extracts clauses, resolves entities, identifies relationships, constructs a graph, and then calculates valence-aware sentiment over that graph. The model can still use black-box components, but the system around them exposes what each component contributed.</p><h4>Why this matters</h4><p>Document-level sentiment can miss the point. In a sentence like \"the person was bad, but the child was good,\" the total sentiment is not enough. The meaningful question is who the sentiment is aimed at and why it changed. That becomes even more important for media bias, long-form narrative, and texts where framing matters.</p><h4>What we built</h4><ul><li>A modular pipeline for constituency clause extraction, entity/coreference resolution, relation and modifier extraction, graph construction, and sentiment aggregation.</li><li>A human annotation study with 36 participants and 3,900+ sentiment judgments across action, association, ownership, and temporal aggregation cases.</li><li>Survey-fitted formulas for action, target, association, ownership, and aggregate sentiment dynamics.</li><li>Explanatory traces that show where errors came from instead of only reporting a final label.</li></ul><h4>Results</h4><p>The fitted formulas explained roughly half of the variance in pilot sentiment judgments. On SemEval 2014, AeVAA reached 78.58% restaurant accuracy and 68.52% laptop accuracy. It did not beat state-of-the-art DeBERTa systems, but that was not the point of the prototype. The point was to show that a modular, inspectable ABSA system can produce plausible results and make debugging easier.</p><h4>The bigger theme</h4><p>I like projects that score well without becoming total black boxes. The goal is not to reject ML; it is to use ML where it helps, then design the surrounding system so people can inspect the evidence, the intermediate state, and the reason a result appeared.</p>",
+      "tags": [
+        "Explainable AI",
+        "ABSA",
+        "NLP",
+        "Human Annotation",
+        "SemEval",
+        "Research"
+      ]
+    },
+    {
+      "slug": "anthropic-data-poisoning-update",
+      "title": "Turns Out We Weren't Crazy About Data Poisoning",
+      "date": "October 2025",
+      "label": "Update",
+      "label_color": "accent",
+      "content_html": "<p>In December 2024, I built <strong>Antidote Intelligence</strong> around a simple belief: training data is infrastructure, and poisoned examples can become model behavior if nobody inspects the dataset early enough.</p><p>Anthropic, the UK AI Security Institute, and The Alan Turing Institute later published a large-scale poisoning study that makes that concern feel a lot less speculative. Their result: in their experimental setup, as few as 250 malicious documents were enough to introduce a backdoor across models from 600M to 13B parameters.</p><div class=\"equation-feature poison-stat\"><span>250 docs</span><small>enough to backdoor tested models in Anthropic's denial-of-service setup</small></div><h4>Why this reinforced the project</h4><p>A lot of people think poisoning only matters if an attacker controls a meaningful percentage of the training set. The Anthropic result challenges that. Their finding suggests the absolute number of poisoned documents can matter more than the percentage of the corpus, at least for the narrow backdoor they tested.</p><h4>What Antidote was trying to do</h4><p>Antidote was not trying to solve all model security. It was a dataset inspection tool: look at examples before they become model behavior, generate hypotheses about suspicious content, and make data quality visible enough for a human to investigate.</p><h4>The larger lesson</h4><p>This is the same theme as my recommender and ABSA work: AI systems can be powerful without becoming completely opaque. If model behavior depends on messy upstream data, then inspection, provenance, and explainable intermediate artifacts are not extras. They are part of the system.</p><p><a href=\"https://www.anthropic.com/research/small-samples-poison\" target=\"_blank\" rel=\"noopener\">Read Anthropic's research post</a>.</p>",
+      "tags": [
+        "Data Poisoning",
+        "ML Security",
+        "Dataset Inspection",
+        "AI Safety",
+        "Antidote Intelligence"
+      ]
+    },
+    {
       "slug": "antidote",
       "title": "Data Poisoning Detection at Continue DX",
       "date": "December 2024",
       "label": "Latest Post",
       "label_color": "accent",
-      "content_html": "<p>I demoed <strong>Antidote Intelligence</strong> at Continue DX, showing a content aware data poisoning detection system for ML training datasets. The basic pitch: before we argue about the model, let's look harder at the data we fed it.</p><h4>Why this matters</h4><p>Training data quality is one of those problems that hides until it becomes expensive. Bad examples, poisoned content, or subtle distribution weirdness can leak into model behavior long before anyone notices.</p><h4>What I built</h4><ul><li>Multi agent review pipeline for suspicious dataset content</li><li>Hypothesis generation and validation around poisoned examples</li><li>Content aware checks instead of only metadata based filtering</li><li>Reports aimed at making data issues inspectable, not magical</li></ul><p>I am interested in this space because it treats data quality as infrastructure. The model gets the attention, but the dataset is where a lot of the story starts.</p>",
+      "content_html": "<figure class=\"post-header-image continue-header\"><img src=\"/static/images/continue.png\" alt=\"Continue DX presentation header\" loading=\"lazy\"/><figcaption>Continue DX demo: inspecting training data before it becomes model behavior.</figcaption></figure><p>I demoed <strong>Antidote Intelligence</strong> at Continue DX, showing a content aware data poisoning detection system for ML training datasets. The basic pitch: before we argue about the model, let's look harder at the data we fed it.</p><h4>Why this matters</h4><p>Training data quality is one of those problems that hides until it becomes expensive. Bad examples, poisoned content, or subtle distribution weirdness can leak into model behavior long before anyone notices.</p><h4>What I built</h4><ul><li>Multi agent review pipeline for suspicious dataset content</li><li>Hypothesis generation and validation around poisoned examples</li><li>Content aware checks instead of only metadata based filtering</li><li>Reports aimed at making data issues inspectable, not magical</li></ul><p>I am interested in this space because it treats data quality as infrastructure. The model gets the attention, but the dataset is where a lot of the story starts.</p>",
       "tags": [
         "ML Security",
         "Data Quality",

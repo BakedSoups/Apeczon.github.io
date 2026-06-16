@@ -57,6 +57,19 @@
   document.querySelectorAll('.hero-nav-link[data-view]').forEach(button => {
     button.addEventListener('click', () => {
       const view = button.dataset.view;
+      const wasEditorial = document.body.classList.contains('editorial-mode');
+      const enteringEditorial = view === 'blog';
+      const changingEditorialState = enteringEditorial || wasEditorial;
+      const transitionKicker = document.querySelector('[data-transition-kicker]');
+      const transitionTitle = document.querySelector('[data-transition-title]');
+
+      if (transitionKicker && transitionTitle) {
+        transitionKicker.textContent = enteringEditorial ? 'Entering' : 'Leaving';
+        transitionTitle.textContent = 'Blog Mode';
+      }
+
+      document.body.classList.toggle('editorial-mode', enteringEditorial);
+      document.body.classList.toggle('blog-door-transition', changingEditorialState);
 
       document.querySelectorAll('.hero-nav-link[data-view]').forEach(item => {
         item.classList.toggle('active', item === button);
@@ -69,11 +82,32 @@
       if (view === 'projects') {
         playProjectVideos();
       }
+
+      if (enteringEditorial) {
+        window.setTimeout(() => {
+          document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 160);
+        window.setTimeout(() => {
+          document.body.classList.remove('blog-door-transition');
+        }, 1900);
+      } else {
+        if (wasEditorial) {
+          window.setTimeout(() => {
+            document.body.classList.remove('blog-door-transition');
+          }, 1900);
+        } else {
+          document.body.classList.remove('blog-door-transition');
+        }
+      }
     });
   });
 
   if (document.querySelector('#projects.content-view.active')) {
     playProjectVideos();
+  }
+
+  if (document.querySelector('#blog.content-view.active')) {
+    document.body.classList.add('editorial-mode');
   }
 
   // ── Portfolio tag filter ──
@@ -214,7 +248,7 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   // Observe sections and cards
-  document.querySelectorAll('.section, .project-card, .experience-card').forEach(el => {
+  document.querySelectorAll('.section, .project-card, .experience-card, .blog-post-card').forEach(el => {
     observer.observe(el);
   });
 })();

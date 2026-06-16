@@ -68,6 +68,7 @@
       <nav class="hero-nav" aria-label="Portfolio sections">
         <button class="hero-nav-link active" type="button" data-view="experience">Experience</button>
         <button class="hero-nav-link" type="button" data-view="projects">Projects</button>
+        <button class="hero-nav-link" type="button" data-view="blog">Blog</button>
       </nav>
     </div>
   </section>
@@ -209,10 +210,47 @@
           {% endfor %}
         </div>
       </section>
+
+      <section class="section content-view" id="blog" data-view-panel="blog">
+        <h2 class="section-title" classes="add reveal:0.2s">Blog</h2>
+        <p class="section-intro">Hey hey! Didn't think many people would see this haha. These are basically leftover thoughts from projects I made: recommendation systems, explainable AI, data poisoning, and the parts that did not fit cleanly on a resume.</p>
+        <figure class="editorial-comic">
+          <img src="/static/images/garfield_comic.png" alt="Comic strip reference for editorial layout" loading="lazy" />
+          <figcaption>Since I'm feeling newspaper-y here I put a Garfield strip (it's in the public domain).</figcaption>
+        </figure>
+        <div class="blog-list">
+          {% for post in blog_posts %}
+          <article class="blog-post-card" id="post-{{ post.slug }}" classes="add fade-up:{{ loop.index0 * 0.12 }}s">
+            <div class="blog-card-header">
+              <span class="blog-label">{{ post.label }}</span>
+              <span class="blog-date">{{ post.date }}</span>
+            </div>
+            <h3>{{ post.title }}</h3>
+            <div class="blog-body">
+              {{ post.content_html | safe }}
+            </div>
+            <div class="blog-tags">
+              {% for tag in post.tags %}
+              <span class="tool-tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
     </div>
   </main>
 
   <div id="toast-container"></div>
+
+  <div class="blog-mode-transition" aria-hidden="true">
+    <div class="blog-door blog-door-left"></div>
+    <div class="blog-door blog-door-right"></div>
+    <div class="blog-mode-title">
+      <span data-transition-kicker>Entering</span>
+      <strong data-transition-title>Blog Mode</strong>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
