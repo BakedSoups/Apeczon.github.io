@@ -68,7 +68,7 @@
       <nav class="hero-nav" aria-label="Portfolio sections">
         <button class="hero-nav-link active" type="button" data-view="experience">Experience</button>
         <button class="hero-nav-link" type="button" data-view="projects">Projects</button>
-        <button class="hero-nav-link" type="button" data-view="blog">Blog</button>
+        <button class="hero-nav-link" type="button" data-view="blog">Vlog</button>
       </nav>
     </div>
   </section>
@@ -107,6 +107,24 @@
               <span class="tool-tag">{{ tech }}</span>
               {% endfor %}
             </div>
+            {% if exp.visuals %}
+            {% if exp.visuals_url %}
+            <a class="experience-visuals experience-visuals-link{% if exp.visuals|length == 1 %} experience-visuals-single{% endif %}" href="{{ exp.visuals_url }}" target="_blank" rel="noopener" aria-label="Open {{ exp.company }}">
+            {% else %}
+            <div class="experience-visuals{% if exp.visuals|length == 1 %} experience-visuals-single{% endif %}" aria-label="{{ exp.company }} visuals">
+            {% endif %}
+              {% for visual in exp.visuals %}
+              <figure>
+                <img src="/static/images/{{ visual.image }}" alt="{{ visual.label }}" loading="lazy" />
+                <figcaption>{{ visual.label }}</figcaption>
+              </figure>
+              {% endfor %}
+            {% if exp.visuals_url %}
+            </a>
+            {% else %}
+            </div>
+            {% endif %}
+            {% endif %}
             {% if exp.link_preview %}
             <a class="experience-preview" href="{{ exp.link_preview.url }}" target="_blank" rel="noopener">
               <img src="/static/images/{{ exp.link_preview.image }}" alt="{{ exp.link_preview.title }}" />
@@ -212,14 +230,20 @@
       </section>
 
       <section class="section content-view" id="blog" data-view-panel="blog">
-        <h2 class="section-title" classes="add reveal:0.2s">Blog</h2>
+        <h2 class="section-title" classes="add reveal:0.2s">Vlog</h2>
         <p class="section-intro">Hey hey! Didn't think many people would see this haha. These are basically leftover thoughts from projects I made: recommendation systems, explainable AI, data poisoning, and the parts that did not fit cleanly on a resume.</p>
         <figure class="editorial-comic">
           <img src="/static/images/garfield_comic.png" alt="Comic strip reference for editorial layout" loading="lazy" />
           <figcaption>Since I'm feeling newspaper-y here I put a Garfield strip (it's in the public domain).</figcaption>
         </figure>
-        <div class="blog-list">
-          {% for post in blog_posts %}
+        <div class="blog-year-nav" aria-label="Vlog years">
+          {% for page in blog_year_pages %}
+          <button class="blog-year-button{% if loop.first %} active{% endif %}" type="button" data-blog-year="{{ page.year }}">{{ page.year }}</button>
+          {% endfor %}
+        </div>
+        {% for page in blog_year_pages %}
+        <div class="blog-list blog-year-page{% if loop.first %} active{% endif %}" data-blog-year-page="{{ page.year }}">
+          {% for post in page.posts %}
           <article class="blog-post-card" id="post-{{ post.slug }}" classes="add fade-up:{{ loop.index0 * 0.12 }}s">
             <div class="blog-card-header">
               <span class="blog-label">{{ post.label }}</span>
@@ -237,6 +261,7 @@
           </article>
           {% endfor %}
         </div>
+        {% endfor %}
       </section>
     </div>
   </main>
@@ -248,7 +273,7 @@
     <div class="blog-door blog-door-right"></div>
     <div class="blog-mode-title">
       <span data-transition-kicker>Entering</span>
-      <strong data-transition-title>Blog Mode</strong>
+      <strong data-transition-title>Vlog Mode</strong>
     </div>
   </div>
 

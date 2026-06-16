@@ -156,34 +156,6 @@
       ]
     },
     {
-      "slug": "usfsearch",
-      "title": "USF Search Engine Crawler",
-      "description": "A Go crawler that turns a university website into searchable data while handling worker queues, batching, and database backpressure.",
-      "long_description": "A search pipeline built around data movement more than page scraping. 300 extract workers download and parse pages while 300 database workers batch writes into SQLite, with queues keeping the system fed without falling over when the crawler moves faster than the database wants it to.",
-      "image": "/static/images/usfimage.png",
-      "badge": "Crawler",
-      "tools": [
-        "Long term",
-        "Go",
-        "SQLite",
-        "Concurrency",
-        "Batch Writes",
-        "Queues"
-      ],
-      "links": [
-        {
-          "label": "View Project",
-          "url": "https://github.com/BakedSoups/USF-Search-Engine",
-          "icon": "fab fa-github"
-        },
-        {
-          "label": "Documentation",
-          "url": "https://drive.google.com/file/d/1Kb889JZRaXGM2KJniNO0sy8PZvlsHqDO/view?usp=sharing",
-          "icon": "fa-solid fa-file"
-        }
-      ]
-    },
-    {
       "slug": "antidote",
       "title": "Antidote Intelligence",
       "description": "A dataset inspection tool for finding poisoned or suspicious training examples before they quietly become model behavior.",
@@ -234,7 +206,7 @@
       "title": "Hyper Rosen",
       "description": "A procedural galaxy prototype where planets, cities, enemies, and asteroids emerge from local generation rules instead of hand placement.",
       "long_description": "A hackathon built Godot experiment in systems that can keep expanding. Swirled Perlin noise places planets, wave function collapse handles city placement, and procedural rules create enemies and asteroids, making the project feel like a small galaxy generated from reusable data rules.",
-      "image": "/static/images/hyperrosen.png",
+      "image": "/static/images/hyperrosen2.jpg",
       "video": "/static/videos/hyperrosen_demo_silent.mp4",
       "badge": "Hackathon",
       "tools": [
@@ -249,6 +221,27 @@
           "label": "View Project",
           "url": "https://github.com/4automatons/hyper-rosen2",
           "icon": "fab fa-github"
+        }
+      ],
+      "media": [
+        {
+          "label": "Hackathon",
+          "type": "image",
+          "src": "/static/images/hyperrosen2.jpg",
+          "thumbnail": "/static/images/hyperrosen2.jpg"
+        },
+        {
+          "label": "Game",
+          "type": "image",
+          "src": "/static/images/hyperrosen.png",
+          "thumbnail": "/static/images/hyperrosen.png"
+        },
+        {
+          "label": "Demo",
+          "type": "video",
+          "src": "/static/videos/hyperrosen_demo_silent.mp4",
+          "poster": "/static/images/hyperrosen2.jpg",
+          "thumbnail": "/static/images/hyperrosen.png"
         }
       ]
     },
@@ -404,14 +397,15 @@
         "Google OAuth",
         "Docker"
       ],
-      "link_preview": {
-        "title": "Future Tilt",
-        "url": "https://futuretilt.com/",
-        "description": "Actionable data, high impact campaigns, and measurable ROI for DTC brands.",
-        "image": "6728de81b7cb2ef2a9b80a07_FUTURETILTLOGO.png"
-      },
       "year": "2025",
-      "show_year": false
+      "show_year": false,
+      "visuals_url": "https://futuretilt.com/",
+      "visuals": [
+        {
+          "label": "Future Tilt",
+          "image": "futuretilt.png"
+        }
+      ]
     },
     {
       "company": "Superlinked (Series A)",
@@ -466,6 +460,20 @@
       "role": "Junior Fullstack Engineer",
       "duration": "Aug 2025 to Nov 2025",
       "location": "San Francisco",
+      "visuals": [
+        {
+          "label": "WeWork build room",
+          "image": "weworkalaris.jpg"
+        },
+        {
+          "label": "Office view",
+          "image": "alaris_view.jpg"
+        },
+        {
+          "label": "Top view",
+          "image": "alarisweworktopview.jpg"
+        }
+      ],
       "details": [
         "Designed orchestration workflows with Prefect and Airflow to normalize CrowdStrike, Elastic, and Microsoft Defender telemetry while powering an agent driven cybersecurity analysis platform that reduced investigation time from 10 hours to approximately 1 hour.",
         "Built customer facing compliance tooling with Next.js, React, and React PDF, generating NIS2 reports that linked agent generated findings from millions of raw SOC2 logs back to source telemetry.",
@@ -526,6 +534,8 @@
       "duration": "Jul 2024 to Jul 2025",
       "location": "San Francisco",
       "details": [
+        "Transferred to USF in 2024 from UC Merced because I wanted to learn in San Francisco, be closer to working engineers and startup builders, and make a name for myself in a real tech ecosystem.",
+        "Applied to 100+ roles before starting at USF and converted that search into a Data Analyst / Web Intern role supporting enrollment marketing, admissions analytics, and prospective-student web operations.",
         "Conducted year-over-year exploratory analysis on 500,000+ SLATE prospect records, identifying COVID-era enrollment declines, geographic acceptance and declination trends, and regional recruitment event patterns linked to stronger student conversion.",
         "Built a Go microservice that canonicalized inconsistently named recruitment events from raw CSV exports, surfacing attendance gaps and event performance metrics used by admissions leadership to evaluate which events to host or cut.",
         "Automated recurring prospective-student website updates with Python and Jinja2 workflows over a legacy SLATE-hosted HTML and React system, eliminating manual copy-paste updates across enrollment marketing pages."
@@ -608,6 +618,23 @@
   ],
   "blog_posts": [
     {
+      "slug": "usf-sentiment-journal",
+      "title": "USF, Sentiment, and Moving Into the City",
+      "date": "August 2024",
+      "label": "Journal Entry",
+      "excerpt": "A more personal note on transferring to USF, chasing work in San Francisco, and why explainable sentiment became part of the larger theme in my projects.",
+      "content_html": "<figure class=\"post-header-image journal-header\"><img src=\"/static/images/usfView.jpg\" alt=\"View from my USF dorm\" loading=\"lazy\"/><figcaption>The view from my dorm at USF. This was the point where school started feeling connected to the city instead of separate from it.</figcaption></figure><p>This one is more of a journal entry than a project breakdown.</p><p>I transferred to <strong>USF in 2024</strong> after UC Merced because I wanted to be in San Francisco. Merced felt too far away from the people and companies I wanted to learn from. I wanted to make a name for myself, be around real builders, and learn from people actually working in tech.</p><p>Before I even got to USF, I applied to more than 100 jobs. That search eventually turned into a Data Analyst / Web Intern role, where I worked on enrollment analytics, SLATE data, admissions event cleanup, and prospective-student web updates. It was not glamorous, but it taught me something important: useful software usually starts as messy data, weird processes, and people who need better tools.</p><h4>Where sentiment came in</h4><p>Later, at the MAGIC Lab, I worked on AeVAA, an explainable sentiment project. The technical version is about aspect-based sentiment analysis, graphs, coreference, relation extraction, and survey-derived formulas. The personal version is simpler: I was trying to understand how a system could make a judgment without hiding the reasons.</p><p>That thread shows up in a lot of my projects. Recommenders should explain why a game matches. Sentiment systems should explain who a sentence is about and why the score moved. Data poisoning tools should show what suspicious examples look like before they become model behavior.</p><figure class=\"post-header-image journal-secondary\"><img src=\"/static/images/usfimage.png\" alt=\"USF campus\" loading=\"lazy\"/><figcaption>USF became the place where those ideas started turning into real projects instead of just things I was reading about.</figcaption></figure><h4>The pattern</h4><p>I like AI systems, but I do not like when the answer is the only artifact. The projects I keep coming back to are the ones where the intermediate state matters: vectors, tags, traces, formulas, records, examples, and the evidence behind a prediction.</p><p>USF was where that started to become a theme instead of a coincidence.</p>",
+      "tags": [
+        "USF",
+        "Journal",
+        "Sentiment Analysis",
+        "Research",
+        "San Francisco"
+      ],
+      "blog_year": 2024,
+      "sort_date": "2024-08"
+    },
+    {
       "slug": "nextsteamgame",
       "title": "How I Built a Semantic Recommendation Engine for 80,000 Steam Games",
       "date": "May 2026",
@@ -621,7 +648,43 @@
         "FastAPI",
         "Semantic Retrieval",
         "Steam"
-      ]
+      ],
+      "blog_year": 2026,
+      "sort_date": "2026-05"
+    },
+    {
+      "slug": "hyperrosen-hackathon",
+      "title": "Hyper Rosen: A Tiny Galaxy From a Hackathon Weekend",
+      "date": "Hackathon Notes",
+      "label": "Friends + Games",
+      "label_color": "accent",
+      "content_html": "<figure class=\"post-header-image hackathon-header\"><img src=\"/static/images/hyperrosen2.jpg\" alt=\"Hyper Rosen hackathon photo\" loading=\"lazy\"/><figcaption>Hyper Rosen was one of those weekend builds where the idea was bigger than the time limit, which is kind of the whole point.</figcaption></figure><figure class=\"post-video-feature hackathon-video\"><video autoplay muted loop playsinline preload=\"metadata\" poster=\"/static/images/hyperrosen.png\"><source src=\"/static/videos/hyperrosen_demo_silent.mp4\" type=\"video/mp4\"></video><figcaption>The same silent gameplay capture from the project card, dropped into the newsletter so the build feels alive instead of only described.</figcaption></figure><p><strong>Hyper Rosen</strong> was a hackathon game I made with friends. The pitch was simple and probably too ambitious: build a procedural space game where planets, cities, enemies, and asteroid fields come from generation rules instead of hand placement.</p><h4>What we tried</h4><p>The fun part was treating the game like a small systems experiment. Swirled noise placed planets, procedural rules filled out the galaxy, and wave-function-collapse-style logic helped with city layout. It was not polished in the normal product sense, but it had that good hackathon feeling where every hour made the world a little more alive.</p><h4>Why I still like it</h4><p>I like projects like this because they make constraints obvious. You learn what actually matters when the deadline is close: readable movement, a loop people can understand, and enough visual feedback that the system feels real even if half of it is held together by deadline energy.</p><h4>One day</h4><p>Long term, I still want to make a full Mario Galaxy-style procedural game from this idea: tiny planets, playful gravity, generated worlds, and a sense that the level is wrapping around you. That is probably a post-college version of the project, though. The kind you build when breakfast is no longer mostly oats and coffee.</p>",
+      "tags": [
+        "Hackathon",
+        "Godot",
+        "Procedural Generation",
+        "Friends",
+        "Game Dev"
+      ],
+      "blog_year": 2026,
+      "sort_date": "2026-02"
+    },
+    {
+      "slug": "cakewalk-gdc-hackathon",
+      "title": "Cake Walk: A One-Day Game Jam at GDC",
+      "date": "GDC Game Jam",
+      "label": "Friends + Games",
+      "label_color": "accent",
+      "content_html": "<figure class=\"post-header-image hackathon-header\"><img src=\"/static/images/GDC_cakewalk.jpg\" alt=\"Cake Walk at GDC\" loading=\"lazy\"/><figcaption>Cake Walk started as a tiny joke and became a playable floor demo by the end of the day.</figcaption></figure><p><strong>Cake Walk</strong> was a one-day game jam project I made at GDC with friends. The whole thing was intentionally small: make a little cake cross the street, make it readable, make it charming, and ship something people could actually try.</p><h4>The shape of the day</h4><p>Everyone had a lane. We split up character work, art, shaders, music, and gameplay, then kept cutting scope until the core loop was visible. That is the best part of game jams: you cannot hide behind architecture for too long. Either the thing plays or it does not.</p><figure class=\"post-header-image hackathon-secondary\"><img src=\"/static/images/cake_walk_group_photo.jpg\" alt=\"Cake Walk group photo\" loading=\"lazy\"/><figcaption>The real artifact was less the game and more the tiny production pipeline we built under pressure.</figcaption></figure><h4>Why it matters</h4><p>I keep these projects on the site because they show a different kind of engineering. Hackathons are messy, but they force prioritization, communication, and taste. You learn how much polish can come from a few good decisions when the team is moving fast.</p>",
+      "tags": [
+        "GDC",
+        "Game Jam",
+        "Godot",
+        "Team Project",
+        "Friends"
+      ],
+      "blog_year": 2026,
+      "sort_date": "2026-03"
     },
     {
       "slug": "aevaa-absa",
@@ -637,7 +700,9 @@
         "Human Annotation",
         "SemEval",
         "Research"
-      ]
+      ],
+      "blog_year": 2025,
+      "sort_date": "2025-10"
     },
     {
       "slug": "anthropic-data-poisoning-update",
@@ -652,7 +717,9 @@
         "Dataset Inspection",
         "AI Safety",
         "Antidote Intelligence"
-      ]
+      ],
+      "blog_year": 2025,
+      "sort_date": "2025-10-09"
     },
     {
       "slug": "antidote",
@@ -666,7 +733,9 @@
         "Data Quality",
         "Training Data",
         "Agent Pipeline"
-      ]
+      ],
+      "blog_year": 2024,
+      "sort_date": "2024-12"
     },
     {
       "slug": "maldemic",
@@ -682,7 +751,9 @@
         "Markov Chains",
         "SIR Model",
         "Simulation"
-      ]
+      ],
+      "blog_year": 2025,
+      "sort_date": "2025-02"
     }
   ]
 }

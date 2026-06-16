@@ -28,7 +28,7 @@
     maxRipples: 90,
     lilyPadCount: 9,
     personalSpace: 44,
-    separationStrength: 0.085,
+    separationStrength: 0.052,
   };
 
   let W = 1;
@@ -42,6 +42,7 @@
   let uiZones = [];
   let lastTime = performance.now();
   let mouse = { x: -9999, y: -9999, active: false };
+  let hoveredGiant = null;
 
   const fishImage = new Image();
   let fishReady = false;
@@ -183,6 +184,7 @@
       this.burstTimer = rand(0, this.personality.burstEvery);
       this.isPaused = false;
       this.isBursting = false;
+      this.escapeTimer = 0;
       this.palette = Math.random() < 0.5
         ? ['#f5f0dc', '#ef6f43', '#1d2430']
         : ['#fff8e8', '#d84332', '#202020'];
@@ -279,7 +281,7 @@
           pushY += (dy / distance) * force;
           count++;
 
-          const nudge = force * 0.16 * sizeBias;
+          const nudge = force * 0.12 * sizeBias;
           this.x += (dx / distance) * nudge;
           this.y += (dy / distance) * nudge;
         }
@@ -288,7 +290,11 @@
       if (count > 0) {
         this.steerTo(this.x + pushX, this.y + pushY, CONFIG.separationStrength);
         this.targetSpeed = Math.max(this.targetSpeed, CONFIG.minSpeed + 0.08);
+        this.escapeTimer = 14;
+        return true;
       }
+
+      return false;
     }
 
     flock(allFish) {
@@ -301,6 +307,7 @@
       let centerY = 0;
       let separateX = 0;
       let separateY = 0;
+      let closeNeighbor = false;
 
       const range = this.personality.kind === 'tinyRacer' ? 145 : 115;
       const separateRange = this.personality.kind === 'tinyRacer' ? 42 : 52;
@@ -322,10 +329,16 @@
           const force = 1 - distance / separateRange;
           separateX -= (dx / distance) * force;
           separateY -= (dy / distance) * force;
+          closeNeighbor = true;
         }
       }
 
       if (!neighbors) return;
+
+      if (closeNeighbor && (separateX || separateY)) {
+        this.steerTo(this.x + separateX, this.y + separateY, 0.045);
+        return;
+      }
 
       alignX /= neighbors;
       alignY /= neighbors;
@@ -361,6 +374,7 @@
       this.wanderTimer -= dt * 60;
       this.pauseTimer -= dt * 60;
       this.burstTimer -= dt * 60;
+      this.escapeTimer = Math.max(0, this.escapeTimer - dt * 60);
 
       if (this.wanderTimer <= 0) {
         this.targetHeading += rand(-this.personality.wander, this.personality.wander);
@@ -413,14 +427,16 @@
       if (this.y > H - margin) this.steerTo(this.x, H * 0.55, 0.04);
 
       this.avoidUI();
-      this.flock(allFish);
-      this.avoidFish(allFish);
+      const escaping = this.avoidFish(allFish);
+      if (!escaping && this.escapeTimer <= 0) this.flock(allFish);
 
       this.speed += (this.targetSpeed - this.speed) * 0.045 * dt * 60;
       this.speed = clamp(this.speed, 0.01, CONFIG.maxSpeed + 0.36);
 
       const forwardTurn = clamp(this.speed / Math.max(0.01, this.personality.speedMax), 0.05, 1);
-      const turnDelta = angleDiff(this.heading, this.targetHeading) * CONFIG.turnRate * forwardTurn * dt * 60;
+      const rawTurnDelta = angleDiff(this.heading, this.targetHeading) * CONFIG.turnRate * forwardTurn * dt * 60;
+      const maxTurn = (this.personality.kind === 'tinyRacer' ? 0.075 : 0.052) * dt * 60;
+      const turnDelta = clamp(rawTurnDelta, -maxTurn, maxTurn);
       this.heading += turnDelta;
       this.visualHeading += angleDiff(this.visualHeading, this.heading) * (0.025 + 0.045 * forwardTurn) * dt * 60;
       this.turnAmount = clamp(angleDiff(this.visualHeading, this.heading), -1.2, 1.2);
@@ -438,6 +454,9 @@
       ctx.save();
       ctx.translate(this.x, this.y);
       ctx.rotate(this.visualHeading);
+      if (this === hoveredGiant) {
+        drawGiantHighlight(this.size);
+      }
       if (fishReady && fishImage.naturalWidth > 0) {
         drawWiggledSprite(fishImage, this.size, this.phase, this.turnAmount, this.speed);
       } else {
@@ -445,6 +464,58 @@
       }
       ctx.restore();
     }
+  }
+
+  function drawGiantHighlight(size) {
+    const aspect = fishImage.naturalWidth && fishImage.naturalHeight
+      ? fishImage.naturalWidth / fishImage.naturalHeight
+      : 2.1;
+    const w = size * aspect * 1.08;
+    const h = size * 1.32;
+    ctx.save();
+    ctx.shadowColor = 'rgba(125, 211, 252, 0.85)';
+    ctx.shadowBlur = 22;
+    ctx.strokeStyle = 'rgba(125, 211, 252, 0.9)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, w * 0.5, h * 0.5, 0, 0, TAU);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function updateHoveredGiant() {
+    if (!mouse.active) {
+      hoveredGiant = null;
+      return;
+    }
+    const giant = fish.find(koi => koi.personality.kind === 'giant');
+    if (!giant) {
+      hoveredGiant = null;
+      return;
+    }
+    const dx = mouse.x - giant.x;
+    const dy = mouse.y - giant.y;
+    hoveredGiant = Math.sqrt(dx * dx + dy * dy) < giant.size * 1.35 ? giant : null;
+  }
+
+  function drawGiantTooltip() {
+    if (!hoveredGiant) return;
+    const label = 'big koi';
+    const x = clamp(hoveredGiant.x + 26, 14, W - 116);
+    const y = clamp(hoveredGiant.y - hoveredGiant.size * 0.72, 18, H - 32);
+    ctx.save();
+    ctx.font = '700 11px Inter, system-ui, sans-serif';
+    const width = ctx.measureText(label).width + 24;
+    ctx.fillStyle = 'rgba(5, 12, 20, 0.82)';
+    ctx.strokeStyle = 'rgba(125, 211, 252, 0.7)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.roundRect(x, y, width, 24, 12);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(226, 246, 255, 0.95)';
+    ctx.fillText(label, x + 12, y + 16);
+    ctx.restore();
   }
 
   function drawWiggledSprite(img, size, phase, turnAmount, speed) {
@@ -645,6 +716,7 @@
     updateFood(dt);
     updateRipples(dt);
     for (const koi of fish) koi.update(dt, fish);
+    updateHoveredGiant();
 
     drawWater(now);
     drawLilyPads(now);
@@ -652,6 +724,7 @@
     drawFood();
     for (const koi of fish) koi.draw();
     drawRain();
+    drawGiantTooltip();
 
     requestAnimationFrame(frame);
   }
@@ -665,6 +738,7 @@
 
   canvas.addEventListener('mouseleave', () => {
     mouse.active = false;
+    hoveredGiant = null;
   });
 
   canvas.addEventListener('click', event => {

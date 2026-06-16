@@ -65,7 +65,7 @@
 
       if (transitionKicker && transitionTitle) {
         transitionKicker.textContent = enteringEditorial ? 'Entering' : 'Leaving';
-        transitionTitle.textContent = 'Blog Mode';
+        transitionTitle.textContent = 'Vlog Mode';
       }
 
       document.body.classList.toggle('editorial-mode', enteringEditorial);
@@ -109,6 +109,18 @@
   if (document.querySelector('#blog.content-view.active')) {
     document.body.classList.add('editorial-mode');
   }
+
+  document.querySelectorAll('[data-blog-year]').forEach(button => {
+    button.addEventListener('click', () => {
+      const year = button.dataset.blogYear;
+      document.querySelectorAll('[data-blog-year]').forEach(item => {
+        item.classList.toggle('active', item === button);
+      });
+      document.querySelectorAll('[data-blog-year-page]').forEach(page => {
+        page.classList.toggle('active', page.dataset.blogYearPage === year);
+      });
+    });
+  });
 
   // ── Portfolio tag filter ──
   const filterButtons = Array.from(document.querySelectorAll('.query-chip[data-filter]'));

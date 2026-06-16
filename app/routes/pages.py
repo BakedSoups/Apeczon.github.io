@@ -51,6 +51,12 @@ def _load_data() -> dict:
         text = " ".join(parts).lower()
         return " ".join([text, *buckets])
 
+    def _blog_year(post: dict) -> int:
+        if post.get("blog_year"):
+            return int(post["blog_year"])
+        match = re.search(r"\b(20\d{2})\b", " ".join([post.get("sort_date", ""), post.get("date", "")]))
+        return int(match.group(1)) if match else 0
+
     for project in data["projects"]:
         searchable = [
             project["title"],
@@ -61,6 +67,24 @@ def _load_data() -> dict:
         text = _text(searchable)
         project["filter_buckets"] = _project_buckets(text)
         project["search_text"] = _search_text(searchable, project["filter_buckets"])
+
+    blog_posts = sorted(
+        data["blog_posts"],
+        key=lambda post: post.get("sort_date", post.get("date", "")),
+        reverse=True,
+    )
+    data["blog_posts"] = blog_posts
+    data["blog_year_pages"] = [
+        {
+            "year": year,
+            "posts": [
+                post
+                for post in blog_posts
+                if _blog_year(post) == year
+            ],
+        }
+        for year in range(2026, 2023, -1)
+    ]
 
     data["filter_tags"] = FILTER_TAGS
     return data
@@ -78,6 +102,7 @@ class PagesController(Controller):
                 "projects": data["projects"],
                 "experiences": data["experiences"],
                 "blog_posts": data["blog_posts"],
+                "blog_year_pages": data["blog_year_pages"],
                 "filter_tags": data["filter_tags"],
             },
         )
@@ -91,6 +116,7 @@ class PagesController(Controller):
                 "projects": data["projects"],
                 "experiences": data["experiences"],
                 "blog_posts": data["blog_posts"],
+                "blog_year_pages": data["blog_year_pages"],
                 "filter_tags": data["filter_tags"],
             },
         )
