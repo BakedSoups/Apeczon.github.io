@@ -383,17 +383,16 @@
       "duration": "Jul 2025 to Present",
       "location": "San Francisco",
       "details": [
-        "Collaborated with a Data Consultant to build ETL pipelines with Airbyte, BigQuery, and AWS Lambda, capturing customer behavior and demographic data across 50+ ecommerce clients and 20M+ daily queries.",
-        "Developed an AI email template platform with React, FastAPI, Docker, Google OAuth, and Klaviyo template logic, transforming Google Sheets campaign calendars into editable emails with Google Drive asset sync.",
-        "Built customer segmentation and churn monitoring workflows with SQL and Python across Shopify and Klaviyo data to support more targeted marketing strategies."
+        "AI template builder: developed a React and FastAPI platform that converted campaign plans into editable Klaviyo-compatible marketing emails, using AI-generated copy and reusable email components to produce branded first drafts from designer-maintained assets in Google Drive, reducing email preparation time by 40%.",
+        "Built an AWS Lambda and BigQuery alerting system that compared month-to-date campaign and flow revenue against the same date range from the prior year, posting daily Slack reports to surface seasonal underperformance across ecommerce clients."
       ],
       "tech": [
         "React",
         "FastAPI",
-        "Airbyte",
         "BigQuery",
         "AWS Lambda",
         "Klaviyo API",
+        "Slack API",
         "Google OAuth",
         "Docker"
       ],
@@ -430,26 +429,23 @@
       "show_year": true
     },
     {
-      "company": "USF MAGIC Lab",
+      "company": "MAGICS Lab",
       "logo": "San-Francisco-Dons-Logo-2001.png",
       "role": "NLP Research Assistant",
       "duration": "Mar 2025 to May 2026",
       "location": "San Francisco",
       "details": [
-        "Co-authored AeVAA, a modular explainable ABSA framework that models entity sentiment through clause extraction, coreference resolution, relation extraction, graph construction, and survey-derived sentiment formulas.",
-        "Designed a human annotation study with 36 participants and 3,900+ sentiment judgments across action, association, ownership, and temporal aggregation relationships, deriving interpretable formulas that explained roughly 50% of sentiment variance.",
-        "Evaluated AeVAA on SemEval 2014, achieving 78.58% restaurant accuracy and 68.52% laptop accuracy while producing explanatory traces that identified sentiment attribution and modifier extraction errors.",
-        "Built concurrent ETL pipelines across 20,000+ news articles into DuckDB relationship datasets for entity-level sentiment evaluation and media bias research."
+        "Built parallelized ETL pipelines in Go across 5 virtual machines using DuckDB analytical querying to generate entity-aware NLP datasets from 20,000+ news articles.",
+        "Implemented a modular explainable ABSA framework that outperformed VADER on SemEval 2014 Restaurant by 5 percentage points (78.58% vs. 73.57% accuracy), with transparent reasoning traces."
       ],
       "tech": [
         "Go",
         "Python",
         "NLP",
-        "PyTorch",
-        "ModernBERT",
-        "NetworkX",
         "DuckDB",
-        "SemEval"
+        "SemEval",
+        "VADER",
+        "ABSA"
       ],
       "year": "2025",
       "show_year": true
@@ -475,18 +471,16 @@
         }
       ],
       "details": [
-        "Designed orchestration workflows with Prefect and Airflow to normalize CrowdStrike, Elastic, and Microsoft Defender telemetry while powering an agent driven cybersecurity analysis platform that reduced investigation time from 10 hours to approximately 1 hour.",
-        "Built customer facing compliance tooling with Next.js, React, and React PDF, generating NIS2 reports that linked agent generated findings from millions of raw SOC2 logs back to source telemetry.",
-        "Established reusable tRPC service patterns across a Next.js monorepo, consolidating 50+ frontend database calls into typed backend procedures."
+        "Resolved frontend and data consistency issues across an internal React platform, eliminating duplicate data displays, fixing UI rendering bugs, and establishing reusable patterns for frontend-to-backend communication.",
+        "Consolidated 50+ frontend database queries into typed tRPC procedures backed by Drizzle ORM, improving maintainability and reducing redundant data access across a Next.js + React monorepo."
       ],
       "tech": [
         "Next.js",
-        "React PDF",
+        "React",
         "tRPC",
-        "Prefect",
-        "Airflow",
-        "CrowdStrike",
-        "Microsoft Defender"
+        "Drizzle ORM",
+        "TypeScript",
+        "PostgreSQL"
       ],
       "year": "2025",
       "show_year": false
@@ -498,14 +492,14 @@
       "duration": "Jun 2025 to Aug 2025",
       "location": "San Francisco",
       "details": [
-        "Built a Lambda campaign orchestration service that syncs Google Sheets planning calendars with Klaviyo campaigns and Trello production tasks, cutting setup time by 50%.",
-        "Worked across Google Sheets, Klaviyo, Trello, and AWS Lambda to turn campaign planning data into production ready automation."
+        "Engineered a campaign synchronization service using AWS Lambda, BigQuery, and webhook-based APIs to coordinate campaign data across Trello, Klaviyo, and internal systems, reducing campaign maintenance overhead by 50%."
       ],
       "tech": [
         "AWS Lambda",
-        "Google Sheets",
+        "BigQuery",
         "Klaviyo API",
         "Trello API",
+        "Webhooks",
         "Automation"
       ],
       "year": "2025",
@@ -534,11 +528,8 @@
       "duration": "Jul 2024 to Jul 2025",
       "location": "San Francisco",
       "details": [
-        "Transferred to USF in 2024 from UC Merced because I wanted to learn in San Francisco, be closer to working engineers and startup builders, and make a name for myself in a real tech ecosystem.",
-        "Applied to 100+ roles before starting at USF and converted that search into a Data Analyst / Web Intern role supporting enrollment marketing, admissions analytics, and prospective-student web operations.",
-        "Conducted year-over-year exploratory analysis on 500,000+ SLATE prospect records, identifying COVID-era enrollment declines, geographic acceptance and declination trends, and regional recruitment event patterns linked to stronger student conversion.",
-        "Built a Go microservice that canonicalized inconsistently named recruitment events from raw CSV exports, surfacing attendance gaps and event performance metrics used by admissions leadership to evaluate which events to host or cut.",
-        "Automated recurring prospective-student website updates with Python and Jinja2 workflows over a legacy SLATE-hosted HTML and React system, eliminating manual copy-paste updates across enrollment marketing pages."
+        "Conducted year-over-year exploratory analysis on 500,000+ prospect student records from SLATE, identifying macro enrollment trends and analyzing acceptance and declination rates by geography, finding that recruitment events where students from the same region met had significantly higher conversion rates.",
+        "Automated recurring website content updates for prospective students by building Python and Jinja2 templating workflows over a legacy SLATE-hosted system running raw HTML and React, eliminating manual copy-paste updates across enrollment marketing pages."
       ],
       "tech": [
         "Go",
@@ -772,6 +763,24 @@
       ],
       "blog_year": 2023,
       "sort_date": "2023-08"
+    },
+    {
+      "slug": "acme-builders-2022",
+      "title": "ACME Builders: Construction, Payroll Scans, and Starting College",
+      "date": "Summer 2022",
+      "label": "Journal Entry",
+      "excerpt": "A 2022 note from the start of college, when I could not land an internship yet and spent the time doing construction work, accounting scans, payroll records, and archives.",
+      "content_html": "<figure class=\"post-header-image journal-header\"><img src=\"/static/images/acme_builders.jpg\" alt=\"ACME Builders building\" loading=\"lazy\"/><figcaption>ACME Builders, around the time I was just starting college and trying to find any useful way to spend the summer.</figcaption></figure><p>In 2022, I had just started college and I could not get an internship yet. I was still early, still figuring out what counted as experience, and honestly just trying to keep moving instead of waiting around for someone to hand me a clean first opportunity.</p><p>So I worked with <strong>ACME Builders</strong>. Some of it was construction work. Some of it was office work: scanning accounting documents, payroll records, and old archives so they were easier to store and reference. It was not software engineering, but it gave me a closer look at the kind of messy operational work that every business quietly depends on.</p><h4>Why I still count it</h4><p>Looking back, this was one of the first places I saw how much value exists in boring process cleanup. Paper records, payroll files, old folders, and construction logistics are not glamorous, but someone still has to make them usable. That lesson shows up later in my data work: useful systems often start by organizing the unorganized.</p><p>At the time, it was mostly a way to pass the summer and stay busy. But it also taught me that not every important experience looks like a polished internship. Sometimes the early work is just learning how real businesses keep track of things.</p>",
+      "tags": [
+        "ACME Builders",
+        "Construction",
+        "Accounting",
+        "Payroll",
+        "Archives",
+        "Journal"
+      ],
+      "blog_year": 2022,
+      "sort_date": "2022-06"
     }
   ]
 }

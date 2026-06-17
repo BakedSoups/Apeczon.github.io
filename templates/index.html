@@ -52,7 +52,7 @@
             <span><strong>Favorite language:</strong> Python</span>
           </div>
           <div class="resume-links" aria-label="Resume downloads">
-            <a href="/static/resumes/Alex_Peczon_SWE.pdf" target="_blank" rel="noopener">
+            <a href="/static/resumes/Alex_Peczon_Resume__SWE_-2.pdf" target="_blank" rel="noopener">
               <i class="fa-solid fa-file-lines"></i>
               <span>Resume</span>
             </a>
@@ -68,7 +68,7 @@
       <nav class="hero-nav" aria-label="Portfolio sections">
         <button class="hero-nav-link active" type="button" data-view="experience">Experience</button>
         <button class="hero-nav-link" type="button" data-view="projects">Projects</button>
-        <button class="hero-nav-link" type="button" data-view="blog">Vlog</button>
+        <button class="hero-nav-link" type="button" data-view="blog">Blog</button>
       </nav>
     </div>
   </section>
@@ -230,13 +230,13 @@
       </section>
 
       <section class="section content-view" id="blog" data-view-panel="blog">
-        <h2 class="section-title" classes="add reveal:0.2s">Vlog</h2>
+        <h2 class="section-title" classes="add reveal:0.2s">Blog</h2>
         <p class="section-intro">Hey hey! Didn't think many people would see this haha. These are basically leftover thoughts from projects I made: recommendation systems, explainable AI, data poisoning, and the parts that did not fit cleanly on a resume.</p>
         <figure class="editorial-comic">
           <img src="/static/images/garfield_comic.png" alt="Comic strip reference for editorial layout" loading="lazy" />
           <figcaption>Since I'm feeling newspaper-y here I put a Garfield strip (it's in the public domain).</figcaption>
         </figure>
-        <div class="blog-year-nav" aria-label="Vlog years">
+        <div class="blog-year-nav" aria-label="Blog years">
           {% for page in blog_year_pages %}
           <button class="blog-year-button{% if loop.first %} active{% endif %}" type="button" data-blog-year="{{ page.year }}">{{ page.year }}</button>
           {% endfor %}
@@ -273,7 +273,7 @@
     <div class="blog-door blog-door-right"></div>
     <div class="blog-mode-title">
       <span data-transition-kicker>Entering</span>
-      <strong data-transition-title>Vlog Mode</strong>
+      <strong data-transition-title>Blog Mode</strong>
     </div>
   </div>
 
@@ -285,7 +285,7 @@
     </div>
   </footer>
 
-<script type="module" src="/static/js/future-scene.js?v=20260616-astronaut-walk"></script>
-  <script src="/static/js/animations.js?v=20260616-lazy-video"></script>
+<script type="module" src="/static/js/future-scene.js?v=20260616-spread-systems"></script>
+  <script src="/static/js/animations.js?v=20260616-blog-label"></script>
 </body>
 </html>

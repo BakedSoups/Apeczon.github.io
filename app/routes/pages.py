@@ -83,7 +83,7 @@ def _load_data() -> dict:
                 if _blog_year(post) == year
             ],
         }
-        for year in range(2026, 2022, -1)
+        for year in range(2026, 2021, -1)
     ]
 
     data["filter_tags"] = FILTER_TAGS

@@ -99,7 +99,7 @@
 
       if (transitionKicker && transitionTitle) {
         transitionKicker.textContent = enteringEditorial ? 'Entering' : 'Leaving';
-        transitionTitle.textContent = 'Vlog Mode';
+        transitionTitle.textContent = 'Blog Mode';
       }
 
       document.body.classList.toggle('editorial-mode', enteringEditorial);
