@@ -3,16 +3,15 @@
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
 
-import msgspec
 import psutil
 from litestar import Controller, get
 
 from app.models import ServerMetrics
 
 DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "projects.json"
-_encoder = msgspec.json.Encoder()
 
 
 def _get_metrics() -> ServerMetrics:
@@ -44,7 +43,7 @@ class ProjectsController(Controller):
 
     @get("/")
     async def list_projects(self, tag: str | None = None) -> list[dict]:
-        data = json.loads(DATA_FILE.read_text())
+        data = _load_project_data()
         projects = data["projects"]
         if tag:
             projects = [
@@ -54,8 +53,13 @@ class ProjectsController(Controller):
 
     @get("/{slug:str}")
     async def get_project(self, slug: str) -> dict:
-        data = json.loads(DATA_FILE.read_text())
+        data = _load_project_data()
         for p in data["projects"]:
             if p["slug"] == slug:
                 return p
         return {"error": "not found"}
+
+
+@lru_cache(maxsize=1)
+def _load_project_data() -> dict:
+    return json.loads(DATA_FILE.read_text())

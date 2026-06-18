@@ -10,24 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css" />
-
-  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-  <script src="https://unpkg.com/idiomorph@0.3.0/dist/idiomorph-ext.min.js"></script>
-  <script src="https://unpkg.com/htmx-ext-preload@2.1.0/preload.js"></script>
-  <script src="https://unpkg.com/htmx-ext-head-support@2.0.2/head-support.js"></script>
-  <script src="https://unpkg.com/htmx-ext-response-targets@2.0.2/response-targets.js"></script>
-  <script src="https://unpkg.com/htmx-ext-class-tools@2.0.1/class-tools.js"></script>
-  <script src="https://unpkg.com/htmx-ext-loading-states@2.0.0/loading-states.js"></script>
-  <script src="https://unpkg.com/htmx-ext-remove-me@2.0.0/remove-me.js"></script>
-  <script src="https://unpkg.com/htmx-ext-multi-swap@2.0.0/multi-swap.js"></script>
-  <script src="https://unpkg.com/htmx-ext-json-enc@2.0.1/json-enc.js"></script>
-  <script src="https://unpkg.com/htmx-ext-client-side-templates@2.0.0/client-side-templates.js"></script>
-  <script src="https://unpkg.com/htmx-ext-path-params@2.0.0/path-params.js"></script>
-  <script src="https://unpkg.com/htmx-ext-debug@2.0.0/debug.js"></script>
-  <script src="https://unpkg.com/mustache@4.2.0/mustache.min.js"></script>
 </head>
 
-<body hx-ext="preload,head-support,response-targets,class-tools,loading-states,remove-me,multi-swap,json-enc,client-side-templates,path-params,debug">
+<body>
   <header id="header">
     <div class="container header-inner">
       <a href="/" class="logo" preload="mousedown">
@@ -285,7 +270,7 @@
     </div>
   </footer>
 
-<script type="module" src="/static/js/future-scene.js?v=20260616-spread-systems"></script>
+  <script type="module" src="/static/js/future-scene-loader.js?v=20260618-lazy-scene"></script>
   <script src="/static/js/animations.js?v=20260616-blog-label"></script>
 </body>
 </html>

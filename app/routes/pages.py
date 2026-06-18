@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+from functools import lru_cache
 from pathlib import Path
 
 from litestar import Controller, get
@@ -29,6 +30,7 @@ FILTER_TAGS = [
 ]
 
 
+@lru_cache(maxsize=1)
 def _load_data() -> dict:
     data = json.loads(DATA_FILE.read_text())
 
