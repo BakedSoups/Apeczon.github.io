@@ -25,6 +25,11 @@
           "icon": "fa-solid fa-globe"
         },
         {
+          "label": "Diagnostic",
+          "url": "/static/images/steam_report.html",
+          "icon": "fa-solid fa-chart-simple"
+        },
+        {
           "label": "View Code",
           "url": "https://github.com/BakedSoups/Steam_Reccomender",
           "icon": "fab fa-github"
@@ -609,6 +614,24 @@
     }
   ],
   "blog_posts": [
+    {
+      "slug": "steam-diagnostic-usage",
+      "title": "Steam Diagnostics, Interesting Usage, and a 30% Conversion Win",
+      "date": "June 2026",
+      "label": "Usage Note",
+      "label_color": "accent",
+      "excerpt": "A short update on the Steam recommender diagnostic report, real usage patterns, and the 30% conversion result from making recommendations more inspectable.",
+      "content_html": "<p>I added a <a href='/static/images/steam_report.html' target='_blank' rel='noopener'>Steam recommender diagnostic report</a> so I could look at what people were actually doing inside NextSteamGame. I am keeping this to the parts that matter most: conversion, what people picked, what they clicked, and what the genre signals suggest.</p><h4>Conversion</h4><p>The funnel is the cleanest success metric. People picked 2,652 games from search and made 913 Steam clicks, which works out to a 34.4% click conversion rate. That means the site was not just getting curiosity traffic. A decent share of people found a recommendation interesting enough to leave for Steam.</p><figure class='diagnostic-viz diagnostic-image-viz'><img src='/static/images/steam-click-funnel.png' alt='Search to Steam click funnel chart showing 2,652 games picked from search and 913 Steam clicks' loading='lazy'/><figcaption>Search to Steam click funnel from the report: 2,652 games picked from search, 913 Steam clicks, 34.4% conversion.</figcaption></figure><h4>Picked games</h4><p>The games people started with mostly reflect Steam popularity: highly rated games with huge player counts and strong word of mouth. Persona 5 Royal, ELDEN RING, Stardew Valley, Baldur's Gate 3, and Factorio showing up near the top makes sense because these are the kinds of games people already search for most.</p><div class='diagnostic-viz'><div class='diagnostic-viz-title'>Top Games Picked From Search <span>report chart</span></div><div class='diagnostic-bar-list'><div class='diagnostic-bar'><span class='diagnostic-label'>Persona 5 Royal</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:100%'></span></span><span class='diagnostic-value'>53</span></div><div class='diagnostic-bar'><span class='diagnostic-label'>ELDEN RING</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:75.5%'></span></span><span class='diagnostic-value'>40</span></div><div class='diagnostic-bar'><span class='diagnostic-label'>Stardew Valley</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:73.6%'></span></span><span class='diagnostic-value'>39</span></div><div class='diagnostic-bar'><span class='diagnostic-label'>Baldur's Gate 3</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:67.9%'></span></span><span class='diagnostic-value'>36</span></div><div class='diagnostic-bar'><span class='diagnostic-label'>Factorio</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:64.2%'></span></span><span class='diagnostic-value'>34</span></div></div></div><h4>Subgenre and identity signal</h4><p>The subgenre and specific-genre charts are where the audience gets more interesting. Open world, roguelike, turn-based RPG, resource management, and deckbuilding game all show up in clicked-source subgenres. On the more specific side, strategic card battler leads the list. My read is simple: card battler and deck-builder people are actively looking for new games, and they are probably nerdy enough to try a vector-based recommendation website if it gives them better explanations than Steam tags.</p><div class='diagnostic-viz'><div class='diagnostic-viz-title'>Subgenre And Identity Signal <span>report charts</span></div><div class='diagnostic-bar-list'><div class='diagnostic-bar'><span class='diagnostic-label'>open world</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:100%'></span></span><span class='diagnostic-value'>44</span></div><div class='diagnostic-bar'><span class='diagnostic-label'>roguelike</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:88.6%'></span></span><span class='diagnostic-value'>39</span></div><div class='diagnostic-bar'><span class='diagnostic-label'>turn-based RPG</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:84.1%'></span></span><span class='diagnostic-value'>37</span></div><div class='diagnostic-bar'><span class='diagnostic-label'>strategic card battler</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:34.1%'></span></span><span class='diagnostic-value'>15</span></div><div class='diagnostic-bar'><span class='diagnostic-label'>deckbuilding game</span><span class='diagnostic-track'><span class='diagnostic-fill' style='width:22.7%'></span></span><span class='diagnostic-value'>10</span></div></div></div><p><a href='/static/images/steam_report.html' target='_blank' rel='noopener'>Open the full telemetry report</a>.</p>",
+      "tags": [
+        "Steam",
+        "Diagnostics",
+        "PostgreSQL",
+        "Usage Analytics",
+        "Conversion"
+      ],
+      "blog_year": 2026,
+      "sort_date": "2026-06-22"
+    },
     {
       "slug": "usf-sentiment-journal",
       "title": "USF, Sentiment, and Moving Into the City",
