@@ -36,6 +36,27 @@
       box-shadow: 0 22px 64px rgba(0, 0, 0, 0.34);
     }
     header { padding: 26px; margin-bottom: 18px; }
+    .report-nav { margin-bottom: 18px; }
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 750;
+      border: 1px solid rgba(102, 192, 244, 0.28);
+      border-radius: 999px;
+      background: rgba(5, 14, 23, 0.5);
+      padding: 10px 14px;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+    .portfolio-link:hover,
+    .portfolio-link:focus-visible {
+      border-color: rgba(102, 192, 244, 0.68);
+      background: rgba(102, 192, 244, 0.16);
+      transform: translateY(-1px);
+      outline: none;
+    }
     h1 { margin: 0; font-size: clamp(32px, 4vw, 58px); letter-spacing: -0.035em; }
     .sub { margin-top: 8px; color: var(--muted); line-height: 1.6; }
     .kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
@@ -58,6 +79,9 @@
 </head>
 <body>
   <main>
+    <nav class="report-nav" aria-label="Report navigation">
+      <a class="portfolio-link" href="/">Back to portfolio</a>
+    </nav>
     <header>
       <h1>NextSteamGame Telemetry</h1>
       <p class="sub">JSON-backed local report. Snapshot generated at 2026-06-22T23:07:24.914232+00:00.</p>
