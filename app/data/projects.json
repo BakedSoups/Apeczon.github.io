@@ -37,6 +37,83 @@
       ]
     },
     {
+      "slug": "package-panic",
+      "title": "Package Panic",
+      "description": "A live factory arcade and tower-defense browser game about sorting packages before the belts overwhelm the warehouse.",
+      "long_description": "A closed-source live browser game where players place and upgrade machines, react to special package types, build combos, survive boss events, and send pressure in versus matches. The client is written in Go and compiled to WebAssembly with Ebitengine-style canvas rendering, while static web assets, account UI, chat, audio, and deployment glue live in vanilla HTML, CSS, and TypeScript. Supabase stores account and leaderboard data, and SpacetimeDB powers PvP matchmaking, friend invites, package-send events, player state sync, open lobby chat logs, and moderated realtime chat.",
+      "image": "/static/images/packagepanic-preview.jpg",
+      "video": "/static/videos/packagepanic.mp4",
+      "badge": "Live Game",
+      "tools": [
+        "Long term",
+        "Ebitengine",
+        "Go",
+        "WebAssembly",
+        "SpacetimeDB",
+        "Supabase",
+        "PvP",
+        "TypeScript",
+        "ebitdock",
+        "CI/CD"
+      ],
+      "links": [
+        {
+          "label": "Play Game",
+          "url": "https://packagepanic.io/",
+          "icon": "fa-solid fa-gamepad"
+        }
+      ]
+    },
+    {
+      "slug": "ebitdock",
+      "title": "ebitdock",
+      "description": "A Go-native dev orchestrator for Ebitengine WebAssembly games that brings builds, services, ports, logs, and dashboards into one repeatable flow.",
+      "long_description": "A Go-native development orchestrator for Ebitengine browser games. ebitdock builds the Ebitengine WASM target, starts a Docker Compose stack, serves the browser client, watches files, and exposes a local dashboard for ports, logs, build status, and service health. It keeps the game code, HTML shell, JS bridge, assets, APIs, and databases inside the project while owning the orchestration around them, including optional backend presets like Nakama and live-service examples using APIs, realtime services, admin tools, Postgres, and SpacetimeDB.",
+      "image": "/static/images/ebitdock-preview.jpg",
+      "video": "/static/videos/ebitdock_dev.mp4",
+      "badge": "Open Source",
+      "tools": [
+        "Long term",
+        "Go",
+        "Ebitengine",
+        "WebAssembly",
+        "Docker Compose",
+        "Nakama",
+        "CI/CD"
+      ],
+      "links": [
+        {
+          "label": "View Code",
+          "url": "https://github.com/BakedSoups/ebitdock",
+          "icon": "fab fa-github"
+        }
+      ]
+    },
+    {
+      "slug": "pixaross",
+      "title": "PixARoss",
+      "description": "An open-source Go and Ebitengine nonogram puzzle game prototype with DS-era cozy puzzle energy.",
+      "long_description": "A small open-source Go and Ebitengine vertical slice for a cozy Picross-style puzzle game. PixARoss loads puzzle JSON from assets, generates clues from solution art, supports fill and X-mark drawing tools, drag painting, undo, reset, and reveals pixel art when a puzzle is solved. The level pipeline can generate self-contained puzzle JSON from two-panel spritesheets, which keeps the game data easy to extend while leaving the core puzzle loop Go-native.",
+      "image": "/static/images/pixaross.png",
+      "badge": "Open Source",
+      "github_stars_repo": "BakedSoups/pixaross",
+      "tools": [
+        "Go",
+        "Ebitengine",
+        "Puzzle Game",
+        "WebAssembly",
+        "Pixel Art",
+        "Open Source"
+      ],
+      "links": [
+        {
+          "label": "View Code",
+          "url": "https://github.com/BakedSoups/pixaross",
+          "icon": "fab fa-github"
+        }
+      ]
+    },
+    {
       "slug": "superlinked-wine",
       "title": "Superlinked Wine Recommender",
       "description": "An explainable wine search demo that shows which traits made a bottle match, not just a mystery list of similar wines.",

@@ -42,7 +42,22 @@ def _load_data() -> dict:
 
         if re.search(r"\b(recommend\w*|search\w*|rag|retrieval|similar|explainable|why|crawler|filters?)\b", text):
             buckets.append("explainable-search")
-        if any(term in text for term in ("godot", "game jam", "gdc", "itch.io", "simulator", "3d", "shaders")):
+        if any(
+            term in text
+            for term in (
+                "godot",
+                "game jam",
+                "gdc",
+                "itch.io",
+                "simulator",
+                "3d",
+                "shaders",
+                "ebitengine",
+                "browser game",
+                "spacetimedb",
+                "webassembly",
+            )
+        ):
             buckets.append("games-sims")
         if "long term" in text:
             buckets.append("long-term-builds")
