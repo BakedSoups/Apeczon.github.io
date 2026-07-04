@@ -114,6 +114,33 @@
       ]
     },
     {
+      "slug": "usf-search-engine",
+      "title": "USF Search Engine",
+      "description": "A concurrent Go search engine that crawls the USF website, indexes pages into SQLite, and lets users search the collected content.",
+      "long_description": "An open source search engine written in Go for crawling and searching the USF website. The crawler splits work across extraction workers that download pages and discover links, then database workers batch page content into SQLite. It was designed around tunable concurrency, with worker counts, batch size, and queue size exposed as parameters so the crawler can scale from hundreds of workers while keeping the local search app simple to run.",
+      "image": "/static/images/usfimage.png",
+      "badge": "Open Source",
+      "brand_icon": "/static/images/San-Francisco-Dons-Logo-2001.png",
+      "brand_alt": "USF Dons",
+      "github_stars_repo": "BakedSoups/USF-Search-Engine",
+      "tools": [
+        "Go",
+        "SQL",
+        "SQLite",
+        "Concurrency",
+        "Crawler",
+        "Worker Pools",
+        "Search"
+      ],
+      "links": [
+        {
+          "label": "View Code",
+          "url": "https://github.com/BakedSoups/USF-Search-Engine",
+          "icon": "fab fa-github"
+        }
+      ]
+    },
+    {
       "slug": "superlinked-wine",
       "title": "Superlinked Wine Recommender",
       "description": "An explainable wine search demo that shows which traits made a bottle match, not just a mystery list of similar wines.",
