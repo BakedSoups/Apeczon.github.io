@@ -156,6 +156,9 @@
                 {% else %}
                 <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy" />
                 {% endif %}
+                {% if "Go" in project.tools %}
+                <img class="project-go-emote" src="/static/images/gopher.png" alt="Go project" loading="lazy" />
+                {% endif %}
                 {% if project.badge or project.brand_icon or project.github_stars_repo %}
                 <div class="project-badges">
                   {% if project.brand_icon %}
