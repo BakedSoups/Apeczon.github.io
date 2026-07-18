@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "slug": "bay-area-gov-jobs",
+      "title": "Bay Area Gov Jobs",
+      "description": "A public-sector job search engine that helps Bay Area applicants search by the skills and experience they already have instead of obscure government job titles.",
+      "long_description": "A free, open source search tool that collects Bay Area government jobs from public APIs, normalizes listings from multiple providers, and indexes them in memory for fast filtering. Its explainable ranking engine combines token frequency, skill aliases, title and department matches, and parsed experience requirements, while Leaflet maps jobs across configurable city and county boundaries.",
+      "image": "/static/images/bay-area-gov-jobs-search.png",
+      "badge": "Live",
+      "github_stars_repo": "BakedSoups/goverment-job-portal-fixer",
+      "media": [
+        {
+          "label": "Search",
+          "type": "image",
+          "src": "/static/images/bay-area-gov-jobs-search.png",
+          "thumbnail": "/static/images/bay-area-gov-jobs-search.png"
+        },
+        {
+          "label": "Job Details",
+          "type": "image",
+          "src": "/static/images/bay-area-gov-jobs-details.png",
+          "thumbnail": "/static/images/bay-area-gov-jobs-details.png"
+        }
+      ],
+      "tools": [
+        "Go",
+        "Explainable Search",
+        "Government APIs",
+        "Server-Rendered HTML",
+        "Leaflet",
+        "OpenStreetMap",
+        "JavaScript",
+        "Open Source"
+      ],
+      "links": [
+        {
+          "label": "Visit Site",
+          "url": "https://osgovjobportal.com/",
+          "icon": "fa-solid fa-globe"
+        },
+        {
+          "label": "View Code",
+          "url": "https://github.com/BakedSoups/goverment-job-portal-fixer",
+          "icon": "fab fa-github"
+        }
+      ]
+    },
+    {
       "slug": "nextsteamgame",
       "title": "nextsteamgame.com",
       "description": "A Steam similarity tool for people who want control over why two games are considered similar.",
