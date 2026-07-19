@@ -607,6 +607,56 @@ header.scrolled {
   transform: translate(-50%, -50%);
 }
 
+.go-swarm-clone.is-landed {
+  animation: none;
+  transform: translate(-50%, -50%) rotate(var(--spin));
+}
+
+.go-swarm-clone.is-being-picked {
+  animation: go-swarm-picked 2.4s ease-in forwards;
+}
+
+.go-claw-machine {
+  position: fixed;
+  top: -0.35rem;
+  left: var(--claw-x);
+  z-index: 10000;
+  width: 3.6rem;
+  height: 100vh;
+  pointer-events: none;
+  transform: translateX(-50%);
+  animation: go-claw-cycle 5.2s ease-in-out forwards;
+}
+
+.go-claw-machine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0.18rem;
+  height: var(--drop-y);
+  background: #111;
+  transform: translateX(-50%);
+  transform-origin: top;
+  animation: go-claw-cable 5.2s ease-in-out forwards;
+}
+
+.go-claw-machine::after {
+  content: "";
+  position: absolute;
+  top: 1.2rem;
+  left: 50%;
+  width: 2.3rem;
+  height: 1.35rem;
+  border: 0.18rem solid #111;
+  border-top-width: 0.32rem;
+  border-radius: 0 0 0.45rem 0.45rem;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  transform: translate(-50%, -10%);
+  animation: go-claw-grabber 5.2s ease-in-out forwards;
+}
+
 @keyframes go-emote-accelerate {
   0% { transform: translate(0, 0) rotate(0deg) scale(1); }
   14% { transform: translate(-1px, 0) rotate(-3deg) scale(1.02); }
@@ -641,6 +691,49 @@ header.scrolled {
   100% {
     opacity: 1;
     transform: translate(calc(-50% + var(--land-x)), calc(-50% + var(--land-y))) scale(1) rotate(var(--spin));
+  }
+}
+
+@keyframes go-swarm-picked {
+  0%, 34% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--spin)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + var(--lift-y))) rotate(var(--spin)) scale(0.88);
+  }
+}
+
+@keyframes go-claw-cycle {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  24%, 56% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes go-claw-cable {
+  0%, 100% { transform: translateX(-50%) scaleY(0.12); }
+  24%, 56% { transform: translateX(-50%) scaleY(1); }
+}
+
+@keyframes go-claw-grabber {
+  0% {
+    top: 1.2rem;
+    transform: translate(-50%, -10%) scaleX(1.25);
+  }
+  24% {
+    top: var(--drop-y);
+    transform: translate(-50%, -10%) scaleX(1.25);
+  }
+  40%, 56% {
+    top: var(--drop-y);
+    transform: translate(-50%, -10%) scaleX(0.72);
+  }
+  100% {
+    top: 1.2rem;
+    transform: translate(-50%, -10%) scaleX(0.72);
   }
 }
 

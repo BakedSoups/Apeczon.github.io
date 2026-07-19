@@ -209,6 +209,67 @@
   applyPortfolioFilter();
 
   // ── Go project emote ──
+  const gopherPile = [];
+  let clawActive = false;
+
+  function clampNumber(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function activeGophers() {
+    return gopherPile.filter(gopher => gopher.isConnected && !gopher.classList.contains('is-being-picked'));
+  }
+
+  function pileSlot(index) {
+    const columns = [-2, -1, 0, 1, 2];
+    const level = Math.floor(index / columns.length);
+    const column = columns[index % columns.length];
+    const stagger = level % 2 === 0 ? 0 : 21;
+    const x = clampNumber(window.innerWidth / 2 + column * 42 + stagger, 32, window.innerWidth - 32);
+    const y = window.innerHeight - 24 - level * 29;
+    return { x, y };
+  }
+
+  function trimGopherPile() {
+    const live = activeGophers();
+    while (live.length > 34) {
+      live.shift()?.remove();
+    }
+    gopherPile.splice(0, gopherPile.length, ...live);
+  }
+
+  function maybeStartClaw() {
+    trimGopherPile();
+    if (clawActive || gopherPile.length < 10) return;
+
+    const target = gopherPile.shift();
+    if (!target || !target.isConnected) return;
+
+    clawActive = true;
+    const rect = target.getBoundingClientRect();
+    const targetX = rect.left + rect.width / 2;
+    const targetY = rect.top + rect.height / 2;
+    const claw = document.createElement('div');
+    claw.className = 'go-claw-machine';
+    claw.setAttribute('aria-hidden', 'true');
+    claw.style.setProperty('--claw-x', `${targetX}px`);
+    claw.style.setProperty('--drop-y', `${Math.max(92, targetY - 18)}px`);
+    document.body.appendChild(claw);
+
+    window.setTimeout(() => {
+      if (!target.isConnected) return;
+      target.classList.add('is-being-picked');
+      target.style.setProperty('--lift-y', `${-(targetY + 90)}px`);
+    }, 2300);
+
+    window.setTimeout(() => {
+      target.remove();
+      claw.remove();
+      clawActive = false;
+      maybeStartClaw();
+    }, 5400);
+  }
+
   document.querySelectorAll('[data-go-emote]').forEach(emote => {
     let boomTimer;
     let resetTimer;
@@ -224,28 +285,36 @@
       const rect = emote.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      const landingOffsets = [-220, -110, 0, 110, 220];
-      const groundY = window.innerHeight - centerY - 34;
+      const startingPileSize = activeGophers().length;
 
-      landingOffsets.forEach((offset, index) => {
+      [0, 1, 2, 3, 4].forEach((_, index) => {
         const clone = document.createElement('img');
         clone.className = 'go-swarm-clone';
         clone.src = emote.dataset.goSrc || '/static/images/go-gopher.svg';
         clone.alt = '';
         clone.setAttribute('aria-hidden', 'true');
-        const targetX = Math.min(window.innerWidth - 34, Math.max(34, centerX + offset));
+        const slot = pileSlot(startingPileSize + index);
+        const targetX = slot.x;
+        const targetY = slot.y;
         const landX = targetX - centerX;
+        const landY = targetY - centerY;
         clone.style.left = `${centerX}px`;
         clone.style.top = `${centerY}px`;
         clone.style.setProperty('--mid-x', `${landX * 0.35}px`);
         clone.style.setProperty('--mid-y', `${-110 - index * 12}px`);
         clone.style.setProperty('--land-x', `${landX}px`);
-        clone.style.setProperty('--land-y', `${groundY}px`);
+        clone.style.setProperty('--land-y', `${landY}px`);
         const spin = landX >= 0 ? 360 + index * 34 : -360 - index * 34;
         clone.style.setProperty('--mid-spin', `${spin / 3}deg`);
         clone.style.setProperty('--spin', `${spin}deg`);
         document.body.appendChild(clone);
-        window.setTimeout(() => clone.remove(), 6500);
+        clone.addEventListener('animationend', () => {
+          clone.style.left = `${targetX}px`;
+          clone.style.top = `${targetY}px`;
+          clone.classList.add('is-landed');
+          gopherPile.push(clone);
+          maybeStartClaw();
+        }, { once: true });
       });
     }
 
