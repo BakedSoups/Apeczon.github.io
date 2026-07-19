@@ -44,38 +44,6 @@
     });
   });
 
-  // ── No fluff mode ──
-  const noFluffToggle = document.querySelector('[data-no-fluff-toggle]');
-
-  function setNoFluffMode(enabled) {
-    document.body.classList.toggle('no-fluff-mode', enabled);
-    document.body.classList.remove('blog-door-transition');
-
-    if (noFluffToggle) {
-      noFluffToggle.setAttribute('aria-pressed', String(enabled));
-      const label = noFluffToggle.querySelector('span');
-      if (label) label.textContent = enabled ? 'Full Site' : 'No Fluff';
-    }
-
-    try {
-      localStorage.setItem('no-fluff-mode', enabled ? '1' : '0');
-    } catch (error) {
-      // Private browsing can block storage; the button still works for this page.
-    }
-  }
-
-  try {
-    if (localStorage.getItem('no-fluff-mode') === '1') {
-      setNoFluffMode(true);
-    }
-  } catch (error) {
-    // Ignore storage read failures.
-  }
-
-  noFluffToggle?.addEventListener('click', () => {
-    setNoFluffMode(!document.body.classList.contains('no-fluff-mode'));
-  });
-
   // ── Lazy video playback ──
   function loadLazyVideo(video, shouldPlay = false) {
     const source = video.querySelector('source[data-src]');
@@ -243,11 +211,43 @@
   // ── Go project emote ──
   document.querySelectorAll('[data-go-emote]').forEach(emote => {
     let boomTimer;
+    let resetTimer;
 
     function resetEmote() {
       window.clearTimeout(boomTimer);
+      window.clearTimeout(resetTimer);
       emote.classList.remove('is-shaking', 'is-exploding');
       emote.src = emote.dataset.goSrc || '/static/images/go-gopher.svg';
+    }
+
+    function spawnGopherSwarm() {
+      const rect = emote.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const directions = [
+        [-1.35, -1.05],
+        [-0.72, -1.34],
+        [0.18, -1.48],
+        [0.9, -1.18],
+        [1.36, -0.82],
+      ];
+
+      directions.forEach(([dx, dy], index) => {
+        const clone = document.createElement('img');
+        clone.className = 'go-swarm-clone';
+        clone.src = emote.dataset.goSrc || '/static/images/go-gopher.svg';
+        clone.alt = '';
+        clone.setAttribute('aria-hidden', 'true');
+        clone.style.left = `${centerX}px`;
+        clone.style.top = `${centerY}px`;
+        clone.style.setProperty('--mid-x', `${dx * 28}px`);
+        clone.style.setProperty('--mid-y', `${dy * 22}px`);
+        clone.style.setProperty('--fly-x', `${dx * (window.innerWidth * 0.72 + index * 26)}px`);
+        clone.style.setProperty('--fly-y', `${dy * (window.innerHeight * 0.76 + index * 18)}px`);
+        clone.style.setProperty('--spin', `${dx > 0 ? 520 + index * 42 : -520 - index * 42}deg`);
+        document.body.appendChild(clone);
+        clone.addEventListener('animationend', () => clone.remove(), { once: true });
+      });
     }
 
     function triggerEmote() {
@@ -259,11 +259,12 @@
         emote.classList.remove('is-shaking');
         emote.classList.add('is-exploding');
         emote.src = emote.dataset.boomSrc || '/static/images/boom-explosion.gif';
+        spawnGopherSwarm();
+        resetTimer = window.setTimeout(resetEmote, 850);
       }, 900);
     }
 
     emote.addEventListener('pointerenter', triggerEmote);
-    emote.addEventListener('pointerleave', resetEmote);
     emote.addEventListener('focus', triggerEmote);
     emote.addEventListener('blur', resetEmote);
   });

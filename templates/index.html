@@ -75,8 +75,8 @@
         <div class="hero-content">
           <h1><span class="typing-text">Hey, I'm </span><span class="gradient-text">Alex</span></h1>
           <p class="hero-subtitle hero-bio">
-            <span>Go enjoyer</span>
-            <img src="/static/images/go-gopher.svg" alt="Go gopher" loading="lazy" />
+            <span>Software engineer. I dabble in data tools, search, games, NLP, and web systems. I like Go a lot.</span>
+            <img src="/static/images/go-gopher.svg" alt="Go gopher" loading="lazy" data-go-emote data-go-src="/static/images/go-gopher.svg" data-boom-src="/static/images/boom-explosion.gif" />
           </p>
           <div class="hero-metrics" aria-label="Personal tags">
             <span><strong>Builds:</strong> data tools, games, search</span>
@@ -86,10 +86,6 @@
               <i class="fa-solid fa-file-lines"></i>
               <span>Resume</span>
             </a>
-            <button class="resume-action" type="button" data-no-fluff-toggle aria-pressed="false">
-              <i class="fa-solid fa-bolt"></i>
-              <span>No Fluff</span>
-            </button>
           </div>
           <ul class="social-icons">
             <li><a href="https://www.linkedin.com/in/alexander-peczon-1747a523a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
@@ -246,10 +242,7 @@
             </div>
             <div class="project-content">
               <div class="project-title"><h3>{{ project.title }}</h3></div>
-              <p class="project-description">
-                <span class="project-description-short">{{ project.description }}</span>
-                <span class="project-description-long">{{ project.long_description }}</span>
-              </p>
+              <p class="project-description">{{ project.long_description }}</p>
               <div class="project-tools">
                 {% for tool in project.tools %}
                 <span class="tool-tag">{{ tool }}</span>
@@ -326,6 +319,6 @@
   </footer>
 
   <script type="module" src="/static/js/future-scene-loader.js?v=20260618-lazy-scene"></script>
-  <script src="/static/js/animations.js?v=20260719-no-fluff"></script>
+  <script src="/static/js/animations.js?v=20260719-gopher-swarm"></script>
 </body>
 </html>
