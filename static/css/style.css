@@ -354,7 +354,8 @@ header.scrolled {
   margin: 0 0 1rem;
 }
 
-.resume-links a {
+.resume-links a,
+.resume-links button {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -368,9 +369,13 @@ header.scrolled {
   line-height: 1;
   text-decoration: none;
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  font-family: inherit;
+  cursor: pointer;
 }
 
-.resume-links a:hover {
+.resume-links a:hover,
+.resume-links button:hover,
+.resume-links button[aria-pressed="true"] {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.34);
   transform: translateY(-1px);
@@ -444,8 +449,57 @@ header.scrolled {
   animation: fadeIn 0.25s ease forwards;
 }
 
+body.no-fluff-mode *,
+body.no-fluff-mode *::before,
+body.no-fluff-mode *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+body.no-fluff-mode #future-scene,
+body.no-fluff-mode .hero-shade,
+body.no-fluff-mode .profile-picture,
+body.no-fluff-mode .social-icons,
+body.no-fluff-mode .hero-nav,
+body.no-fluff-mode .blog-mode-transition {
+  display: none !important;
+}
+
+body.no-fluff-mode .hero {
+  min-height: 0;
+  padding: 104px 0 28px;
+  overflow: visible;
+  background: #020307;
+}
+
+body.no-fluff-mode .hero-inner {
+  display: block;
+}
+
+body.no-fluff-mode .hero-content {
+  max-width: 900px;
+  text-shadow: none;
+}
+
+body.no-fluff-mode .content-view,
+body.no-fluff-mode .content-view.active {
+  display: block;
+  animation: none;
+}
+
+body.no-fluff-mode .project-card.filtered-out {
+  display: grid !important;
+}
+
 .filtered-out {
   display: none !important;
+}
+
+body.no-fluff-mode .fade-up,
+body.no-fluff-mode .reveal {
+  opacity: 1;
+  transform: none;
 }
 
 .section-title {

@@ -44,6 +44,38 @@
     });
   });
 
+  // ── No fluff mode ──
+  const noFluffToggle = document.querySelector('[data-no-fluff-toggle]');
+
+  function setNoFluffMode(enabled) {
+    document.body.classList.toggle('no-fluff-mode', enabled);
+    document.body.classList.remove('blog-door-transition');
+
+    if (noFluffToggle) {
+      noFluffToggle.setAttribute('aria-pressed', String(enabled));
+      const label = noFluffToggle.querySelector('span');
+      if (label) label.textContent = enabled ? 'Full Site' : 'No Fluff';
+    }
+
+    try {
+      localStorage.setItem('no-fluff-mode', enabled ? '1' : '0');
+    } catch (error) {
+      // Private browsing can block storage; the button still works for this page.
+    }
+  }
+
+  try {
+    if (localStorage.getItem('no-fluff-mode') === '1') {
+      setNoFluffMode(true);
+    }
+  } catch (error) {
+    // Ignore storage read failures.
+  }
+
+  noFluffToggle?.addEventListener('click', () => {
+    setNoFluffMode(!document.body.classList.contains('no-fluff-mode'));
+  });
+
   // ── Lazy video playback ──
   function loadLazyVideo(video, shouldPlay = false) {
     const source = video.querySelector('source[data-src]');
