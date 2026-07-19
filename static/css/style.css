@@ -593,8 +593,7 @@ header.scrolled {
 
 .hero-bio [data-go-emote].is-exploding,
 .project-image .project-go-emote.is-exploding {
-  width: clamp(3rem, 5vw, 4rem);
-  height: clamp(3rem, 5vw, 4rem);
+  transform: scale(1.18);
 }
 
 .go-swarm-clone {
@@ -604,7 +603,7 @@ header.scrolled {
   height: 2.7rem;
   object-fit: contain;
   pointer-events: none;
-  animation: go-swarm-away 1.35s cubic-bezier(0.17, 0.67, 0.2, 1) forwards;
+  animation: go-swarm-land 1.35s cubic-bezier(0.17, 0.67, 0.2, 1) forwards;
   transform: translate(-50%, -50%);
 }
 
@@ -627,18 +626,21 @@ header.scrolled {
   100% { transform: translate(0, 0) rotate(0deg) scale(1.35); }
 }
 
-@keyframes go-swarm-away {
+@keyframes go-swarm-land {
   0% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
   }
-  18% {
+  45% {
     opacity: 1;
-    transform: translate(calc(-50% + var(--mid-x)), calc(-50% + var(--mid-y))) scale(1.04) rotate(calc(var(--spin) / 3));
+    transform: translate(calc(-50% + var(--mid-x)), calc(-50% + var(--mid-y))) scale(1.04) rotate(var(--mid-spin));
+  }
+  84% {
+    transform: translate(calc(-50% + var(--land-x)), calc(-50% + var(--land-y) - 16px)) scale(1) rotate(var(--spin));
   }
   100% {
-    opacity: 0;
-    transform: translate(calc(-50% + var(--fly-x)), calc(-50% + var(--fly-y))) scale(0.7) rotate(var(--spin));
+    opacity: 1;
+    transform: translate(calc(-50% + var(--land-x)), calc(-50% + var(--land-y))) scale(1) rotate(var(--spin));
   }
 }
 

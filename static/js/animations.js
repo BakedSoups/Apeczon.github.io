@@ -224,29 +224,28 @@
       const rect = emote.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      const directions = [
-        [-1.35, -1.05],
-        [-0.72, -1.34],
-        [0.18, -1.48],
-        [0.9, -1.18],
-        [1.36, -0.82],
-      ];
+      const landingOffsets = [-220, -110, 0, 110, 220];
+      const groundY = window.innerHeight - centerY - 34;
 
-      directions.forEach(([dx, dy], index) => {
+      landingOffsets.forEach((offset, index) => {
         const clone = document.createElement('img');
         clone.className = 'go-swarm-clone';
         clone.src = emote.dataset.goSrc || '/static/images/go-gopher.svg';
         clone.alt = '';
         clone.setAttribute('aria-hidden', 'true');
+        const targetX = Math.min(window.innerWidth - 34, Math.max(34, centerX + offset));
+        const landX = targetX - centerX;
         clone.style.left = `${centerX}px`;
         clone.style.top = `${centerY}px`;
-        clone.style.setProperty('--mid-x', `${dx * 28}px`);
-        clone.style.setProperty('--mid-y', `${dy * 22}px`);
-        clone.style.setProperty('--fly-x', `${dx * (window.innerWidth * 0.72 + index * 26)}px`);
-        clone.style.setProperty('--fly-y', `${dy * (window.innerHeight * 0.76 + index * 18)}px`);
-        clone.style.setProperty('--spin', `${dx > 0 ? 520 + index * 42 : -520 - index * 42}deg`);
+        clone.style.setProperty('--mid-x', `${landX * 0.35}px`);
+        clone.style.setProperty('--mid-y', `${-110 - index * 12}px`);
+        clone.style.setProperty('--land-x', `${landX}px`);
+        clone.style.setProperty('--land-y', `${groundY}px`);
+        const spin = landX >= 0 ? 360 + index * 34 : -360 - index * 34;
+        clone.style.setProperty('--mid-spin', `${spin / 3}deg`);
+        clone.style.setProperty('--spin', `${spin}deg`);
         document.body.appendChild(clone);
-        clone.addEventListener('animationend', () => clone.remove(), { once: true });
+        window.setTimeout(() => clone.remove(), 6500);
       });
     }
 
