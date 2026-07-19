@@ -209,75 +209,21 @@
   applyPortfolioFilter();
 
   // ── Go project emote ──
-  const gopherPile = [];
-  let clawActive = false;
-
   function clampNumber(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
 
-  function activeGophers() {
-    return gopherPile.filter(gopher => gopher.isConnected && !gopher.classList.contains('is-being-picked'));
-  }
-
-  function pileSlot(index) {
-    const columns = [-2, -1, 0, 1, 2];
-    const level = Math.floor(index / columns.length);
-    const column = columns[index % columns.length];
-    const stagger = level % 2 === 0 ? 0 : 21;
-    const x = clampNumber(window.innerWidth / 2 + column * 42 + stagger, 32, window.innerWidth - 32);
-    const y = window.innerHeight - 24 - level * 29;
-    return { x, y };
-  }
-
-  function trimGopherPile() {
-    const live = activeGophers();
-    while (live.length > 34) {
-      live.shift()?.remove();
-    }
-    gopherPile.splice(0, gopherPile.length, ...live);
-  }
-
-  function maybeStartClaw() {
-    trimGopherPile();
-    if (clawActive || gopherPile.length < 10) return;
-
-    const target = gopherPile.shift();
-    if (!target || !target.isConnected) return;
-
-    clawActive = true;
-    const rect = target.getBoundingClientRect();
-    const targetX = rect.left + rect.width / 2;
-    const targetY = rect.top + rect.height / 2;
-    const claw = document.createElement('div');
-    claw.className = 'go-claw-machine';
-    claw.setAttribute('aria-hidden', 'true');
-    claw.style.setProperty('--claw-x', `${targetX}px`);
-    claw.style.setProperty('--drop-y', `${Math.max(92, targetY - 18)}px`);
-    document.body.appendChild(claw);
-
-    window.setTimeout(() => {
-      if (!target.isConnected) return;
-      target.classList.add('is-being-picked');
-      target.style.setProperty('--lift-y', `${-(targetY + 90)}px`);
-    }, 2300);
-
-    window.setTimeout(() => {
-      target.remove();
-      claw.remove();
-      clawActive = false;
-      maybeStartClaw();
-    }, 5400);
-  }
-
-  function settleGopher(clone, spin) {
-    const slot = pileSlot(activeGophers().length);
-    clone.style.left = `${slot.x}px`;
-    clone.style.top = `${slot.y}px`;
+  function settleGopher(clone, x, y, spin) {
+    clone.style.left = `${x}px`;
+    clone.style.top = `${y}px`;
     clone.style.setProperty('--spin', `${spin}deg`);
     clone.classList.add('is-landed');
-    gopherPile.push(clone);
-    maybeStartClaw();
+    window.setTimeout(() => {
+      clone.classList.add('is-fading');
+    }, 5000);
+    window.setTimeout(() => {
+      clone.remove();
+    }, 5900);
   }
 
   function launchGopher(clone, centerX, centerY, index, total) {
@@ -331,7 +277,7 @@
       const isSettled = state.bounces >= 2 && Math.abs(state.vy) < 130 && Math.abs(state.vx) < 85;
       if (age > 3100 || isSettled) {
         clone.style.transform = '';
-        settleGopher(clone, Math.round(state.spin));
+        settleGopher(clone, state.x, state.y, Math.round(state.spin));
         return;
       }
 
