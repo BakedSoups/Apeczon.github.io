@@ -603,7 +603,6 @@ header.scrolled {
   height: 2.7rem;
   object-fit: contain;
   pointer-events: none;
-  animation: go-swarm-land 1.35s cubic-bezier(0.17, 0.67, 0.2, 1) forwards;
   transform: translate(-50%, -50%);
 }
 
@@ -635,7 +634,8 @@ header.scrolled {
   left: 50%;
   width: 0.18rem;
   height: var(--drop-y);
-  background: #111;
+  background: #fff;
+  box-shadow: 0 0 0 1px #111;
   transform: translateX(-50%);
   transform-origin: top;
   animation: go-claw-cable 5.2s ease-in-out forwards;
@@ -648,11 +648,12 @@ header.scrolled {
   left: 50%;
   width: 2.3rem;
   height: 1.35rem;
-  border: 0.18rem solid #111;
+  border: 0.18rem solid #fff;
   border-top-width: 0.32rem;
   border-radius: 0 0 0.45rem 0.45rem;
   border-left-color: transparent;
   border-right-color: transparent;
+  filter: drop-shadow(0 0 0 #111) drop-shadow(1px 1px 0 #111) drop-shadow(-1px -1px 0 #111);
   transform: translate(-50%, -10%);
   animation: go-claw-grabber 5.2s ease-in-out forwards;
 }

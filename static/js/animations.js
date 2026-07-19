@@ -270,6 +270,77 @@
     }, 5400);
   }
 
+  function settleGopher(clone, spin) {
+    const slot = pileSlot(activeGophers().length);
+    clone.style.left = `${slot.x}px`;
+    clone.style.top = `${slot.y}px`;
+    clone.style.setProperty('--spin', `${spin}deg`);
+    clone.classList.add('is-landed');
+    gopherPile.push(clone);
+    maybeStartClaw();
+  }
+
+  function launchGopher(clone, centerX, centerY, index, total) {
+    const size = 43;
+    const floor = window.innerHeight - 24;
+    const leftWall = size / 2;
+    const rightWall = window.innerWidth - size / 2;
+    const angle = (Math.PI * 2 * index) / total + (Math.random() - 0.5) * 0.55;
+    const speed = 680 + Math.random() * 460;
+    const state = {
+      x: centerX,
+      y: centerY,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 430,
+      spin: 0,
+      spinVelocity: (Math.random() > 0.5 ? 1 : -1) * (420 + Math.random() * 520),
+      bounces: 0,
+      started: performance.now(),
+      last: performance.now(),
+    };
+
+    function step(now) {
+      const dt = Math.min(0.032, (now - state.last) / 1000);
+      state.last = now;
+      state.vy += 1720 * dt;
+      state.vx *= 0.996;
+      state.x += state.vx * dt;
+      state.y += state.vy * dt;
+      state.spin += state.spinVelocity * dt;
+      state.spinVelocity *= 0.992;
+
+      if (state.x < leftWall || state.x > rightWall) {
+        state.x = clampNumber(state.x, leftWall, rightWall);
+        state.vx *= -0.58;
+        state.spinVelocity *= -0.76;
+      }
+
+      if (state.y > floor) {
+        state.y = floor;
+        state.vy *= -0.42;
+        state.vx *= 0.74;
+        state.spinVelocity *= 0.68;
+        state.bounces += 1;
+      }
+
+      clone.style.left = `${state.x}px`;
+      clone.style.top = `${state.y}px`;
+      clone.style.transform = `translate(-50%, -50%) rotate(${state.spin}deg)`;
+
+      const age = now - state.started;
+      const isSettled = state.bounces >= 2 && Math.abs(state.vy) < 130 && Math.abs(state.vx) < 85;
+      if (age > 3100 || isSettled) {
+        clone.style.transform = '';
+        settleGopher(clone, Math.round(state.spin));
+        return;
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
   document.querySelectorAll('[data-go-emote]').forEach(emote => {
     let boomTimer;
     let resetTimer;
@@ -285,36 +356,18 @@
       const rect = emote.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      const startingPileSize = activeGophers().length;
+      const total = 14;
 
-      [0, 1, 2, 3, 4].forEach((_, index) => {
+      Array.from({ length: total }).forEach((_, index) => {
         const clone = document.createElement('img');
         clone.className = 'go-swarm-clone';
         clone.src = emote.dataset.goSrc || '/static/images/go-gopher.svg';
         clone.alt = '';
         clone.setAttribute('aria-hidden', 'true');
-        const slot = pileSlot(startingPileSize + index);
-        const targetX = slot.x;
-        const targetY = slot.y;
-        const landX = targetX - centerX;
-        const landY = targetY - centerY;
         clone.style.left = `${centerX}px`;
         clone.style.top = `${centerY}px`;
-        clone.style.setProperty('--mid-x', `${landX * 0.35}px`);
-        clone.style.setProperty('--mid-y', `${-110 - index * 12}px`);
-        clone.style.setProperty('--land-x', `${landX}px`);
-        clone.style.setProperty('--land-y', `${landY}px`);
-        const spin = landX >= 0 ? 360 + index * 34 : -360 - index * 34;
-        clone.style.setProperty('--mid-spin', `${spin / 3}deg`);
-        clone.style.setProperty('--spin', `${spin}deg`);
         document.body.appendChild(clone);
-        clone.addEventListener('animationend', () => {
-          clone.style.left = `${targetX}px`;
-          clone.style.top = `${targetY}px`;
-          clone.classList.add('is-landed');
-          gopherPile.push(clone);
-          maybeStartClaw();
-        }, { once: true });
+        launchGopher(clone, centerX, centerY, index, total);
       });
     }
 
