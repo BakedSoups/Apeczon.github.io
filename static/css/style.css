@@ -562,11 +562,6 @@ header.scrolled {
   width: clamp(2.4rem, 4vw, 3.2rem);
   height: clamp(2.4rem, 4vw, 3.2rem);
   object-fit: contain;
-  border-radius: 50%;
-  background: rgba(5, 12, 24, 0.76);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  padding: 0.2rem;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
   pointer-events: none;
 }
 
