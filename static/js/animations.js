@@ -208,6 +208,34 @@
 
   applyPortfolioFilter();
 
+  // ── Go project emote ──
+  document.querySelectorAll('[data-go-emote]').forEach(emote => {
+    let boomTimer;
+
+    function resetEmote() {
+      window.clearTimeout(boomTimer);
+      emote.classList.remove('is-shaking', 'is-exploding');
+      emote.src = emote.dataset.goSrc || '/static/images/go-gopher.svg';
+    }
+
+    function triggerEmote() {
+      resetEmote();
+      // Restart the CSS animation if the user re-enters quickly.
+      void emote.offsetWidth;
+      emote.classList.add('is-shaking');
+      boomTimer = window.setTimeout(() => {
+        emote.classList.remove('is-shaking');
+        emote.classList.add('is-exploding');
+        emote.src = emote.dataset.boomSrc || '/static/images/boom-explosion.gif';
+      }, 900);
+    }
+
+    emote.addEventListener('pointerenter', triggerEmote);
+    emote.addEventListener('pointerleave', resetEmote);
+    emote.addEventListener('focus', triggerEmote);
+    emote.addEventListener('blur', resetEmote);
+  });
+
   // ── Project media switchers ──
   document.querySelectorAll('.project-media-options').forEach(options => {
     const media = options.closest('.project-media');

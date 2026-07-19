@@ -562,7 +562,37 @@ header.scrolled {
   width: clamp(2.4rem, 4vw, 3.2rem);
   height: clamp(2.4rem, 4vw, 3.2rem);
   object-fit: contain;
-  pointer-events: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transform-origin: 50% 58%;
+}
+
+.project-image .project-go-emote.is-shaking {
+  animation: go-emote-accelerate 0.9s linear both;
+}
+
+.project-image .project-go-emote.is-exploding {
+  width: clamp(3rem, 5vw, 4rem);
+  height: clamp(3rem, 5vw, 4rem);
+}
+
+@keyframes go-emote-accelerate {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  14% { transform: translate(-1px, 0) rotate(-3deg) scale(1.02); }
+  26% { transform: translate(1px, -1px) rotate(3deg) scale(1.04); }
+  37% { transform: translate(-2px, 1px) rotate(-5deg) scale(1.06); }
+  47% { transform: translate(2px, -1px) rotate(5deg) scale(1.08); }
+  56% { transform: translate(-3px, 1px) rotate(-8deg) scale(1.1); }
+  64% { transform: translate(3px, -2px) rotate(8deg) scale(1.12); }
+  71% { transform: translate(-4px, 2px) rotate(-12deg) scale(1.14); }
+  77% { transform: translate(4px, -2px) rotate(12deg) scale(1.16); }
+  82% { transform: translate(-5px, 2px) rotate(-16deg) scale(1.18); }
+  86% { transform: translate(5px, -3px) rotate(16deg) scale(1.2); }
+  90% { transform: translate(-6px, 3px) rotate(-20deg) scale(1.22); }
+  93% { transform: translate(6px, -3px) rotate(20deg) scale(1.24); }
+  96% { transform: translate(-7px, 4px) rotate(-24deg) scale(1.27); }
+  98% { transform: translate(7px, -4px) rotate(24deg) scale(1.3); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1.35); }
 }
 
 .project-media-options {

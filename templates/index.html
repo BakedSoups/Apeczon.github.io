@@ -199,7 +199,7 @@
                 <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy" />
                 {% endif %}
                 {% if "Go" in project.tools %}
-                <img class="project-go-emote" src="/static/images/gopher.png" alt="Go project" loading="lazy" />
+                <img class="project-go-emote" src="/static/images/go-gopher.svg" alt="Go project" loading="lazy" data-go-emote data-go-src="/static/images/go-gopher.svg" data-boom-src="/static/images/boom-explosion.gif" />
                 {% endif %}
                 {% if project.badge or project.brand_icon or project.github_stars_repo %}
                 <div class="project-badges">
